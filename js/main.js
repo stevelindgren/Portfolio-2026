@@ -149,8 +149,15 @@ function HideShowHeader() {
     var navbarHeight = 75;
     var navbarHideAfter = navbarHeight
 
-    $(window).scroll(function(event) {
+    function toggleHeaderScrolledClass() {
+        $('#header').toggleClass('is-scrolled', $(window).scrollTop() > 0);
+    }
+
+    toggleHeaderScrolledClass();
+
+    $(window).on('scroll touchmove', function() {
         didScroll = true;
+        toggleHeaderScrolledClass();
     });
 
     if ($('.scroll-hide').length > 0) {
@@ -199,6 +206,9 @@ function HideShowHeader() {
 function HeroSection() {
 
     var Hero = document.getElementById('hero');
+    if (!Hero) {
+        return;
+    }
     var windowScrolled;
 
 
@@ -228,6 +238,13 @@ function BackToTop() {
     $('.scrolltotop').on('click', function() {
         $('html, body').animate({ scrollTop: 0 }, 800);
         return false;
+    });
+
+    $('.scrolltotop').on('keydown', function(event) {
+        if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+            event.preventDefault();
+            $(this).trigger('click');
+        }
     });
 
     $(document).scroll(function() {

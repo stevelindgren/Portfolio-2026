@@ -1,14 +1,16 @@
 :root {
-    --space-4: 4px;
-    --space-8: 8px;
-    --space-12: 12px;
-    --space-16: 16px;
-    --space-20: 20px;
-    --space-24: 24px;
-    --space-32: 32px;
-    --space-40: 40px;
-    --space-48: 48px;
-    --space-64: 64px;
+    /* 4px spacing scale */
+    --space-unit: 4px;
+    --space-4: calc(var(--space-unit) * 1);
+    --space-8: calc(var(--space-unit) * 2);
+    --space-12: calc(var(--space-unit) * 3);
+    --space-16: calc(var(--space-unit) * 4);
+    --space-20: calc(var(--space-unit) * 5);
+    --space-24: calc(var(--space-unit) * 6);
+    --space-32: calc(var(--space-unit) * 8);
+    --space-40: calc(var(--space-unit) * 10);
+    --space-48: calc(var(--space-unit) * 12);
+    --space-64: calc(var(--space-unit) * 16);
     --section-gap: var(--space-48);
     --section-gap-mobile: var(--space-24)
 }
@@ -130,164 +132,208 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0 !important
 }
 
-.mar-top-5 {
-    margin-top: 5px !important
+.mar-top-4 {
+    margin-top: var(--space-4) !important
 }
 
-.mar-top-10 {
-    margin-top: 10px !important
+.mar-top-8 {
+    margin-top: var(--space-8) !important
 }
 
-.mar-top-15 {
-    margin-top: 15px !important
+.mar-top-12 {
+    margin-top: var(--space-12) !important
+}
+
+.mar-top-16 {
+    margin-top: var(--space-16) !important
 }
 
 .mar-top-20 {
-    margin-top: 20px !important
+    margin-top: var(--space-20) !important
 }
 
-.mar-top-25 {
-    margin-top: 25px !important
+.mar-top-24 {
+    margin-top: var(--space-24) !important
 }
 
-.mar-top-30 {
-    margin-top: 30px !important
+.mar-top-28 {
+    margin-top: calc(var(--space-unit) * 7) !important
 }
 
-.mar-top-35 {
-    margin-top: 35px !important
+.mar-top-32 {
+    margin-top: var(--space-32) !important
+}
+
+.mar-top-36 {
+    margin-top: calc(var(--space-unit) * 9) !important
 }
 
 .mar-top-40 {
-    margin-top: 40px !important
+    margin-top: var(--space-40) !important
 }
 
-.mar-top-45 {
-    margin-top: 45px !important
+.mar-top-44 {
+    margin-top: calc(var(--space-unit) * 11) !important
 }
 
-.mar-top-50 {
-    margin-top: 50px !important
+.mar-top-48 {
+    margin-top: var(--space-48) !important
 }
 
-.mar-top-55 {
-    margin-top: 55px !important
+.mar-top-52 {
+    margin-top: calc(var(--space-unit) * 13) !important
+}
+
+.mar-top-56 {
+    margin-top: calc(var(--space-unit) * 14) !important
 }
 
 .mar-top-60 {
-    margin-top: 60px !important
+    margin-top: calc(var(--space-unit) * 15) !important
 }
 
-.mar-top-65 {
-    margin-top: 65px !important
+.mar-top-64 {
+    margin-top: var(--space-64) !important
 }
 
-.mar-top-70 {
-    margin-top: 70px !important
+.mar-top-68 {
+    margin-top: calc(var(--space-unit) * 17) !important
 }
 
-.mar-top-75 {
-    margin-top: 75px !important
+.mar-top-72 {
+    margin-top: calc(var(--space-unit) * 18) !important
+}
+
+.mar-top-76 {
+    margin-top: calc(var(--space-unit) * 19) !important
 }
 
 .mar-top-80 {
-    margin-top: 80px !important
+    margin-top: calc(var(--space-unit) * 20) !important
 }
 
-.mar-top-85 {
-    margin-top: 85px !important
+.mar-top-84 {
+    margin-top: calc(var(--space-unit) * 21) !important
 }
 
-.mar-top-90, .mar-top-95 {
-    margin-top: 95px !important
+.mar-top-88 {
+    margin-top: calc(var(--space-unit) * 22) !important
+}
+
+.mar-top-92 {
+    margin-top: calc(var(--space-unit) * 23) !important
+}
+
+.mar-top-96 {
+    margin-top: calc(var(--space-unit) * 24) !important
 }
 
 .mar-top-100 {
-    margin-top: 100px !important
+    margin-top: calc(var(--space-unit) * 25) !important
 }
 
 .mar-bot-0 {
     margin-bottom: 0 !important
 }
 
-.mar-bot-5 {
-    margin-bottom: 5px !important
+.mar-bot-4 {
+    margin-bottom: var(--space-4) !important
 }
 
-.mar-bot-10 {
-    margin-bottom: 10px !important
+.mar-bot-8 {
+    margin-bottom: var(--space-8) !important
 }
 
-.mar-bot-15 {
-    margin-bottom: 15px !important
+.mar-bot-12 {
+    margin-bottom: var(--space-12) !important
+}
+
+.mar-bot-16 {
+    margin-bottom: var(--space-16) !important
 }
 
 .mar-bot-20 {
-    margin-bottom: 20px !important
+    margin-bottom: var(--space-20) !important
 }
 
-.mar-bot-25 {
-    margin-bottom: 25px !important
+.mar-bot-24 {
+    margin-bottom: var(--space-24) !important
 }
 
-.mar-bot-30 {
-    margin-bottom: 30px !important
+.mar-bot-28 {
+    margin-bottom: calc(var(--space-unit) * 7) !important
 }
 
-.mar-bot-35 {
-    margin-bottom: 35px !important
+.mar-bot-32 {
+    margin-bottom: var(--space-32) !important
+}
+
+.mar-bot-36 {
+    margin-bottom: calc(var(--space-unit) * 9) !important
 }
 
 .mar-bot-40 {
-    margin-bottom: 40px !important
+    margin-bottom: var(--space-40) !important
 }
 
-.mar-bot-45 {
-    margin-bottom: 45px !important
+.mar-bot-44 {
+    margin-bottom: calc(var(--space-unit) * 11) !important
 }
 
-.mar-bot-50 {
-    margin-bottom: 50px !important
+.mar-bot-48 {
+    margin-bottom: var(--space-48) !important
 }
 
-.mar-bot-55 {
-    margin-bottom: 55px !important
+.mar-bot-52 {
+    margin-bottom: calc(var(--space-unit) * 13) !important
+}
+
+.mar-bot-56 {
+    margin-bottom: calc(var(--space-unit) * 14) !important
 }
 
 .mar-bot-60 {
-    margin-bottom: 60px !important
+    margin-bottom: calc(var(--space-unit) * 15) !important
 }
 
-.mar-bot-65 {
-    margin-bottom: 65px !important
+.mar-bot-64 {
+    margin-bottom: var(--space-64) !important
 }
 
-.mar-bot-70 {
-    margin-bottom: 70px !important
+.mar-bot-68 {
+    margin-bottom: calc(var(--space-unit) * 17) !important
 }
 
-.mar-bot-75 {
-    margin-bottom: 75px !important
+.mar-bot-72 {
+    margin-bottom: calc(var(--space-unit) * 18) !important
+}
+
+.mar-bot-76 {
+    margin-bottom: calc(var(--space-unit) * 19) !important
 }
 
 .mar-bot-80 {
-    margin-bottom: 80px !important
+    margin-bottom: calc(var(--space-unit) * 20) !important
 }
 
-.mar-bot-85 {
-    margin-bottom: 85px !important
+.mar-bot-84 {
+    margin-bottom: calc(var(--space-unit) * 21) !important
 }
 
-.mar-bot-90 {
-    margin-bottom: 90px !important
+.mar-bot-88 {
+    margin-bottom: calc(var(--space-unit) * 22) !important
 }
 
-.mar-bot-95 {
-    margin-bottom: 95px !important
+.mar-bot-92 {
+    margin-bottom: calc(var(--space-unit) * 23) !important
+}
+
+.mar-bot-96 {
+    margin-bottom: calc(var(--space-unit) * 24) !important
 }
 
 .mar-bot-100 {
-    margin-bottom: 100px !important
+    margin-bottom: calc(var(--space-unit) * 25) !important
 }
 
 .text-left {
@@ -326,7 +372,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #content-wrapper {
-    margin-top: 150px;
+    margin-top: 88px;
     position: relative
 }
 
@@ -501,7 +547,8 @@ button.mfp-close:focus {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 999
+    z-index: 999;
+    transition: background-color .2s ease, box-shadow .2s ease, -webkit-backdrop-filter .2s ease, backdrop-filter .2s ease
 }
 
 #header.transparent {
@@ -534,7 +581,7 @@ button.mfp-close:focus {
 }
 
 #header .header-wrapper #logo {
-    padding-left: 15px;
+    padding-left: var(--space-16);
     max-width: 240px
 }
 
@@ -636,6 +683,19 @@ button.mfp-close:focus {
     display: block
 }
 
+.menu-button .open-icon, .menu-button .close-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.menu-button .open-icon {
+    width: 28px;
+    height: 18px;
+    background: linear-gradient(currentColor, currentColor) left top/28px 2.5px no-repeat, linear-gradient(currentColor, currentColor) right center/18px 2.5px no-repeat, linear-gradient(currentColor, currentColor) left bottom/24px 2.5px no-repeat
+}
+
 .no-button .menu-button {
     padding-right: 0
 }
@@ -666,6 +726,18 @@ button.mfp-close:focus {
 #header.hide {
     box-shadow: 0 0 30px rgba(0, 0, 0, .9);
     background-color: #1e1e1e
+}
+
+#header.is-scrolled, #header.hide.is-scrolled {
+    background-color: rgba(30, 30, 30, .12);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .20);
+    border-bottom: 1px solid rgba(255, 255, 255, .03)
+}
+
+#header.is-scrolled nav, #header.hide.is-scrolled nav {
+    background: transparent
 }
 
 .menubar {
@@ -748,7 +820,8 @@ button.mfp-close:focus {
 }
 
 .page-title-main {
-    padding-top: 50px;
+    padding-top: var(--space-48);
+    margin-bottom: var(--space-64);
     text-align: center;
 }
 
@@ -1019,7 +1092,7 @@ button.mfp-close:focus {
 }
 
 .portfolio-footer .portfolio-text h3 {
-    margin: 0 0 6px
+    margin: 0 0 var(--space-8)
 }
 
 .portfolio-footer .portfolio-text h4 {
@@ -1066,7 +1139,7 @@ button.mfp-close:focus {
 }
 
 .overlay-button {
-    padding: 10px 20px;
+    padding: var(--space-12) var(--space-20);
     border: none;
     font-size: 14px;
     color: #ffffff;
@@ -1943,7 +2016,7 @@ textarea {
 }
 
 .contact-info div {
-    margin-bottom: 10px
+    margin-bottom: var(--space-12)
 }
 
 .scroller-container {
@@ -2050,7 +2123,7 @@ textarea {
     font-weight: 400;
     color: #bfbfc6;
     display: inline-block;
-    margin-left: 15px
+    margin-left: var(--space-16)
 }
 
 .scrolltotop {
@@ -2460,7 +2533,7 @@ textarea {
     }
 
     #content-wrapper {
-        margin-top: 90px;
+        margin-top: calc(var(--space-unit) * 23);
         position: relative
     }
 
@@ -2568,7 +2641,7 @@ textarea {
     }
 
     #content-wrapper {
-        margin-top: 90px;
+        margin-top: calc(var(--space-unit) * 23);
         position: relative
     }
 
@@ -2714,7 +2787,7 @@ textarea {
     }
 
     #header .header-wrapper #logo {
-        padding-left: 15px;
+        padding-left: var(--space-16);
         max-width: 240px
     }
 
@@ -2724,7 +2797,7 @@ textarea {
 
     nav {
         background: #1e1e1e;
-        padding: 0 15px
+        padding: 0 var(--space-16)
     }
 
     #map-block, .page-title, .post-single-wrap, .project-single {
@@ -2736,7 +2809,7 @@ textarea {
     }
 
     .scroller-container {
-        margin: 0 0 90px
+        margin: 0 0 calc(var(--space-unit) * 22)
     }
 
     .cta h2, .cta h2 a {
@@ -2782,7 +2855,7 @@ textarea {
     }
 
     #footer {
-        padding: 50px 0 70px
+        padding: var(--space-48) 0 calc(var(--space-unit) * 18)
     }
 
     #footer .col-sm-6 {
@@ -2792,18 +2865,18 @@ textarea {
 
     #footer .footer-socials {
         text-align: center;
-        margin-top: 10px;
+        margin-top: var(--space-12);
         width: 100%
     }
 
     #footer .footer-socials a {
-        margin-left: 5px;
-        margin-right: 5px
+        margin-left: var(--space-4);
+        margin-right: var(--space-4)
     }
 
     #footer .copyrights {
         position: absolute;
-        bottom: 25px;
+        bottom: var(--space-24);
         left: 50%;
         -ms-transform: translateX(-50%);
         -webkit-transform: translateX(-50%);
@@ -2814,12 +2887,12 @@ textarea {
         text-align: center
     }
 
-    .mar-top-15-xs {
-        margin-top: 15px !important
+    .mar-top-16-xs {
+        margin-top: var(--space-16) !important
     }
 
-    .mar-top-50-xs {
-        margin-top: 50px !important
+    .mar-top-48-xs {
+        margin-top: var(--space-48) !important
     }
 
     .portfolio-wrap #portfolio-slider.single-project .slider-project-details .sp-title {
