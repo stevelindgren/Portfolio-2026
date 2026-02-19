@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html dir="ltr" lang="en-US">
   <head>
-    <!-- Google Analytics tracking -->
+    <!-- Google tag (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-TMMZDTDJ37"
@@ -15,27 +15,19 @@
 
       gtag("config", "G-TMMZDTDJ37");
     </script>
-    <!-- Meta tags -->
+    <!-- Metas -->
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="StevenLindgren" />
-    <!-- Favicon and font links -->
+    <!-- Links -->
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
 
-    <!-- Core site stylesheets -->
     <link href="css/plugins.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
-    <link href="css/nav-override.css" rel="stylesheet" />
-    <link href="css/floating-icons.css" rel="stylesheet" />
 
     <title>Steven Lindgren | Design Portfolio</title>
   </head>
@@ -44,30 +36,27 @@
   <body>
     <!-- Page Wrapper -->
     <div id="page-wrapper">
-      <!-- Header and primary navigation -->
-      <header id="header">
-        <div class="header-container">
-          <div class="logo">
-            <a href="https://stevenlindgren.com/">
-              <img src="images/main/logo-port.svg" alt="Steven Lindgren" />
-            </a>
+      <!-- Header -->
+      <header id="header" class="scroll-hide">
+        <div class="header-wrapper">
+          <div class="container">
+            <div id="logo">
+              <a href="https://stevenlindgren.com/">
+                <img src="images/main/logo-port.svg" alt="Logo" />
+              </a>
+            </div>
+            <nav id="menu-center">
+              <div class="menu-button menu-open">
+                <span class="open-icon" aria-hidden="true"></span>
+                <i class="close-icon ion-android-close"></i>
+              </div>
+              <ul class="flexnav standard" data-breakpoint="800">
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
           </div>
-
-          <button
-            class="mobile-menu-toggle"
-            aria-label="Toggle navigation menu"
-            aria-expanded="false"
-          >
-            <span class="hamburger"></span>
-          </button>
-
-          <nav class="main-nav">
-            <ul class="nav-list">
-              <li><a href="#about" class="nav-link">About</a></li>
-              <li><a href="#work" class="nav-link">Work</a></li>
-              <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-          </nav>
         </div>
       </header>
       <!-- Header Ends -->
@@ -77,102 +66,127 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-12">
-              <!-- Hero / About section -->
-              <div class="hero-wrapper">
-                <!-- Floating Icons (Desktop only) -->
-                <div class="floating-icon icon-1">
-                  <img src="images/scroller/figma.png" alt="Figma" />
-                </div>
-                <div class="floating-icon icon-2">
-                  <img src="images/scroller/framer.png" alt="Framer" />
-                </div>
-                <div class="floating-icon icon-3">
-                  <img
-                    src="images/scroller/adobe-photoshop.png"
-                    alt="Photoshop"
-                  />
-                </div>
-                <div class="floating-icon icon-4">
-                  <img
-                    src="images/scroller/adobe-illustrator.png"
-                    alt="Illustrator"
-                  />
-                </div>
-                <div class="floating-icon icon-5">
-                  <img src="images/scroller/sketch.png" alt="Sketch" />
-                </div>
-                <div class="floating-icon icon-6">
-                  <img src="images/scroller/monday.png" alt="Monday.com" />
-                </div>
-                <div class="floating-icon icon-7">
-                  <img src="images/scroller/tailwind.png" alt="Tailwind" />
-                </div>
-                <div class="floating-icon icon-8">
-                  <img src="images/scroller/css.png" alt="CSS" />
-                </div>
-
-                <!-- Hero content: intro text and primary CTA -->
-                <div class="page-title-main centered fade-in" id="about">
-                  <h3>Hello! I'm Steven.</h3>
-                  <h1 class="hero-headline">
-                    <span class="hero-headline-primary"
-                      >A Visual & Digital Designer</span
-                    >
-                    <span class="hero-headline-accent"
-                      >Specializing in Conversion-Focused</span
-                    >
-                    <span class="hero-headline-secondary">Design</span>
-                  </h1>
-                  <p>
-                    I've always been drawn to things that blend art and
-                    precision, from photography and fly fishing to golf and
-                    design. Each one takes patience, rhythm, and intuition,
-                    which is how I approach every project. I focus on creating design that feels balanced,
-                    purposeful, and effortless.
-                  </p>
-                  <a
-                    href="#contact"
-                    class="button hero-cta-button glow-on-hover"
-                  >
-                    <span class="hero-cta-label">Get in Touch</span>
-                    <i class="fa-solid fa-arrow-right hero-cta-arrow" aria-hidden="true"></i>
-                  </a>
-
-                  <!-- Mobile icon row (skills/tools) -->
-                  <div class="mobile-icons-row">
-                    <div class="mobile-icon">
-                      <img src="images/scroller/figma.png" alt="Figma" />
+              <div class="page-title-main centered fade-in" id="about">
+                <h3>Hello! I'm Steven.</h3>
+                <h1 class="animated-text">
+                  A UX/UI Designer (UI-focused) creating intuitive, goal-driven
+                  digital experiences.
+                </h1>
+                <p>
+                  I’ve always been drawn to things that blend art and precision,
+                  from photography and fly fishing to golf and design. Each one
+                  takes patience, rhythm, and intuition, which is how I approach
+                  every project. With over 15 years of experience, I focus on
+                  creating design that feels balanced, purposeful, and
+                  effortless.
+                </p>
+              </div>
+              <!-- Icon Scroller -->
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="scroller-container">
+                    <div class="gradient-left"></div>
+                    <div class="scroller">
+                      <div class="box">
+                        <img src="images/scroller/figma.png" alt="Figma Icon" />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/framer.png"
+                          alt="Framer Icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/adobe-photoshop.png"
+                          alt="Adobe Photoshop icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/adobe-illustrator.png"
+                          alt="Adobe Illustrator icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/adobe-xd.png"
+                          alt="Adobe Xd icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/adobe-lightroom.png"
+                          alt="Adobe Lightroom icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/monday.png"
+                          alt="Monday.com icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/tailwind.png"
+                          alt="tailwind icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img src="images/scroller/css.png" alt="Css Icon" />
+                      </div>
+                      <div class="box">
+                        <img src="images/scroller/figma.png" alt="Figma Icon" />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/framer.png"
+                          alt="Framer Icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/adobe-illustrator.png"
+                          alt="Adobe Illustrator icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/adobe-photoshop.png"
+                          alt="Adobe Photoshop icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/adobe-xd.png"
+                          alt="Adobe Xd icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/adobe-lightroom.png"
+                          alt="Adobe Lightroom icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/monday.png"
+                          alt="Monday.com icon"
+                        />
+                      </div>
+                      <div class="box">
+                        <img
+                          src="images/scroller/tailwind.png"
+                          alt="tailwind icon"
+                        />
+                      </div>
+                      <!-- Add more boxes as needed -->
                     </div>
-                    <div class="mobile-icon">
-                      <img src="images/scroller/framer.png" alt="Framer" />
-                    </div>
-                    <div class="mobile-icon">
-                      <img
-                        src="images/scroller/adobe-photoshop.png"
-                        alt="Photoshop"
-                      />
-                    </div>
-                    <div class="mobile-icon">
-                      <img
-                        src="images/scroller/adobe-illustrator.png"
-                        alt="Illustrator"
-                      />
-                    </div>
-                    <div class="mobile-icon">
-                      <img src="images/scroller/sketch.png" alt="Sketch" />
-                    </div>
-                    <div class="mobile-icon">
-                      <img src="images/scroller/monday.png" alt="Monday.com" />
-                    </div>
-                    <div class="mobile-icon">
-                      <img src="images/scroller/tailwind.png" alt="Tailwind" />
-                    </div>
-                    <div class="mobile-icon">
-                      <img src="images/scroller/css.png" alt="CSS" />
-                    </div>
+                    <div class="gradient-right"></div>
                   </div>
                 </div>
               </div>
+              <!-- End Icon Scroller -->
 
               <!-- Portfolio Wrap -->
 
@@ -378,10 +392,6 @@
               <div class="page-title centered">
                 <p>Let's collaborate and bring your vision to life!</p>
                 <h1 class="animated-text">Get in touch</h1>
-                <i
-                  class="fa-solid fa-arrow-down contact-down-arrow"
-                  aria-hidden="true"
-                ></i>
               </div>
             </div>
 
@@ -442,12 +452,7 @@
         </footer>
       </div>
       <!-- Footer Ends -->
-      <!-- Scroll-to-top button -->
-      <span
-        class="scrolltotop"
-        role="button"
-        tabindex="0"
-        aria-label="Scroll to top"
+      <span class="scrolltotop" role="button" tabindex="0" aria-label="Scroll to top"
         ><img
           src="images/main/keyboard_arrow_up_32dp_2E2E2E_FILL0_wght400_GRAD0_opsz40.svg"
           alt=""
