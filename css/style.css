@@ -1490,6 +1490,10 @@ button.mfp-close:focus {
     margin-top: var(--space-16)
 }
 
+.cs-section__header:last-child .cs-section__intro:last-of-type {
+    margin-bottom: 0
+}
+
 .cs-section__grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -1887,6 +1891,10 @@ button.mfp-close:focus {
 
     .cs-section__intro + .cs-section__intro {
         margin-top: var(--space-12)
+    }
+
+    .cs-section__header:last-child .cs-section__intro:last-of-type {
+        margin-bottom: 0
     }
 
     .cs-section__grid {
@@ -3278,6 +3286,16 @@ textarea {
     #work .portfolio-footer .overlay-button {
         font-size: 14px !important;
         line-height: 20px !important;
+    }
+
+    .meta-wrapper h6 {
+        font-size: 20px !important;
+        line-height: 24px !important;
+    }
+
+    .meta-wrapper li {
+        font-size: 16px !important;
+        line-height: 24px !important;
     }
 }
 
