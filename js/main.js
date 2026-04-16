@@ -10,6 +10,7 @@ $(document).ready(function() {
     initMobileMenu();
     initSmoothScroll();
     initBackToTop();
+    initFloatingIconsParallax();
 });
 
 // ================================================
@@ -138,6 +139,73 @@ function initBackToTop() {
             $(this).trigger('click');
         }
     });
+}
+
+// ================================================
+// HERO ICON PARALLAX (DESKTOP)
+// ================================================
+function initFloatingIconsParallax() {
+    const icons = Array.from(document.querySelectorAll('.floating-icon'));
+    const hero = document.querySelector('.hero-wrapper');
+
+    if (!icons.length || !hero) {
+        return;
+    }
+
+    const desktopMediaQuery = window.matchMedia('(min-width: 1181px)');
+    const reducedMotionMediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let rafPending = false;
+
+    function resetParallax() {
+        icons.forEach((icon) => {
+            icon.style.setProperty('--icon-parallax-x', '0px');
+            icon.style.setProperty('--icon-parallax-y', '0px');
+        });
+    }
+
+    function updateParallax() {
+        rafPending = false;
+
+        if (!desktopMediaQuery.matches || reducedMotionMediaQuery.matches) {
+            resetParallax();
+            return;
+        }
+
+        const maxScroll = Math.max(hero.offsetHeight * 0.95, window.innerHeight * 0.7);
+        const progress = Math.min((window.scrollY || window.pageYOffset) / maxScroll, 1);
+
+        icons.forEach((icon) => {
+            const isLeft = icon.classList.contains('floating-icon-left');
+            const depth = parseFloat(icon.dataset.parallaxDepth || '1');
+            const xOffset = 190 * depth * progress * (isLeft ? -1 : 1);
+            const yOffset = -26 * depth * progress;
+
+            icon.style.setProperty('--icon-parallax-x', `${xOffset.toFixed(2)}px`);
+            icon.style.setProperty('--icon-parallax-y', `${yOffset.toFixed(2)}px`);
+        });
+    }
+
+    function requestUpdate() {
+        if (rafPending) {
+            return;
+        }
+
+        rafPending = true;
+        window.requestAnimationFrame(updateParallax);
+    }
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+
+    if (typeof desktopMediaQuery.addEventListener === 'function') {
+        desktopMediaQuery.addEventListener('change', requestUpdate);
+        reducedMotionMediaQuery.addEventListener('change', requestUpdate);
+    } else if (typeof desktopMediaQuery.addListener === 'function') {
+        desktopMediaQuery.addListener(requestUpdate);
+        reducedMotionMediaQuery.addListener(requestUpdate);
+    }
+
+    updateParallax();
 }
 
 // ================================================

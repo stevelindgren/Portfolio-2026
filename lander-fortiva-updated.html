@@ -1,0 +1,765 @@
+<!doctype html>
+<html dir="ltr" lang="en-US">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMMZDTDJ37"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-TMMZDTDJ37");
+    </script>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="StevenLindgren" />
+
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700" rel="stylesheet" />
+    <link href="css/plugins.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <title>Steven Lindgren | Fortiva Mastercard Landing Page</title>
+
+    <style>
+      .impact-strip {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .impact-card,
+      .placeholder-card,
+      .process-note-card {
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+        background: #fff;
+        padding: 24px;
+        height: 100%;
+      }
+
+      .impact-card__number {
+        font-size: 34px;
+        line-height: 1;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .impact-card__label,
+      .placeholder-eyebrow,
+      .process-note-card__eyebrow {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.7;
+      }
+
+      .impact-card__text,
+      .placeholder-copy,
+      .process-note-card p {
+        margin: 10px 0 0;
+      }
+
+      .case-study-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+
+      .case-study-actions .btn {
+        min-width: 220px;
+      }
+
+      .placeholder-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .placeholder-card--full {
+        grid-column: 1 / -1;
+      }
+
+      .placeholder-media {
+        min-height: 280px;
+        border-radius: 16px;
+        border: 2px dashed rgba(110, 47, 125, 0.35);
+        background: linear-gradient(180deg, rgba(110, 47, 125, 0.05), rgba(110, 47, 125, 0.08));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 24px;
+        margin-top: 16px;
+      }
+
+      .placeholder-media--sm {
+        min-height: 220px;
+      }
+
+      .placeholder-media strong {
+        display: block;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .suggestion-list {
+        margin: 12px 0 0;
+        padding-left: 18px;
+      }
+
+      .suggestion-list li + li {
+        margin-top: 10px;
+      }
+
+      .comparison-caption {
+        margin-top: 14px;
+        font-size: 15px;
+        opacity: 0.8;
+      }
+
+      .section-anchor-links {
+        display: flex;
+        gap: 12px 18px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+
+      .section-anchor-links a {
+        font-weight: 600;
+      }
+
+      .process-note-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .takeaway-box {
+        border-radius: 24px;
+        background: #f7f3f8;
+        padding: 32px;
+      }
+
+      .subtle-kicker {
+        display: inline-block;
+        margin-bottom: 12px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.7;
+      }
+
+      @media (max-width: 991px) {
+        .impact-strip,
+        .placeholder-grid,
+        .process-note-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="page-wrapper">
+      <header id="header" class="scroll-hide">
+        <div class="header-wrapper">
+          <div class="container">
+            <div id="logo">
+              <a href="https://stevenlindgren.com/">
+                <img src="images/main/logo-port.svg" alt="Logo" />
+              </a>
+            </div>
+            <nav id="menu-center">
+              <div class="menu-button menu-open">
+                <span class="open-icon" aria-hidden="true"></span>
+                <i class="close-icon ion-android-close"></i>
+              </div>
+              <ul class="flexnav standard" data-breakpoint="800">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#work">Work</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="images/steven-lindgren-resume.pdf">Resume</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div id="content-wrapper">
+        <div class="container">
+          <a href="index.html" class="back-button">
+            <div class="circle-arrow">
+              <svg width="22" height="22" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="11" stroke="#787878" stroke-width="1" fill="none" />
+                <path d="M12 8 l-4 4 l4 4" stroke="#787878" stroke-width="1" fill="none" />
+              </svg>
+            </div>
+            <span class="back-text">Back</span>
+          </a>
+
+          <div class="project-wrapper fade-in">
+            <div class="row hero-header-block">
+              <div class="col-lg-8">
+                <h3>Fortiva Mastercard</h3>
+                <p class="project-subtitle">
+                  Conversion-focused landing page redesign for a subprime credit card
+                </p>
+                <div class="impact-strip" aria-label="Impact snapshot">
+                  <div class="impact-card">
+                    <div class="impact-card__label">Conversion rate</div>
+                    <div class="impact-card__number">+20%</div>
+                    <p class="impact-card__text">Driven by stronger value messaging, clearer hierarchy, and reinforced CTAs.</p>
+                  </div>
+                  <div class="impact-card">
+                    <div class="impact-card__label">Bounce rate</div>
+                    <div class="impact-card__number">-12%</div>
+                    <p class="impact-card__text">Reduced by making the offer and trust signals easier to understand immediately.</p>
+                  </div>
+                  <div class="impact-card">
+                    <div class="impact-card__label">Time on page</div>
+                    <div class="impact-card__number">+15%</div>
+                    <p class="impact-card__text">Improved through modular content blocks and a more guided reading flow.</p>
+                  </div>
+                </div>
+
+                <div class="case-study-actions">
+                  <a href="#before-after"><button type="button" class="btn btn-animated">See Before vs After</button></a>
+                  <a href="#fullfortiva"><button type="button" class="btn btn-animated btn-block">View Full UI</button></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="row hero-image-block">
+              <div class="col-12 d-flex align-items-stretch">
+                <div class="bento-image-wrap-main">
+                  <img src="images/portfolio/landers/fortiva/fortiva-main-header.jpg" alt="Fortiva Mastercard redesigned landing page" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="meta-wrapper">
+            <div class="row">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-lg-4 col-sm-12">
+                    <h6>Objective</h6>
+                    <ul>
+                      <li>Reposition the experience around 3% cash back, reduce hesitation, and increase application intent for users rebuilding credit.</li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-2 col-sm-12">
+                    <h6>Role</h6>
+                    <ul>
+                      <li>UI Designer</li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-2 col-sm-12">
+                    <h6>Timeframe</h6>
+                    <ul>
+                      <li>2.5 weeks</li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-4 col-sm-12">
+                    <h6>Channel + Intent</h6>
+                    <ul>
+                      <li>Credit card acquisition landing page built to support apply intent and mail-offer traffic.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-analysis-wrap fade-in">
+            <div class="row">
+              <div class="col-12">
+                <div class="info-panel cs-section">
+                  <h4 class="custom-heading">Executive Summary</h4>
+                  <p>
+                    Fortiva targets users rebuilding credit, which makes trust and clarity the biggest barriers to conversion.
+                    The original landing page looked polished, but it delayed the strongest value proposition, split user attention
+                    across competing actions, and made users work too hard to understand the offer.
+                  </p>
+                  <p>
+                    I redesigned the page to lead with 3% cash back, introduce trust signals earlier, and create a more guided
+                    path from interest to application. The result was a more conversion-focused experience that reduced friction
+                    and increased engagement.
+                  </p>
+                  <div class="section-anchor-links">
+                    <a href="#problem">The Problem</a>
+                    <a href="#before-after">Before vs After</a>
+                    <a href="#process-gallery">Process Gallery</a>
+                    <a href="#results">Results</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-analysis-wrap fade-in">
+            <div class="row">
+              <div class="col-12">
+                <div class="info-panel cs-section">
+                  <div class="cs-section__header">
+                    <h4 class="custom-heading"><sup class="number">01</sup>Context</h4>
+                    <p class="cs-section__intro">
+                      Users in this category are skeptical by default. The page has to communicate value, reduce perceived risk,
+                      and make the next step obvious within seconds.
+                    </p>
+                  </div>
+                  <div class="cs-section__grid">
+                    <div class="cs-subsection">
+                      <h6>Audience</h6>
+                      <p>Consumers rebuilding credit who need reassurance, transparency, and a clear reason to apply.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>Business Goal</h6>
+                      <p>Increase completed applications by improving apply intent and reducing abandonment early in the funnel.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>Constraints</h6>
+                      <p>Compliance-driven messaging, multiple entry paths, and a mobile-first audience with low tolerance for confusion.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>My Focus</h6>
+                      <p>Value-first hierarchy, CTA clarity, modular sections, and a stronger trust framework throughout the page.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-analysis-wrap fade-in" id="problem">
+            <div class="row">
+              <div class="col-12">
+                <div class="info-panel cs-section">
+                  <div class="cs-section__header">
+                    <h4 class="custom-heading"><sup class="number">02</sup>The Problem</h4>
+                    <p class="cs-section__intro">
+                      The original page was brand-first instead of decision-first. It looked credible, but it did not help users answer
+                      three critical questions fast enough: What do I get? Can I trust this? What happens if I apply?
+                    </p>
+                  </div>
+                  <div class="cs-section__grid">
+                    <div class="cs-subsection">
+                      <h6>Pain Points</h6>
+                      <ul>
+                        <li>Weak headline that did not communicate the strongest value proposition.</li>
+                        <li>Competing CTAs created hesitation at the top of the page.</li>
+                        <li>Trust signals appeared too late for a high-anxiety audience.</li>
+                        <li>Important details were buried in a brochure-like flow.</li>
+                      </ul>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>Friction Created</h6>
+                      <ul>
+                        <li>Higher bounce from unclear value above the fold.</li>
+                        <li>Lower CTA click-through from split attention.</li>
+                        <li>Lower application starts from uncertainty around fees and eligibility.</li>
+                        <li>More scanning effort because the page was not structured around decision-making.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-analysis-wrap fade-in" id="before-after">
+            <div class="row">
+              <div class="col-12">
+                <div class="info-panel cs-section">
+                  <div class="cs-section__header">
+                    <h4 class="custom-heading"><sup class="number">03</sup>Before vs After</h4>
+                    <p class="cs-section__intro">
+                      This is the first place I would add more visual proof. Hiring managers love seeing exactly what changed and why.
+                    </p>
+                  </div>
+
+                  <div class="placeholder-grid">
+                    <div class="placeholder-card">
+                      <div class="placeholder-eyebrow">Suggested image slot</div>
+                      <h6>Before Fold with 3 Callouts</h6>
+                      <div class="placeholder-media">
+                        <div>
+                          <strong>Drop old hero screenshot here</strong>
+                          Add numbered callouts for weak value prop, split CTAs, and missing trust.
+                        </div>
+                      </div>
+                      <p class="comparison-caption">Best use: full-width desktop screenshot with simple labels directly on the image.</p>
+                    </div>
+
+                    <div class="placeholder-card">
+                      <div class="placeholder-eyebrow">Suggested image slot</div>
+                      <h6>After Fold with 3 Matching Callouts</h6>
+                      <div class="placeholder-media">
+                        <div>
+                          <strong>Drop redesigned hero screenshot here</strong>
+                          Call out stronger headline, primary CTA hierarchy, and support badges under the hero.
+                        </div>
+                      </div>
+                      <p class="comparison-caption">Best use: make this the direct visual answer to the old version beside it.</p>
+                    </div>
+
+                    <div class="placeholder-card placeholder-card--full">
+                      <div class="placeholder-eyebrow">Suggested annotation block</div>
+                      <h6>Quick Comparison Summary</h6>
+                      <ul class="suggestion-list">
+                        <li><strong>Old:</strong> Generic headline and split intent. <strong>New:</strong> Clear 3% cash back message and stronger primary action.</li>
+                        <li><strong>Old:</strong> Trust and detail appear later. <strong>New:</strong> reassurance starts above the fold.</li>
+                        <li><strong>Old:</strong> Informational flow. <strong>New:</strong> guided conversion path.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-analysis-wrap fade-in">
+            <div class="row">
+              <div class="col-12">
+                <div class="info-panel cs-section">
+                  <div class="cs-section__header">
+                    <h4 class="custom-heading"><sup class="number">04</sup>Strategy & Key Decisions</h4>
+                    <p class="cs-section__intro">
+                      The redesign focused on reducing hesitation and making the next step feel safer and more obvious.
+                    </p>
+                  </div>
+                  <div class="cs-section__grid">
+                    <div class="cs-subsection">
+                      <h6>1. Lead with value</h6>
+                      <p>I moved 3% cash back to the top of the experience so users immediately understood why this card mattered.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>2. Establish CTA hierarchy</h6>
+                      <p>I made prequalification feel like the primary path while keeping mail-offer response available as a secondary option.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>3. Make the page scannable</h6>
+                      <p>I broke long informational blocks into modular sections and cards so users could process benefits faster.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>4. Bring trust forward</h6>
+                      <p>I surfaced reassurance like no hidden fees, fraud protection, and credit score monitoring much earlier.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>5. Create a guided flow</h6>
+                      <p>The page now moves from value to benefits to trust to FAQs to action instead of behaving like a static brochure.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>6. Support mobile behavior</h6>
+                      <p>The redesign preserves hierarchy and CTA visibility on smaller screens where most drop-off would happen fastest.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-analysis-wrap fade-in" id="process-gallery">
+            <div class="row">
+              <div class="col-12">
+                <div class="info-panel cs-section">
+                  <div class="cs-section__header">
+                    <h4 class="custom-heading"><sup class="number">05</sup>Process Gallery</h4>
+                    <p class="cs-section__intro">
+                      This section is where you can make the case study feel more real. Right now you have strong final work. What will elevate it is showing evidence of thinking.
+                    </p>
+                  </div>
+
+                  <div class="placeholder-grid">
+                    <div class="placeholder-card">
+                      <div class="placeholder-eyebrow">Recommended process visual</div>
+                      <h6>Question Hierarchy Audit</h6>
+                      <p class="placeholder-copy">Show a simple annotated screenshot of the old page with notes like “What is the value?”, “Where is trust?”, and “What happens after click?”</p>
+                      <div class="placeholder-media placeholder-media--sm">
+                        <div>
+                          <strong>Placeholder for annotated audit image</strong>
+                          Great as a Figma screenshot with arrows and sticky-note style callouts.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="placeholder-card">
+                      <div class="placeholder-eyebrow">Recommended process visual</div>
+                      <h6>Hero Iterations</h6>
+                      <p class="placeholder-copy">Show 2 or 3 hero options side by side. Even rough comps work. This helps prove you explored multiple hierarchy directions.</p>
+                      <div class="placeholder-media placeholder-media--sm">
+                        <div>
+                          <strong>Placeholder for hero exploration strip</strong>
+                          Use labels like Version A, B, and Final with one-line rationale under each.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="placeholder-card">
+                      <div class="placeholder-eyebrow">Recommended process visual</div>
+                      <h6>Content Modularization</h6>
+                      <p class="placeholder-copy">Show how you turned dense blocks into cards or grouped sections. This is a strong visual proof point for conversion thinking.</p>
+                      <div class="placeholder-media placeholder-media--sm">
+                        <div>
+                          <strong>Placeholder for section redesign comparison</strong>
+                          Good place to compare the old “brochure” section against your new benefits grid.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="placeholder-card">
+                      <div class="placeholder-eyebrow">Recommended process visual</div>
+                      <h6>Flow or CTA Map</h6>
+                      <p class="placeholder-copy">Map where primary and secondary CTAs appear and why. It shows intentional decision design, not just UI polish.</p>
+                      <div class="placeholder-media placeholder-media--sm">
+                        <div>
+                          <strong>Placeholder for CTA placement diagram</strong>
+                          This can be a simple vertical page map with dots and arrows.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="placeholder-card placeholder-card--full">
+                      <div class="placeholder-eyebrow">Best section to add next</div>
+                      <h6>What I would add if you want this to feel more senior</h6>
+                      <ul class="suggestion-list">
+                        <li>A <strong>Before / After fold comparison</strong> right after the summary.</li>
+                        <li>A <strong>hero exploration strip</strong> showing one or two alternate directions you rejected.</li>
+                        <li>A <strong>mid-page section comparison</strong> proving how you improved scanability.</li>
+                        <li>A <strong>CTA map or user flow</strong> that shows primary and secondary paths.</li>
+                        <li>A <strong>mobile crop section</strong> with 2 or 3 callouts explaining why the hierarchy still works on small screens.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="process-note-grid" style="margin-top: 24px;">
+                    <div class="process-note-card">
+                      <div class="process-note-card__eyebrow">Good image idea</div>
+                      <p><strong>Annotated desktop crop:</strong> use this to explain one decision at a time without overwhelming the page.</p>
+                    </div>
+                    <div class="process-note-card">
+                      <div class="process-note-card__eyebrow">Good image idea</div>
+                      <p><strong>Figma workbench screenshot:</strong> versions, notes, and arrows help the work feel more believable and strategic.</p>
+                    </div>
+                    <div class="process-note-card">
+                      <div class="process-note-card__eyebrow">Good image idea</div>
+                      <p><strong>Mobile screen stack:</strong> show 3 crops with short callouts instead of just one long mobile render.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-analysis-wrap fade-in">
+            <div class="row">
+              <div class="col-12">
+                <div class="info-panel cs-section">
+                  <div class="cs-section__header">
+                    <h4 class="custom-heading"><sup class="number">06</sup>Process</h4>
+                    <p class="cs-section__intro">
+                      The work was not just visual cleanup. It was a restructuring of the page around decision-making.
+                    </p>
+                  </div>
+                  <div class="cs-section__grid">
+                    <div class="cs-subsection">
+                      <h6>Audit</h6>
+                      <p>I reviewed the original page to identify where value was delayed, where trust was missing, and where users were likely hesitating.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>Reframing</h6>
+                      <p>I rebuilt the story around the strongest value proposition and paired it with reassurance points earlier in the experience.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>Iteration</h6>
+                      <p>I explored hierarchy, CTA placement, and modular content blocks that would make the experience easier to scan.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>Responsive Execution</h6>
+                      <p>I translated the new structure across desktop and mobile to preserve the same flow and clarity across breakpoints.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>Validation</h6>
+                      <p>Success was measured through engagement and conversion metrics, with the strongest gains tied to clarity, hierarchy, and reduced friction.</p>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>What this proves</h6>
+                      <p>The redesign demonstrates conversion thinking, not just aesthetics. Every change had a clear behavioral purpose.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-analysis-wrap fade-in" id="results">
+            <div class="row">
+              <div class="col-12">
+                <div class="info-panel cs-section">
+                  <div class="cs-section__header">
+                    <h4 class="custom-heading"><sup class="number">07</sup>Results</h4>
+                    <p class="cs-section__intro">
+                      The redesigned experience improved both engagement and conversion by making value, trust, and next steps clear much earlier.
+                    </p>
+                  </div>
+                  <div class="cs-section__grid">
+                    <div class="cs-subsection">
+                      <ul>
+                        <li>Conversion rate increased by 20 percent through stronger messaging, better CTA hierarchy, and a more guided page flow.</li>
+                        <li>Bounce rate decreased by 12 percent because the offer became easier to understand above the fold.</li>
+                        <li>Average time on page increased by 15 percent thanks to clearer sectioning and a more scannable content structure.</li>
+                      </ul>
+                    </div>
+                    <div class="cs-subsection">
+                      <h6>Suggested future KPI block</h6>
+                      <p>If you want this section to look even stronger, add a visual KPI strip or simple analytics-style cards here using the same three numbers.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-analysis-wrap fade-in">
+            <div class="row">
+              <div class="col-12">
+                <div class="info-panel cs-section takeaway-box">
+                  <span class="subtle-kicker">Takeaway</span>
+                  <h4 class="custom-heading">Reducing hesitation was the real design problem.</h4>
+                  <p>
+                    For a credit-rebuild audience, good design is not just visual polish. It is the ability to make value clear,
+                    reduce perceived risk, and create confidence in the next step. This redesign worked because it treated the page
+                    like a decision tool instead of a brochure.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-wrapper" id="fullfortiva">
+            <div class="row">
+              <div class="col-lg-12">
+                <h3>Full Page View</h3>
+                <p class="project-subtitle">Use this as the final proof of execution. Above this section, the process images should explain how you got here.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="project-full-view full-view-bg">
+                  <picture>
+                    <source srcset="/images/portfolio/landers/fortiva/fortiva-full-view.jpg" media="(min-width: 992px)" />
+                    <source srcset="/images/portfolio/landers/fortiva/fortiva-full-view.jpg" media="(min-width: 767px)" />
+                    <img src="/images/portfolio/landers/fortiva/fortiva-mobile-full.jpg" class="img-fluid" alt="Fortiva full responsive view" />
+                  </picture>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="project-title mt-5 mb-4">
+                <h3>Similar Projects</h3>
+                <p class="project-subtitle">More conversion-focused landing pages and acquisition experiences.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="sim-proj portfolio-item">
+                <a href="lander-aboc.html">
+                  <div class="portfolio-content">
+                    <div class="portfolio-img-content">
+                      <img src="images/portfolio/landers/aboc/display-port-600x400-aboc.jpg" alt="ABOC" class="portfolio-image" />
+                      <div class="overlay">
+                        <button class="overlay-button">View Project</button>
+                      </div>
+                    </div>
+                    <div class="portfolio-text-content">
+                      <div class="portfolio-text">
+                        <h3>ABOC Mastercard</h3>
+                        <h3>UI Design</h3>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="sim-proj portfolio-item">
+                <a href="lander-dell.html">
+                  <div class="portfolio-content">
+                    <div class="portfolio-img-content">
+                      <img src="images/portfolio/landers/dell/display-port-600x400-dell.jpg" alt="Dell" class="portfolio-image" />
+                      <div class="overlay">
+                        <button class="overlay-button">View Project</button>
+                      </div>
+                    </div>
+                    <div class="portfolio-text-content">
+                      <div class="portfolio-text">
+                        <h3>Dell Technologies Rewards Program</h3>
+                        <h3>UI Design</h3>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="sim-proj portfolio-item">
+                <a href="lander-revive.html">
+                  <div class="portfolio-content">
+                    <div class="portfolio-img-content">
+                      <img src="images/portfolio/landers/revive/display-port-600x400-revive.jpg" alt="Revive" class="portfolio-image" />
+                      <div class="overlay">
+                        <button class="overlay-button">View Project</button>
+                      </div>
+                    </div>
+                    <div class="portfolio-text-content">
+                      <div class="portfolio-text">
+                        <h3>Revive Credit</h3>
+                        <h3>UI Design</h3>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <footer id="footer">
+          <div class="row">
+            <div class="col-xs-12 col-md-6 copyrights">
+              <p>&COPY; 2024 StevenLindgren.com</p>
+            </div>
+            <div class="col-xs-12 col-md-6 footer-socials">
+              <a href="https://www.linkedin.com/in/steven-lindgren-9a62487/">Linkedin</a>
+              <a href="https://500px.com/p/stevel77?view=photos">500px</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <span class="scrolltotop">
+      <img src="images/main/keyboard_arrow_up_32dp_2E2E2E_FILL0_wght400_GRAD0_opsz40.svg" alt="Back to top icon" />
+    </span>
+
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
