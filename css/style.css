@@ -34,7 +34,7 @@ a, blockquote, li {
 }
 
 .flexnav li a, body {
-    background: #1e1e1e
+    background: #05070b
 }
 
 .fade-in, .flexnav.opacity {
@@ -389,32 +389,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 60px
+    font-size: 60px;
     line-height: 72px;
 }
 
 h2 {
-    font-size: 48px
+    font-size: 48px;
     line-height: 56px;
 }
 
 h3 {
-    font-size: 40px
+    font-size: 40px;
     line-height: 48px;
 }
 
 h4 {
-    font-size: 32px
+    font-size: 32px;
     line-height: 40px;
 }
 
 h5 {
-    font-size: 24px
-    line-height: 28px;
+    font-size: 24px;
+    line-height: 32px;
 }
 
 h6 {
-    font-size: 20px
+    font-size: 20px;
     line-height: 24px;
 }
 
@@ -553,13 +553,19 @@ button.mfp-close:focus {
 }
 
 #header {
-    background-color: #1e1e1e;
+    background-color: #05070b;
     padding: 0;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 999;
-    transition: background-color .2s ease, box-shadow .2s ease, -webkit-backdrop-filter .2s ease, backdrop-filter .2s ease
+    transform: translateY(0);
+    will-change: transform;
+    transition: transform .35s ease, background-color .2s ease, box-shadow .2s ease, -webkit-backdrop-filter .2s ease, backdrop-filter .2s ease
+}
+
+#header.scroll-hide.hide {
+    transform: translateY(calc(-100% - 8px))
 }
 
 #header.transparent {
@@ -571,7 +577,7 @@ button.mfp-close:focus {
 }
 
 #header .header-wrapper #logo {
-    float: left
+    float: none
 }
 
 #header .header-wrapper #logo a {
@@ -594,6 +600,80 @@ button.mfp-close:focus {
 #header .header-wrapper #logo {
     padding-left: var(--space-16);
     max-width: 240px
+}
+
+#header .header-wrapper .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-24)
+}
+
+#menu-center {
+    margin-left: auto
+}
+
+#menu-center .flexnav.standard > li.nav-email-cta > a {
+    background: #006cff;
+    border: 1px solid #006cff;
+    border-radius: 999px;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 10px 18px;
+    letter-spacing: .03em;
+    cursor: pointer;
+    transform: translateY(0);
+    transition: background-color .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease, transform .12s ease
+}
+
+#menu-center .flexnav.standard > li.nav-email-cta,
+#menu-center .flexnav.standard > li.nav-email-cta > a {
+    overflow: visible
+}
+
+#menu-center .flexnav.standard > li.nav-email-cta > a:hover {
+    color: #fff;
+    background: #0078ff;
+    border-color: #0078ff
+}
+
+#menu-center .flexnav.standard > li.nav-email-cta > a:focus-visible {
+    outline: 2px solid rgba(224, 240, 255, .95);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(0, 108, 255, .4)
+}
+
+#menu-center .flexnav.standard > li.nav-email-cta > a:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none
+}
+
+#menu-center .flexnav.standard > li.nav-email-cta > a:active {
+    background: #0057d1;
+    border-color: #0057d1;
+    transform: translateY(1px)
+}
+
+#menu-center .flexnav.standard > li.nav-email-cta > a[aria-disabled="true"] {
+    opacity: .55;
+    pointer-events: none;
+    cursor: not-allowed
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #menu-center .flexnav.standard > li.nav-email-cta > a {
+        transition: none;
+        transform: none
+    }
+
+    #menu-center .flexnav.standard > li.nav-email-cta > a:active {
+        transform: none
+    }
 }
 
 .flexnav, .flexnav li {
@@ -736,11 +816,11 @@ button.mfp-close:focus {
 
 #header.hide {
     box-shadow: 0 0 30px rgba(0, 0, 0, .9);
-    background-color: #1e1e1e
+    background-color: #05070b
 }
 
 #header.is-scrolled, #header.hide.is-scrolled {
-    background-color: rgba(30, 30, 30, .80);
+    background-color: rgba(5, 7, 11, .80);
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, .20);
@@ -753,6 +833,84 @@ button.mfp-close:focus {
 
 #header.is-scrolled .flexnav li a, #header.hide.is-scrolled .flexnav li a {
     background: transparent
+}
+
+#header,
+#header.hide,
+#header.is-scrolled,
+#header.hide.is-scrolled {
+    background-color: rgba(5, 7, 11, .74);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: none;
+    border-bottom: none
+}
+
+#header .header-wrapper {
+    background: transparent
+}
+
+#header .header-wrapper .container {
+    padding-top: 18px;
+    padding-bottom: 10px
+}
+
+#header .header-wrapper #logo a {
+    color: #eef2ff;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    text-transform: none
+}
+
+#header .header-wrapper #logo {
+    max-width: 340px
+}
+
+#menu-center .flexnav.standard>li:not(.nav-email-cta)>a {
+    text-transform: none;
+    letter-spacing: .03em;
+    font-size: 15px
+}
+
+@media all and (max-width:1024px) {
+    #header .header-wrapper #logo a {
+        font-size: 24px
+    }
+}
+
+@media all and (max-width:800px) {
+    #header .header-wrapper #logo a {
+        font-size: 20px
+    }
+
+    #header .header-wrapper #logo {
+        max-width: 260px
+    }
+
+    #header .header-wrapper .container {
+        padding-top: 14px;
+        padding-bottom: 8px
+    }
+
+    #menu-center .flexnav.standard>li:not(.nav-email-cta)>a {
+        font-size: 18px
+    }
+}
+
+@media all and (max-width:480px) {
+    #header .header-wrapper #logo a {
+        font-size: 18px
+    }
+
+    #header .header-wrapper #logo {
+        max-width: 220px
+    }
+
+    #header .header-wrapper .container {
+        padding-top: 12px;
+        padding-bottom: 6px
+    }
 }
 
 .menubar {
@@ -2259,12 +2417,12 @@ textarea {
 
 .gradient-left {
     left: 0;
-    background: linear-gradient(to right, #1e1e1e, transparent)
+    background: linear-gradient(to right, #05070b, transparent)
 }
 
 .gradient-right {
     right: 0;
-    background: linear-gradient(to left, #1e1e1e, transparent)
+    background: linear-gradient(to left, #05070b, transparent)
 }
 
 .scroller {
@@ -2509,6 +2667,52 @@ textarea {
 }
 
 @media all and (min-width:801px) {
+    #menu-center {
+        display: flex;
+        align-items: center
+    }
+
+    #menu-center .flexnav.standard {
+        display: flex;
+        align-items: center;
+        gap: 30px
+    }
+
+    #menu-center .flexnav.standard>li {
+        margin-left: 0;
+        float: none
+    }
+
+    #menu-center .flexnav.standard>li>a {
+        color: rgba(226, 226, 226, .9);
+        font-size: 15px;
+        letter-spacing: .03em;
+        text-transform: none;
+        padding: 16px 0
+    }
+
+    #menu-center .flexnav.standard>li>a::after {
+        display: none
+    }
+
+    #menu-center .flexnav.standard>li>a.active,
+    #menu-center .flexnav.standard>li>a:hover {
+        color: #fff
+    }
+
+    #menu-center .flexnav.standard>li.nav-email-cta {
+        margin-left: 4px
+    }
+
+    #menu-center .flexnav.standard>li.nav-email-cta>a {
+        color: #fff;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: .03em;
+        text-transform: none;
+        padding: 11px 18px
+    }
+
     .flexnav.standard, nav {
         float: right;
         width: auto;
@@ -2753,6 +2957,16 @@ textarea {
         max-width: none
     }
 
+    #header .header-wrapper .container {
+        gap: var(--space-12)
+    }
+
+    #menu-center {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center
+    }
+
     .fixed-img, .fixed-img2 {
         background-attachment: unset
     }
@@ -2787,16 +3001,33 @@ textarea {
     }
 
     .flexnav.standard.flexnav-show {
-        background-color: rgba(30, 30, 30, .80);
+        background-color: rgba(5, 7, 11, .80);
         -webkit-backdrop-filter: blur(14px);
         backdrop-filter: blur(14px);
         box-shadow: 0 8px 24px rgba(0, 0, 0, .20);
         border-bottom: 1px solid rgba(255, 255, 255, .03);
-        padding: 0 var(--space-16)
+        padding: 0 var(--space-16) var(--space-12)
     }
 
     .flexnav.standard li a {
         background: transparent
+    }
+
+    .flexnav.standard li.nav-email-cta {
+        margin-top: var(--space-8)
+    }
+
+    .flexnav.standard li.nav-email-cta a {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 12px var(--space-16)
+    }
+
+    .flexnav.standard.flexnav-show {
+        background-color: rgba(5, 7, 11, .82);
+        border-bottom: none;
+        box-shadow: none
     }
 
     .menubar .flexnav.flexnav-show {
@@ -3038,8 +3269,12 @@ textarea {
     }
 
     nav {
-        background: #1e1e1e;
+        background: #05070b;
         padding: 0 var(--space-16)
+    }
+
+    body.fortiva-case-study nav {
+        background: transparent
     }
 
     #map-block, .page-title, .post-single-wrap, .project-single {
@@ -3549,5 +3784,1101 @@ button:not(.mobile-menu-toggle):not(.mfp-close) {
         font-size: 16px !important;
         width: 220px;
         height: 50px;
+    }
+}
+
+/* ================================================
+   FORTIVA NEW CASE STUDY
+   ================================================ */
+
+body.fortiva-case-study-new {
+    /* Type tokens: Figma scale */
+    --fortiva-font-family: "Inter", "Poppins", sans-serif;
+    --fortiva-h1-size: 64px;
+    --fortiva-h1-line: 80px;
+    --fortiva-h2-size: 48px;
+    --fortiva-h2-line: 56px;
+    --fortiva-h3-size: 40px;
+    --fortiva-h3-line: 48px;
+    --fortiva-h4-size: 32px;
+    --fortiva-h4-line: 40px;
+    --fortiva-h5-size: 24px;
+    --fortiva-h5-line: 32px;
+    --fortiva-h6-size: 20px;
+    --fortiva-h6-line: 24px;
+    --fortiva-p-size: 16px;
+    --fortiva-p-line: 24px;
+    --fortiva-p-sm-size: 12px;
+    --fortiva-p-sm-line: 16px;
+    --fortiva-p-lg-size: 20px;
+    --fortiva-p-lg-line: 24px;
+    background: #05070b;
+    color: #eef2ff;
+}
+
+body.fortiva-case-study-new .fortiva-newcase-content h1,
+body.fortiva-case-study-new .fortiva-newcase-content h2,
+body.fortiva-case-study-new .fortiva-newcase-content h3,
+body.fortiva-case-study-new .fortiva-newcase-content h4,
+body.fortiva-case-study-new .fortiva-newcase-content h5,
+body.fortiva-case-study-new .fortiva-newcase-content h6 {
+    font-family: var(--fortiva-font-family);
+    font-weight: 500;
+}
+
+body.fortiva-case-study-new .fortiva-newcase-content p {
+    font-family: var(--fortiva-font-family);
+    font-weight: 400;
+}
+
+body.fortiva-case-study-new :where(p, li, a, button, span) {
+    font-weight: 400;
+}
+
+body.fortiva-case-study-new #header .container,
+body.fortiva-case-study-new #content-wrapper > .container {
+    max-width: 1400px;
+    width: 100%;
+}
+
+body.fortiva-case-study-new #header .header-wrapper #logo {
+    padding-left: 0;
+}
+
+body.fortiva-case-study-new #content-wrapper {
+    background:
+        radial-gradient(1200px 600px at 95% -8%, rgba(0, 108, 255, .10), transparent 44%),
+        radial-gradient(900px 460px at -8% 16%, rgba(211, 85, 207, .10), transparent 40%),
+        #05070b;
+    padding-top: 56px;
+}
+
+body.fortiva-case-study-new .fortiva-newcase-wrap {
+    position: relative;
+    min-height: 100vh;
+}
+
+body.fortiva-case-study-new .fortiva-scroll-sidebar {
+    position: fixed;
+    left: 28px;
+    top: 118px;
+    width: auto;
+    z-index: 40;
+    background: rgba(12, 18, 27, .82);
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 18px;
+    padding: 16px 14px 16px 16px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, .33);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+}
+
+body.fortiva-case-study-new .fortiva-scroll-sidebar.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition: opacity .2s ease, transform .2s ease, visibility 0s linear 0s;
+}
+
+body.fortiva-case-study-new .fortiva-scroll-sidebar h2 {
+    margin: 0 0 14px;
+    padding-left: 0;
+    font-size: var(--fortiva-p-sm-size);
+    line-height: var(--fortiva-p-sm-line);
+    color: #7db2ff;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+body.fortiva-case-study-new .fortiva-scroll-sidebar nav {
+    display: grid;
+    gap: 6px;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent;
+}
+
+body.fortiva-case-study-new .fortiva-scroll-sidebar a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    min-height: 36px;
+    border-radius: 10px;
+    padding: 8px 10px 8px 0 !important;
+    margin: 0 !important;
+    color: #a8b2bf;
+    font-size: 16px;
+    font-weight: 400;
+    transition: .16s ease;
+}
+
+body.fortiva-case-study-new .fortiva-scroll-sidebar a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .24);
+    flex: 0 0 7px;
+}
+
+body.fortiva-case-study-new .fortiva-scroll-sidebar a:hover,
+body.fortiva-case-study-new .fortiva-scroll-sidebar a.is-active {
+    color: #fff;
+    background: transparent;
+}
+
+body.fortiva-case-study-new .fortiva-scroll-sidebar a.is-active::before {
+    background: #006cff;
+    box-shadow: 0 0 0 5px rgba(0, 108, 255, .14);
+}
+
+body.fortiva-case-study-new .fortiva-newcase-content {
+    margin-left: 0;
+    padding-bottom: 72px;
+}
+
+body.fortiva-case-study-new .fortiva-newcase-back {
+    display: inline-flex;
+    margin: 10px 0 26px;
+    color: #4f9bff;
+    font-size: var(--fortiva-p-sm-size);
+    line-height: var(--fortiva-p-sm-line);
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+}
+
+body.fortiva-case-study-new .fortiva-panel {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, .08);
+    background: linear-gradient(180deg, #0f1520 0%, #0b1019 100%);
+    margin-bottom: 96px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, .28);
+}
+
+body.fortiva-case-study-new .fortiva-hero-panel {
+    padding: 28px 0 26px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 430px;
+    gap: 96px;
+    align-items: center;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    margin-bottom: 128px;
+}
+
+body.fortiva-case-study-new .fortiva-hero-copy h1 {
+    margin: 0;
+    max-width: none;
+    color: #f3f6fb;
+    font-size: var(--fortiva-h1-size);
+    letter-spacing: -0.04em;
+    line-height: var(--fortiva-h1-line);
+}
+
+body.fortiva-case-study-new .fortiva-hero-copy p {
+    margin: 14px 0 0;
+    max-width: none;
+    color: #aeb7c7;
+    font-size: var(--fortiva-p-lg-size);
+    line-height: var(--fortiva-p-lg-line);
+}
+
+body.fortiva-case-study-new .fortiva-metrics {
+    background: #10151B;
+    border: 1px solid rgba(255, 255, 255, .09);
+    border-radius: 10px;
+    padding: 18px;
+    display: grid;
+    gap: 18px;
+}
+
+body.fortiva-case-study-new .fortiva-metric {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    padding-bottom: 16px;
+}
+
+body.fortiva-case-study-new .fortiva-metric:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+body.fortiva-case-study-new .fortiva-metric-copy span {
+    color: #c4ccd7;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+body.fortiva-case-study-new .fortiva-metric-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 0;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    color: #006cff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    flex: 0 0 42px;
+}
+
+body.fortiva-case-study-new .fortiva-metric-copy {
+    min-width: 0;
+    display: block;
+}
+
+body.fortiva-case-study-new .fortiva-metric-icon-svg {
+    width: 34px;
+    height: 34px;
+    display: block;
+}
+
+body.fortiva-case-study-new .fortiva-shot-panel {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+body.fortiva-case-study-new .fortiva-shot-panel img,
+.cs-image-card img {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+}
+
+body.fortiva-case-study-new .fortiva-shot-panel img {
+    height: 886px;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.cs-image-scroll-window {
+    height: 886px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.cs-image-scroll-window img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 886px;
+    object-fit: cover;
+    object-position: top center;
+    transform: translateY(0);
+    transition: transform .6s cubic-bezier(.2, .7, .2, 1);
+    will-change: transform;
+}
+
+body.fortiva-case-study-new #problem .cs-image-scroll-window,
+body.fortiva-case-study-new #solution .cs-image-scroll-window,
+body.fortiva-case-study-new #comparison .cs-image-scroll-window {
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #006cff rgba(0, 0, 0, .12);
+}
+
+body.fortiva-case-study-new #problem .cs-image-scroll-window::-webkit-scrollbar,
+body.fortiva-case-study-new #solution .cs-image-scroll-window::-webkit-scrollbar,
+body.fortiva-case-study-new #comparison .cs-image-scroll-window::-webkit-scrollbar {
+    width: 10px;
+}
+
+body.fortiva-case-study-new #problem .cs-image-scroll-window::-webkit-scrollbar-track,
+body.fortiva-case-study-new #solution .cs-image-scroll-window::-webkit-scrollbar-track,
+body.fortiva-case-study-new #comparison .cs-image-scroll-window::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, .12);
+    border-radius: 999px;
+}
+
+body.fortiva-case-study-new #problem .cs-image-scroll-window::-webkit-scrollbar-thumb,
+body.fortiva-case-study-new #solution .cs-image-scroll-window::-webkit-scrollbar-thumb,
+body.fortiva-case-study-new #comparison .cs-image-scroll-window::-webkit-scrollbar-thumb {
+    background: #006cff;
+    border-radius: 999px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+}
+
+body.fortiva-case-study-new #solution .cs-image-scroll-window {
+    overflow: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body.fortiva-case-study-new #solution .cs-image-scroll-window::-webkit-scrollbar {
+    display: none;
+}
+
+body.fortiva-case-study-new #problem .cs-image-scroll-window img,
+body.fortiva-case-study-new #solution .cs-image-scroll-window img,
+body.fortiva-case-study-new #comparison .cs-image-scroll-window img {
+    min-height: 0;
+    transform: none !important;
+    opacity: 1;
+}
+
+body.fortiva-case-study-new #comparison .cs-image-scroll-window img.is-swapping {
+    opacity: 0;
+}
+
+body.fortiva-case-study-new .fortiva-meta-panel {
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr .85fr .65fr;
+    gap: 20px;
+}
+
+body.fortiva-case-study-new .fortiva-meta-panel h5 {
+    margin: 0 0 8px;
+    font-size: var(--fortiva-h5-size);
+    line-height: var(--fortiva-h5-line);
+    font-weight: 500;
+    color: #f0f3f8;
+}
+
+body.fortiva-case-study-new .fortiva-meta-panel p {
+    margin: 0;
+    color: #9ca8ba;
+    font-size: var(--fortiva-p-size);
+    line-height: var(--fortiva-p-line);
+    font-weight: 400;
+}
+
+body.fortiva-case-study-new .fortiva-meta-panel article:first-child p {
+    max-width: 400px;
+}
+
+body.fortiva-case-study-new .fortiva-team-badges {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 6px;
+}
+
+body.fortiva-case-study-new .fortiva-team-badge {
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, .88);
+    color: #f0f3f8;
+    background: #0f1520;
+    font-size: 16px;
+    line-height: 1;
+    font-family: var(--fortiva-font-family);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0;
+}
+
+body.fortiva-case-study-new .fortiva-team-badge + .fortiva-team-badge {
+    margin-left: -9px;
+}
+
+body.fortiva-case-study-new .fortiva-team-badge-me {
+    background: #3c76ea;
+}
+
+body.fortiva-case-study-new .fortiva-text-panel {
+    padding: 26px 28px;
+}
+
+body.fortiva-case-study-new .fortiva-text-panel h2,
+body.fortiva-case-study-new .fortiva-detail-panel h2 {
+    margin: 0 0 10px;
+    font-size: var(--fortiva-h4-size);
+    line-height: var(--fortiva-h4-line);
+    letter-spacing: -0.03em;
+    color: #f2f5fa;
+}
+
+body.fortiva-case-study-new .fortiva-text-panel p,
+body.fortiva-case-study-new .fortiva-detail-intro {
+    margin: 0;
+    color: #96a2b5;
+    font-size: var(--fortiva-p-size);
+    line-height: var(--fortiva-p-line);
+    font-weight: 400;
+}
+
+body.fortiva-case-study-new .fortiva-detail-panel {
+    padding: 26px 28px;
+}
+
+body.fortiva-case-study-new .fortiva-changed-panel .fortiva-detail-intro {
+    max-width: 760px;
+}
+
+body.fortiva-case-study-new .fortiva-columns {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 42px;
+}
+
+body.fortiva-case-study-new #problem .fortiva-columns {
+    margin-top: var(--space-64);
+}
+
+#problem .cs-tabs {
+    margin-top: var(--space-64);
+    margin-bottom: var(--space-64);
+}
+
+body.fortiva-case-study-new #solution .fortiva-bullets {
+    margin-top: var(--space-64);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+}
+
+body.fortiva-case-study-new #solution .cs-tabs {
+    margin-top: var(--space-64);
+    margin-bottom: var(--space-64);
+}
+
+body.fortiva-case-study-new #comparison .cs-toggle {
+    margin-top: var(--space-64);
+    margin-bottom: var(--space-64);
+}
+
+body.fortiva-case-study-new .fortiva-columns h4,
+body.fortiva-case-study-new .fortiva-bullets h4 {
+    margin: 0 0 9px;
+    color: #e8eef7;
+    font-size: var(--fortiva-h6-size);
+    line-height: var(--fortiva-h6-line);
+}
+
+body.fortiva-case-study-new .fortiva-columns ul,
+body.fortiva-case-study-new .fortiva-bullets ul {
+    margin: 0;
+    padding-left: 16px;
+}
+
+body.fortiva-case-study-new .fortiva-columns li,
+body.fortiva-case-study-new .fortiva-bullets li {
+    color: #a3aec0;
+    font-size: var(--fortiva-p-size);
+    line-height: var(--fortiva-p-line);
+    font-weight: 400;
+}
+
+.cs-tabs {
+    margin: 20px 0 14px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    border: 0;
+    background: transparent;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    -ms-overflow-style: none;
+}
+
+.cs-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.cs-tabs button {
+    border: 1px solid #1e2630;
+    background: #10151b;
+    color: rgba(255, 255, 255, .68);
+    min-height: 52px;
+    padding: 10px 18px;
+    font-family: var(--fortiva-font-family);
+    font-size: 16px;
+    line-height: var(--fortiva-h6-line);
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 999px !important;
+    flex: 0 0 auto;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .08s ease;
+}
+
+.cs-tabs button:last-child {
+    border-radius: 999px !important;
+}
+
+.cs-tabs button.is-active {
+    background: #006cff;
+    color: #fff;
+    border-color: #006cff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .75);
+}
+
+.cs-tabs button:not(.is-active):hover {
+    background: #141c27;
+    color: rgba(255, 255, 255, .84);
+    border-color: #2c3948;
+}
+
+.cs-tabs button:focus-visible {
+    outline: none;
+    border-color: #7db2ff;
+    box-shadow: 0 0 0 2px rgba(125, 178, 255, .35);
+}
+
+.cs-tabs button.is-active:hover {
+    background: #005de0;
+    border-color: #005de0;
+}
+
+.cs-tabs button:active {
+    transform: translateY(1px);
+}
+
+.cs-image-card {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.cs-callout {
+    position: absolute;
+    top: 14px;
+    left: 18%;
+    transform: none;
+    background: #1d8dff;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 12px 14px;
+    max-width: 320px;
+    box-shadow: 0 18px 35px rgba(0, 108, 255, .25);
+    z-index: 2;
+}
+
+.cs-hotspot {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    left: 33%;
+    top: 17%;
+    transform: translate(-50%, -50%);
+    background: #1d8dff;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.cs-hotspot::before,
+.cs-hotspot::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: inherit;
+    border: 2px solid #006cff;
+    transform: scale(.65);
+    opacity: .95;
+    animation: csHotspotPulse 1.8s ease-out infinite;
+}
+
+.cs-hotspot::after {
+    animation-delay: .8s;
+}
+
+@keyframes csHotspotPulse {
+    0% {
+        transform: scale(.65);
+        opacity: .95;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+body.fortiva-case-study-new .fortiva-bullets {
+    margin-top: 16px;
+    background: rgba(10, 16, 27, .8);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.cs-toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.cs-toggle {
+    margin: 16px 0;
+    display: inline-flex;
+    position: relative;
+    isolation: isolate;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 999px;
+    background: #10151b;
+    overflow: hidden;
+}
+
+.cs-toggle::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: var(--toggle-w, 96px);
+    height: calc(100% - 8px);
+    border-radius: 999px;
+    background: #006cff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .26);
+    transform: translateX(var(--toggle-x, 4px));
+    transition: transform .32s cubic-bezier(.2, .8, .2, 1), width .32s cubic-bezier(.2, .8, .2, 1);
+    z-index: 0;
+}
+
+.cs-scroll-hint {
+    color: #8a96ab;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.cs-toggle button {
+    border: 0;
+    background: transparent;
+    color: #7f8ba0;
+    min-height: 44px;
+    padding: 10px 22px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: var(--fortiva-h6-line);
+    font-weight: 400;
+    border-radius: 999px;
+    transition: color .22s ease, transform .08s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.cs-toggle button.is-active {
+    color: #fff;
+}
+
+.cs-toggle button:not(.is-active):hover {
+    color: #c6d1e2;
+    background: rgba(255, 255, 255, .04);
+}
+
+.cs-toggle button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(125, 178, 255, .35);
+}
+
+.cs-toggle button.is-active:hover {
+    color: #fff;
+}
+
+.cs-toggle button:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 1340px) {
+    body.fortiva-case-study-new .fortiva-scroll-sidebar {
+        display: none;
+    }
+
+    body.fortiva-case-study-new .fortiva-newcase-content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 980px) {
+    body.fortiva-case-study-new {
+        --fortiva-h1-size: 48px;
+        --fortiva-h1-line: 54px;
+        --fortiva-h4-size: 28px;
+        --fortiva-h4-line: 34px;
+        --fortiva-h5-size: 22px;
+        --fortiva-h5-line: 28px;
+        --fortiva-h6-size: 18px;
+        --fortiva-h6-line: 24px;
+        --fortiva-p-lg-size: 18px;
+        --fortiva-p-lg-line: 26px;
+    }
+
+    body.fortiva-case-study-new #content-wrapper {
+        padding-top: 36px;
+    }
+
+    body.fortiva-case-study-new .fortiva-newcase-back {
+        margin-bottom: 18px;
+    }
+
+    body.fortiva-case-study-new .fortiva-panel {
+        padding-left: 22px;
+        padding-right: 22px;
+        margin-bottom: 64px;
+    }
+
+    body.fortiva-case-study-new .fortiva-hero-panel,
+    body.fortiva-case-study-new .fortiva-columns {
+        grid-template-columns: 1fr;
+    }
+
+    body.fortiva-case-study-new .fortiva-shot-panel {
+        padding: 0;
+    }
+
+    body.fortiva-case-study-new .fortiva-hero-panel {
+        gap: 32px;
+        padding-top: 10px;
+        padding-bottom: 8px;
+        margin-bottom: 64px;
+    }
+
+    body.fortiva-case-study-new .fortiva-hero-copy {
+        max-width: 680px;
+    }
+
+    body.fortiva-case-study-new .fortiva-hero-copy h1 {
+        max-width: none;
+    }
+
+    body.fortiva-case-study-new .fortiva-hero-copy p {
+        max-width: 32rem;
+    }
+
+    body.fortiva-case-study-new .fortiva-metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        padding: 12px;
+    }
+
+    body.fortiva-case-study-new .fortiva-metric {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 100%;
+        padding: 8px 12px 10px;
+        border-bottom: 0;
+        border-right: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    body.fortiva-case-study-new .fortiva-metric:last-child {
+        border-right: 0;
+    }
+
+    body.fortiva-case-study-new .fortiva-metric-copy span {
+        white-space: normal;
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    body.fortiva-case-study-new .fortiva-meta-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 18px;
+    }
+
+    body.fortiva-case-study-new #problem .fortiva-columns {
+        margin-top: var(--space-40);
+        gap: 28px;
+    }
+
+    body.fortiva-case-study-new #solution .fortiva-bullets,
+    body.fortiva-case-study-new #solution .cs-tabs,
+    body.fortiva-case-study-new #comparison .cs-toggle,
+    #problem .cs-tabs {
+        margin-top: var(--space-40);
+        margin-bottom: var(--space-40);
+    }
+
+    .cs-tabs {
+        gap: 8px;
+        margin-bottom: 24px;
+        scroll-snap-type: x proximity;
+    }
+
+    .cs-tabs button {
+        border: 1px solid #1e2630;
+        min-height: 46px;
+        padding: 9px 14px;
+        font-size: 16px;
+        line-height: var(--fortiva-p-line);
+        scroll-snap-align: start;
+    }
+
+    .cs-tabs button:first-child,
+    .cs-tabs button:last-child {
+        border-radius: 999px !important;
+    }
+
+    .cs-image-card {
+        padding: 12px;
+    }
+
+    .cs-callout {
+        position: static;
+        left: auto;
+        top: auto;
+        display: block;
+        max-width: none;
+        margin-bottom: 12px;
+        transform: none !important;
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    body.fortiva-case-study-new .fortiva-shot-panel img {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        object-fit: contain;
+        object-position: center top;
+    }
+
+    .cs-image-scroll-window {
+        height: clamp(320px, 56vh, 460px);
+    }
+
+    .cs-image-scroll-window img {
+        min-height: 420px;
+        transform: translateY(0) !important;
+        transition: none;
+    }
+
+    body.fortiva-case-study-new #problem .cs-image-scroll-window,
+    body.fortiva-case-study-new #solution .cs-image-scroll-window,
+    body.fortiva-case-study-new #comparison .cs-image-scroll-window {
+        border-radius: 6px;
+    }
+
+    body.fortiva-case-study-new #problem .cs-image-scroll-window,
+    body.fortiva-case-study-new #solution .cs-image-scroll-window {
+        overflow: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        touch-action: none;
+    }
+
+    body.fortiva-case-study-new #problem .cs-image-scroll-window::-webkit-scrollbar,
+    body.fortiva-case-study-new #solution .cs-image-scroll-window::-webkit-scrollbar {
+        display: none;
+    }
+
+    body.fortiva-case-study-new #comparison .cs-image-scroll-window img {
+        width: 100% !important;
+        min-width: 100%;
+        height: auto;
+    }
+
+    .cs-toggle-row {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .cs-toggle {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .cs-toggle button {
+        flex: 1 1 0;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .cs-hotspot {
+        display: none;
+    }
+
+    .cs-image-card.is-mobile-hotspot-visible .cs-hotspot {
+        display: block;
+        width: 18px;
+        height: 18px;
+    }
+
+    .cs-image-card.is-mobile-hotspot-visible .cs-hotspot::before,
+    .cs-image-card.is-mobile-hotspot-visible .cs-hotspot::after {
+        inset: -5px;
+    }
+}
+
+@media (max-width: 640px) {
+    body.fortiva-case-study-new {
+        --fortiva-h1-size: 38px;
+        --fortiva-h1-line: 44px;
+        --fortiva-h4-size: 24px;
+        --fortiva-h4-line: 30px;
+        --fortiva-h5-size: 20px;
+        --fortiva-h5-line: 26px;
+        --fortiva-p-size: 15px;
+        --fortiva-p-line: 23px;
+        --fortiva-p-lg-size: 17px;
+        --fortiva-p-lg-line: 25px;
+    }
+
+    body.fortiva-case-study-new #content-wrapper {
+        padding-top: 24px;
+    }
+
+    body.fortiva-case-study-new #problem .fortiva-columns {
+        margin-top: var(--space-32);
+    }
+
+    body.fortiva-case-study-new #solution .fortiva-bullets,
+    body.fortiva-case-study-new #solution .cs-tabs {
+        margin-top: var(--space-32);
+    }
+
+    body.fortiva-case-study-new #comparison .cs-toggle {
+        margin-top: var(--space-32);
+        margin-bottom: var(--space-32);
+    }
+
+    body.fortiva-case-study-new .fortiva-panel,
+    body.fortiva-case-study-new .fortiva-text-panel,
+    body.fortiva-case-study-new .fortiva-detail-panel,
+    body.fortiva-case-study-new .fortiva-meta-panel {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    body.fortiva-case-study-new .fortiva-panel {
+        margin-bottom: 40px;
+    }
+
+    body.fortiva-case-study-new .fortiva-hero-panel {
+        gap: 32px;
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+
+    body.fortiva-case-study-new .fortiva-shot-panel {
+        padding: 0;
+    }
+
+    body.fortiva-case-study-new .fortiva-metrics,
+    body.fortiva-case-study-new .fortiva-meta-panel {
+        grid-template-columns: 1fr;
+    }
+
+    body.fortiva-case-study-new .fortiva-metrics {
+        gap: 10px;
+        padding: 14px;
+    }
+
+    body.fortiva-case-study-new .fortiva-metric,
+    body.fortiva-case-study-new .fortiva-metric:last-child {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 0 0 12px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    body.fortiva-case-study-new .fortiva-metric:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    body.fortiva-case-study-new .fortiva-metric-icon {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+    }
+
+    body.fortiva-case-study-new .fortiva-metric-icon-svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    body.fortiva-case-study-new .fortiva-metric-copy span {
+        font-size: 15px;
+        line-height: 21px;
+    }
+
+    body.fortiva-case-study-new .fortiva-meta-panel {
+        gap: 20px;
+    }
+
+    body.fortiva-case-study-new .fortiva-team-badge {
+        width: 48px;
+        height: 48px;
+        font-size: 14px;
+    }
+
+    .cs-tabs {
+        margin-top: 24px;
+        margin-bottom: 20px;
+    }
+
+    .cs-tabs button {
+        min-height: 42px;
+        padding: 8px 12px;
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .cs-callout {
+        margin-bottom: 10px;
+        padding: 11px 12px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    body.fortiva-case-study-new .fortiva-shot-panel img {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        object-fit: contain;
+        object-position: center top;
+    }
+
+    .cs-image-scroll-window {
+        height: clamp(300px, 50vh, 400px);
+    }
+
+    .cs-image-scroll-window img {
+        min-height: 360px;
+    }
+
+    .cs-toggle {
+        padding: 3px;
+    }
+
+    .cs-toggle button {
+        min-height: 40px;
+        padding: 9px 10px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .cs-scroll-hint {
+        font-size: 13px;
+        line-height: 18px;
     }
 }
