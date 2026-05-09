@@ -10,6 +10,267 @@
     <link href="css/plugins.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <title>Steven Lindgren | Fortiva New Case Study</title>
+    <style>
+      .fortiva-results-panel {
+        overflow: hidden;
+        padding: 34px;
+      }
+
+      .fortiva-results-header {
+        margin-bottom: 34px;
+      }
+
+      body.fortiva-case-study-new .fortiva-results-header h2 {
+        margin-bottom: 10px;
+        color: #f4f7fb;
+      }
+
+      body.fortiva-case-study-new .fortiva-results-header p {
+        margin: 0;
+        color: #9eaabc;
+        font-size: var(--fortiva-p-size);
+        line-height: var(--fortiva-p-line);
+      }
+
+      .kpi-performance-chart {
+        margin: 0;
+      }
+
+      .kpi-chart-plot {
+        --chart-pad-top: 44px;
+        --chart-pad-bottom: 56px;
+        --chart-label-offset: 9px;
+        position: relative;
+        min-height: 430px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: stretch;
+        gap: clamp(18px, 5vw, 72px);
+        padding: var(--chart-pad-top) clamp(18px, 4vw, 54px) var(--chart-pad-bottom);
+        border: 1px solid rgba(255, 255, 255, .1);
+        border-radius: 16px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, .05) 0%, rgba(255, 255, 255, 0) 100%),
+          #0b111b;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+      }
+
+      .kpi-grid-line,
+      .kpi-zero-line {
+        position: absolute;
+        left: clamp(18px, 4vw, 54px);
+        right: clamp(18px, 4vw, 54px);
+        pointer-events: none;
+      }
+
+      .kpi-grid-line {
+        height: 1px;
+        background: rgba(255, 255, 255, .07);
+      }
+
+      .kpi-grid-line::before {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(-100%, -50%);
+        padding-right: 10px;
+        color: #7f8ca1;
+        font-size: 12px;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .kpi-grid-line:nth-child(1) {
+        top: 18%;
+      }
+
+      .kpi-grid-line:nth-child(1)::before {
+        content: "+40";
+      }
+
+      .kpi-grid-line:nth-child(2) {
+        top: 34%;
+      }
+
+      .kpi-grid-line:nth-child(2)::before {
+        content: "+20";
+      }
+
+      .kpi-grid-line:nth-child(3) {
+        top: 66%;
+      }
+
+      .kpi-grid-line:nth-child(3)::before {
+        content: "-20";
+      }
+
+      .kpi-grid-line:nth-child(4) {
+        top: 82%;
+      }
+
+      .kpi-grid-line:nth-child(4)::before {
+        content: "-40";
+      }
+
+      .kpi-zero-line {
+        top: calc(var(--chart-pad-top) + ((100% - var(--chart-pad-top) - var(--chart-pad-bottom)) / 2));
+        height: 2px;
+        background: rgba(0, 108, 255, .88);
+      }
+
+      .kpi-zero-line::after {
+        content: "0";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        padding-right: 10px;
+        background: #0b111b;
+        color: #7f8ca1;
+        font-size: 12px;
+        line-height: 1;
+        transform: translate(-100%, -50%);
+      }
+
+      .kpi-bar-group {
+        position: relative;
+        z-index: 1;
+        display: block;
+        min-width: 0;
+      }
+
+      .kpi-bar-track {
+        position: relative;
+        min-height: 310px;
+        height: 100%;
+      }
+
+      .kpi-bar {
+        --bar-scale: 0;
+        position: absolute;
+        left: 50%;
+        width: 128px;
+        border-radius: 0;
+        background: linear-gradient(180deg, #43a2ff 0%, #006cff 100%);
+        transform: translateX(-50%);
+        transition: height .8s cubic-bezier(.2, .8, .2, 1);
+      }
+
+      .kpi-bar[data-kpi-direction="positive"] {
+        bottom: 50%;
+        height: calc(var(--bar-scale) * 43%);
+        border-radius: 16px 16px 0 0;
+      }
+
+      .kpi-bar[data-kpi-direction="negative"] {
+        top: 50%;
+        height: calc(var(--bar-scale) * 43%);
+        border-radius: 0 0 16px 16px;
+      }
+
+      .kpi-bar-value {
+        position: absolute;
+        left: 50%;
+        color: #ffffff;
+        font-size: clamp(18px, 2.2vw, 26px);
+        line-height: 1;
+        font-weight: 700;
+        white-space: nowrap;
+        transform: translateX(-50%);
+      }
+
+      .kpi-bar[data-kpi-direction="positive"] .kpi-bar-value {
+        top: -34px;
+      }
+
+      .kpi-bar[data-kpi-direction="negative"] .kpi-bar-value {
+        bottom: -34px;
+      }
+
+      .kpi-bar-label {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + var(--chart-label-offset));
+        margin: 0;
+        text-align: center;
+        color: #d6deea;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 600;
+      }
+
+      .kpi-screen-reader-summary {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (max-width: 980px) {
+        .fortiva-results-panel {
+          padding: 28px 24px;
+        }
+
+        .kpi-chart-plot {
+          --chart-pad-top: 42px;
+          --chart-pad-bottom: 48px;
+          --chart-label-offset: 7px;
+          min-height: 390px;
+          gap: 20px;
+        }
+
+        .kpi-bar {
+          width: min(60px, 50%);
+          min-width: 38px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .fortiva-results-panel {
+          padding: 24px 16px;
+        }
+
+        .kpi-chart-plot {
+          --chart-pad-top: 38px;
+          --chart-pad-bottom: 46px;
+          --chart-label-offset: 6px;
+          min-height: 340px;
+          gap: 12px;
+          padding: var(--chart-pad-top) 14px var(--chart-pad-bottom);
+          border-radius: 12px;
+        }
+
+        .kpi-grid-line,
+        .kpi-zero-line {
+          left: 14px;
+          right: 14px;
+        }
+
+        .kpi-bar-track {
+          min-height: 250px;
+        }
+
+        .kpi-bar {
+          width: min(46px, 58%);
+          min-width: 30px;
+        }
+
+        .kpi-bar-value {
+          font-size: 17px;
+        }
+
+        .kpi-bar-label {
+          font-size: 13px;
+          line-height: 17px;
+        }
+
+      }
+    </style>
   </head>
   <body class="fortiva-case-study fortiva-case-study-new">
     <div id="page-wrapper">
@@ -42,9 +303,10 @@
             <nav>
               <a href="#overview" class="is-active">Overview</a>
               <a href="#problem">Problem</a>
-              <a href="#solution">Solution</a>
+              <a href="#flow">Page Flow</a>
+              <a href="#solution">Redesign Approach</a>
               <a href="#comparison">Comparison</a>
-              <a href="#changed">What Changed</a>
+              <a href="#attention">Attention Shift</a>
               <a href="#results">Results</a>
               <a href="#learned">Learnings</a>
             </nav>
@@ -56,7 +318,7 @@
             <section class="fortiva-panel fortiva-hero-panel">
               <div class="fortiva-hero-copy">
                 <h1>Fortiva Mastercard Application Funnel</h1>
-                <p>Conversion-focused redesign that turned a brand-forward credit card page into a clearer, more action-oriented application experience.</p>
+                <p>I redesigned the Fortiva landing page so people could understand the offer faster, trust it sooner, and know exactly where to go next.</p>
               </div>
               <aside class="fortiva-metrics">
                 <div class="fortiva-metric">
@@ -87,11 +349,11 @@
             <section class="fortiva-panel fortiva-meta-panel">
               <article>
                 <h5>Objective</h5>
-                <p>Rework the Fortiva Mastercard landing experience to communicate value faster, build trust earlier, and create a clearer path to application for users rebuilding credit.</p>
+                <p>Make the Fortiva Mastercard page easier to understand and easier to act on, especially for people who were rebuilding credit and comparing their options quickly.</p>
               </article>
               <article>
                 <h5>Role</h5>
-                <p>UI Designer<br />Conversion-focused design strategy</p>
+                <p>UI Designer<br />Landing page redesign</p>
               </article>
               <article>
                 <h5>Team</h5>
@@ -109,93 +371,107 @@
 
             <section id="overview" class="fortiva-panel fortiva-text-panel">
               <h2>Overview</h2>
-              <p>Fortiva Mastercard targets people rebuilding credit, with a growing focus on a younger audience that expects clarity and speed. The landing page needed to reduce uncertainty fast. The original experience was visually clean, but strategically weak, with a vague value proposition, flat hierarchy, and little guidance toward action. I redesigned the page to lead with clearer value, stronger hierarchy, earlier trust signals, and a more consistent call-to-action system across desktop and mobile.</p>
+              <p>Fortiva Mastercard is for people rebuilding credit. That audience needs the page to be clear right away. They want to know what the card offers, whether it feels trustworthy, and what they should do next. The original page looked polished, but it asked users to do too much work. The main message was not clear enough, the calls to action competed with each other, and the page did not guide people through the decision. I redesigned it to make the offer easier to understand from the first screen and to keep the path to apply clear on both desktop and mobile.</p>
             </section>
 
             <section id="problem" class="fortiva-panel fortiva-detail-panel">
               <h2>Problem</h2>
-              <p class="fortiva-detail-intro">The original page created brand polish, but it did not create enough decision-making momentum for a cautious credit-rebuild audience.</p>
+              <p class="fortiva-detail-intro">The old page did not give users a strong reason to keep going. The headline was broad, the value proposition was weak, and the page did not make prequalification feel like the clear next step. For someone rebuilding credit, the experience needed to explain the benefit faster and build trust earlier.</p>
 
               <div class="fortiva-columns">
                 <article>
                   <h4>Who it&apos;s for</h4>
                   <ul>
-                    <li>Consumers rebuilding credit</li>
-                    <li>Users who are skeptical, fee-sensitive, and quick to leave if the offer feels unclear</li>
-                    <li>Visitors evaluating the card quickly before deciding whether to apply</li>
+                    <li>People rebuilding credit</li>
+                    <li>Visitors checking if they prequalify or responding to a mail offer</li>
+                    <li>People who may have been overlooked by other card issuers</li>
+                    <li>Users trying to decide quickly if the card fits their everyday spending needs</li>
                   </ul>
                 </article>
                 <article>
                   <h4>What was broken</h4>
                   <ul>
-                    <li>Value proposition was unclear and not outcome-driven</li>
-                    <li>No clear primary CTA</li>
-                    <li>Messaging did not align with a credit-rebuilding audience</li>
-                    <li>Trust signals were not surfaced early enough</li>
-                    <li>Sections felt disconnected instead of building a guided path to action</li>
-                    <li>Mid-page benefits were harder to scan than they needed to be</li>
+                    <li>The page did not make prequalification feel like a clear next step</li>
+                    <li>The quick application and instant decision message was not easy enough to find</li>
+                    <li>The copy did not connect strongly enough to people working toward credit goals</li>
+                    <li>Trust cues and cardholder proof showed up too late</li>
+                    <li>Everyday-use benefits were present, but not easy to scan</li>
+                    <li>The page felt more like separate content blocks than one guided path to apply</li>
                   </ul>
                 </article>
               </div>
 
               <div class="cs-tabs" data-callout-target="#problem-card">
-                <button class="is-active" type="button" data-callout="The headline was too broad and did not communicate a clear user benefit." data-callout-left="24%" data-callout-top="30%" data-hotspot-left="24%" data-hotspot-top="41%" data-image-scroll="0" data-mobile-image-scroll="0.12" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="34%">Vague headline</button>
-                <button type="button" data-callout="Both CTAs looked identical. Users couldn't tell which action mattered." data-callout-left="24%" data-callout-top="62%" data-hotspot-left="24%" data-hotspot-top="60%" data-image-scroll="0" data-mobile-image-scroll="0.12" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="48%">Competing CTAs</button>
-                <button type="button" data-callout="The lifestyle image did not reinforce the card, reward, or application path." data-callout-left="58%" data-callout-top="21%" data-callout-align="right" data-hotspot-left="58%" data-hotspot-top="34%" data-image-scroll="0.04" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="22%">Generic lifestyle imagery</button>
-                <button type="button" data-callout="Trust cues were pushed too far down instead of appearing early near decision points." data-callout-left="24%" data-callout-top="35%" data-hotspot-left="24%" data-hotspot-top="47%" data-image-scroll="0.84" data-mobile-image-scroll="0.68" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="44%">Trust appeared too late</button>
-                <button type="button" data-callout="The sections felt disconnected, so the page did not build momentum toward a clear next step." data-callout-left="24%" data-callout-top="30%" data-hotspot-left="31%" data-hotspot-top="50%" data-image-scroll="0.18">Disconnected flow</button>
-                <button type="button" data-callout="Benefits were present, but there was no clear presentation of them, making the section harder to scan and compare quickly." data-callout-left="24%" data-callout-top="31%" data-hotspot-left="24%" data-hotspot-top="44%" data-image-scroll="0.66">No clear presentation of benefits</button>
+                <button class="is-active" type="button" data-callout="The headline was too broad. It did not quickly tell someone why this card might be useful for them." data-callout-left="24%" data-callout-top="30%" data-hotspot-left="24%" data-hotspot-top="41%" data-image-scroll="0" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-old.png" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/old/fortiva-mobile-old-headline.png" data-image-alt="Before redesign Fortiva desktop page" data-mobile-image-alt="Before redesign Fortiva mobile headline section">Vague headline</button>
+                <button type="button" data-callout="Both buttons had similar weight, so the page did not make the main action feel obvious." data-callout-left="24%" data-callout-top="62%" data-hotspot-left="24%" data-hotspot-top="60%" data-image-scroll="0" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-old.png" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/old/fortiva-mobile-old-cta.png" data-image-alt="Before redesign Fortiva desktop page" data-mobile-image-alt="Before redesign Fortiva mobile CTA section">Competing CTAs</button>
+                <button type="button" data-callout="The image felt generic and did not help explain the card, the offer, or the next step. On mobile, it appeared before the value message." data-callout-left="58%" data-callout-top="21%" data-callout-align="right" data-hotspot-left="58%" data-hotspot-top="34%" data-image-scroll="0.04" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-old.png" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/old/fortiva-mobile-old-lifestyle.png" data-image-alt="Before redesign Fortiva desktop page" data-mobile-image-alt="Before redesign Fortiva mobile lifestyle section">Generic lifestyle imagery</button>
+                <button type="button" data-callout="The page waited too long to show trust cues, even though trust is one of the first things this audience needs." data-callout-left="24%" data-callout-top="35%" data-hotspot-left="24%" data-hotspot-top="47%" data-image-scroll="0.84" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-old.png" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/old/fortiva-mobile-old-trust.png" data-image-alt="Before redesign Fortiva desktop page" data-mobile-image-alt="Before redesign Fortiva mobile trust section">Trust appeared too late</button>
+                <button type="button" data-callout="The sections felt like separate blocks instead of a page that guided someone toward applying." data-callout-left="24%" data-callout-top="30%" data-hotspot-left="31%" data-hotspot-top="50%" data-image-scroll="0.18" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-old.png" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/old/fortiva-mobile-old-disconnected.png" data-image-alt="Before redesign Fortiva desktop page" data-mobile-image-alt="Before redesign Fortiva mobile disconnected flow section">Disconnected flow</button>
+                <button type="button" data-callout="The benefits were on the page, but they were not presented in a way someone could scan quickly." data-callout-left="24%" data-callout-top="31%" data-hotspot-left="24%" data-hotspot-top="44%" data-image-scroll="0.66" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-old.png" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/old/fortiva-mobile-old-beneifts.png" data-image-alt="Before redesign Fortiva desktop page" data-mobile-image-alt="Before redesign Fortiva mobile benefits section">Hard-to-scan benefits</button>
               </div>
 
               <div id="problem-card" class="cs-image-card fortiva-before-card">
-                <span class="cs-callout">The headline was too broad and did not communicate a clear user benefit.</span>
+                <span class="cs-callout">The headline was too broad. It did not quickly tell someone why this card might be useful for them.</span>
                 <span class="cs-hotspot" aria-hidden="true"></span>
                 <div class="cs-image-scroll-window">
-                  <img src="images/portfolio/landers/fortiva/new/fortiva-mobile-orig.png" alt="Before redesign Fortiva mobile page" />
+                  <img src="images/portfolio/landers/fortiva/new/fortiva-desktop-old.png" alt="Before redesign Fortiva desktop page" />
                 </div>
               </div>
             </section>
 
+            <section id="flow" class="fortiva-panel fortiva-detail-panel fortiva-flow-panel">
+              <h2>Page Flow</h2>
+              <p class="fortiva-detail-intro">After reviewing the old page, I mapped the path from first impression to application. I wanted to see whether the page was answering the right questions in the right order: what is the offer, why should I trust it, and what should I do next?</p>
+              <p>The flow made the priorities clearer. The hero needed to explain the value faster, trust needed to show up earlier, and the main action needed to be easier to find throughout the page.</p>
+              <figure class="fortiva-flow-media">
+                <img src="images/portfolio/landers/fortiva/new/fortiva-userflow.gif" alt="Fortiva Mastercard landing page user flow from entry through application decision points" />
+              </figure>
+            </section>
+
             <section id="solution" class="fortiva-panel fortiva-detail-panel">
-              <h2>Solution</h2>
-              <p class="fortiva-detail-intro">Each design change directly addressed a friction point in the original page. Instead of treating the hero like a brand statement, I rebuilt it as a high-clarity conversion entry point.</p>
+              <h2>Redesign Approach</h2>
+              <p class="fortiva-detail-intro">I treated the redesign less like a visual refresh and more like a cleanup of the decision path. The page needed to answer the user&apos;s questions in a better order.</p>
 
               <div class="fortiva-bullets">
                 <h4>How it was improved</h4>
-                <ul>
-                  <li>Headlines now carry more meaningful value-driven copy</li>
-                  <li>I created a clear visual hierarchy so the primary action stands out immediately</li>
-                  <li>Trust signals are introduced earlier and closer to conversion moments</li>
-                  <li>Displaying clearer benefits makes the offer easier to understand at a glance</li>
-                  <li>Mid-page content is organized into more scannable modules</li>
-                  <li>Primary actions are reinforced across the page at key decision points</li>
-                  <li>I added the Fortiva card into the hero image so the product was visible immediately</li>
-                  <li>The angled graphic behind the woman and card creates a visual lead-in, guiding the eye toward the card and back toward the CTA area on desktop</li>
-                </ul>
+                <div class="fortiva-bullets-columns">
+                  <ul>
+                    <li>I rewrote the top message so the value was easier to understand right away</li>
+                    <li>I made one primary action stand out instead of asking users to choose between equal buttons</li>
+                    <li>I moved trust cues closer to the moments where people were deciding whether to keep going</li>
+                    <li>I made the benefits easier to scan at a glance</li>
+                  </ul>
+                  <ul>
+                    <li>I broke the middle of the page into clearer sections</li>
+                    <li>I repeated the apply action where it made sense, so users did not have to hunt for it</li>
+                    <li>I brought the Fortiva card into the hero so the product was visible immediately</li>
+                    <li>I used the hero art to pull attention back toward the card and the apply area</li>
+                  </ul>
+                </div>
               </div>
 
               <div class="cs-tabs" data-callout-target="#solution-card">
-                <button class="is-active" type="button" data-callout="The headline now leads with immediate value and sets expectations quickly." data-callout-left="24%" data-callout-top="22%" data-hotspot-left="24%" data-hotspot-top="33%" data-image-scroll="0">Clearer Value</button>
-                <button type="button" data-callout="A single dominant CTA now stands out with clear visual priority." data-callout-left="18%" data-callout-top="65%" data-hotspot-left="18%" data-hotspot-top="62%" data-image-scroll="0">Established CTA hierarchy</button>
-                <button type="button" data-callout="Trust signals were moved closer to the hero to reduce hesitation earlier." data-callout-left="27%" data-callout-top="66%" data-hotspot-left="24%" data-hotspot-top="70%" data-image-scroll="0">Brought trust forward</button>
-                <button type="button" data-callout="Benefits are presented more clearly right below the hero, helping users understand the offer without extra effort." data-callout-left="24%" data-callout-top="18%" data-hotspot-left="24%" data-hotspot-top="30%" data-image-scroll="0.12">Clearer benefits</button>
-                <button type="button" data-callout="Mid-page content is organized into clearer, more scannable modules so users can compare benefits faster." data-callout-left="24%" data-callout-top="20%" data-hotspot-left="24%" data-hotspot-top="32%" data-image-scroll="0.4">Scannable modules</button>
-                <button type="button" data-callout="Primary actions are repeated at key decision points so users can move forward without searching for the next step." data-callout-left="24%" data-callout-top="52%" data-hotspot-left="19%" data-hotspot-top="66%" data-image-scroll="0.58">Reinforced primary actions</button>
-                <button type="button" data-callout="The card is now visible in the hero, while the angled graphic creates a visual path toward the product and CTA area." data-callout-left="68%" data-callout-top="28%" data-callout-align="right" data-hotspot-left="68%" data-hotspot-top="39%" data-image-scroll="0">Product+ eyeflow</button>
+                <button class="is-active" type="button" data-callout="The new headline gets to the point faster and gives users a clearer reason to keep reading." data-callout-left="24%" data-callout-top="22%" data-hotspot-left="24%" data-hotspot-top="33%" data-image-scroll="0" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-full.jpg" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/new/fortiva-mobile-new-clearvalue.png" data-image-alt="After redesign Fortiva desktop page" data-mobile-image-alt="After redesign Fortiva mobile clearer value section">Clearer Value</button>
+                <button type="button" data-callout="The primary button now has clear priority, so the page no longer makes users guess what to do next." data-callout-left="18%" data-callout-top="65%" data-hotspot-left="18%" data-hotspot-top="62%" data-image-scroll="0" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-full.jpg" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/new/fortiva-mobile-new-cta.png" data-image-alt="After redesign Fortiva desktop page" data-mobile-image-alt="After redesign Fortiva mobile CTA section">Established CTA hierarchy</button>
+                <button type="button" data-callout="The card is now part of the hero, so users see the actual product immediately." data-callout-left="68%" data-callout-top="28%" data-callout-align="right" data-hotspot-left="68%" data-hotspot-top="39%" data-image-scroll="0" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-full.jpg" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/new/fortiva-mobile-new-product-eyeflow.png" data-image-alt="After redesign Fortiva desktop page" data-mobile-image-alt="After redesign Fortiva mobile product eyeflow section">Product+ eyeflow</button>
+                <button type="button" data-callout="I moved trust cues higher on the page so users did not have to scroll far before seeing reasons to feel more confident." data-callout-left="27%" data-callout-top="66%" data-hotspot-left="24%" data-hotspot-top="70%" data-image-scroll="0" data-mobile-image-scroll="0.05" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="78%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-full.jpg" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/new/fortiva-mobile-new-trust.png" data-image-alt="After redesign Fortiva desktop page" data-mobile-image-alt="After redesign Fortiva mobile trust section">Brought trust forward</button>
+                <button type="button" data-callout="The benefits now show up in a clearer pattern, so users can understand the offer without slowing down." data-callout-left="24%" data-callout-top="18%" data-hotspot-left="24%" data-hotspot-top="30%" data-image-scroll="0.12" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-full.jpg" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/new/fortiva-mobile-new-benefits.png" data-image-alt="After redesign Fortiva desktop page" data-mobile-image-alt="After redesign Fortiva mobile benefits section">Clearer benefits</button>
+                <button type="button" data-callout="The middle of the page is broken into cleaner chunks, which makes the content easier to compare and scan." data-callout-left="24%" data-callout-top="20%" data-hotspot-left="24%" data-hotspot-top="32%" data-image-scroll="0.4" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-full.jpg" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/new/fortiva-mobile-new-module.png" data-image-alt="After redesign Fortiva desktop page" data-mobile-image-alt="After redesign Fortiva mobile module section">Scannable modules</button>
+                <button type="button" data-callout="I repeated the main action in places where users might be ready to move forward." data-callout-left="24%" data-callout-top="41%" data-hotspot-left="19%" data-hotspot-top="55%" data-image-scroll="0.62" data-mobile-image-scroll="0" data-mobile-hotspot-left="50%" data-mobile-hotspot-top="50%" data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-full.jpg" data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/new/fortiva-mobile-new-primary-action.png" data-image-alt="After redesign Fortiva desktop page" data-mobile-image-alt="After redesign Fortiva mobile primary action section">Reinforced primary actions</button>
               </div>
 
               <div id="solution-card" class="cs-image-card fortiva-after-card">
-                <span class="cs-callout">The headline now leads with immediate value and sets expectations quickly.</span>
+                <span class="cs-callout">The new headline gets to the point faster and gives users a clearer reason to keep reading.</span>
                 <span class="cs-hotspot" aria-hidden="true"></span>
                 <div class="cs-image-scroll-window">
-                  <img src="images/portfolio/landers/fortiva/new/fortiva-mobile-redesign.png" alt="After redesign Fortiva mobile page" />
+                  <img src="images/portfolio/landers/fortiva/new/fortiva-desktop-full.jpg" alt="After redesign Fortiva desktop page" />
                 </div>
               </div>
             </section>
 
             <section id="comparison" class="fortiva-panel fortiva-detail-panel">
               <h2>Before / After Comparison</h2>
-              <p class="fortiva-detail-intro">Switch between the original and redesigned experience. Scroll inside the image area to view the full page.</p>
+              <p class="fortiva-detail-intro">Switch between the original and redesigned page to see how the experience changed. Scroll inside the image area to view the full page.</p>
               <div class="cs-toggle-row">
                 <div class="cs-toggle" data-compare-target="#comparison-image">
                   <button class="is-active" type="button" data-compare-src="images/portfolio/landers/fortiva/new/fortiva-desktop-old.png" data-compare-mobile-src="images/portfolio/landers/fortiva/new/fortiva-mobile-orig.png" data-compare-alt="Before comparison view" data-compare-mobile-alt="Before mobile comparison view">Before</button>
@@ -210,22 +486,74 @@
               </div>
             </section>
 
-            <section id="changed" class="fortiva-panel fortiva-detail-panel fortiva-changed-panel">
-              <h2>What Changed</h2>
-              <p class="fortiva-detail-intro">The redesign was not a visual refresh alone. It changed how the page introduced value, directed attention, and reduced hesitation for a cautious audience.</p>
-              <p>The hero shifted from broad brand language to a clearer, benefit-led message that explains the value of the card faster. The CTA system was simplified so one primary action stands out immediately, with supporting content arranged to guide the eye toward it. Trust cues were also moved earlier, and the card itself became part of the hero so users could connect the offer, the product, and the next step at a glance.</p>
+            <section id="attention" class="fortiva-panel fortiva-detail-panel fortiva-attention-panel">
+              <h2>Attention Shift</h2>
+              <p class="fortiva-detail-intro">The heatmap comparison helped validate the direction of the redesign. In the original hero, attention was split between a broad headline, generic lifestyle imagery, and two competing CTAs. In the redesign, attention moved toward the rewards message, the card, and the prequalification action.</p>
+
+              <div class="fortiva-heatmap-grid">
+                <figure class="fortiva-heatmap-card">
+                  <figcaption>Before</figcaption>
+                  <img src="images/portfolio/landers/fortiva/new/heatmaps-old.jpg" alt="Heatmap of the original Fortiva hero showing attention split across the headline, lifestyle image, and two competing calls to action" />
+                </figure>
+                <figure class="fortiva-heatmap-card">
+                  <figcaption>After</figcaption>
+                  <img src="images/portfolio/landers/fortiva/new/heatmaps-new.jpg" alt="Heatmap of the redesigned Fortiva hero showing attention around the rewards headline, card visual, and prequalification call to action" />
+                </figure>
+              </div>
             </section>
 
-            <section id="results" class="fortiva-panel fortiva-text-panel">
-              <h2>Results</h2>
-              <p>The redesign created a clearer first impression and a more confident path to apply. By tightening the headline, establishing a stronger CTA hierarchy, and surfacing trust cues earlier, the page reduced friction at the exact points where hesitant users were previously dropping off.</p>
-              <p>Performance improved across the key conversion signals: conversion rate increased 38%, bounce rate dropped 22%, and apply click-through rate rose 18%. The strongest gains came from making the offer easier to understand immediately, rather than asking users to scroll before they understood why the card was relevant to them.</p>
+            <section id="results" class="fortiva-panel fortiva-results-panel" aria-labelledby="results-title">
+              <header class="fortiva-results-header">
+                <h2 id="results-title">Fortiva Mastercard Performance Improvements</h2>
+                <p>The redesign changed the order of the story. Instead of leading with a broad brand message, the page now starts by answering what the card is, why it may be useful, and how to apply. By simplifying the CTA system, bringing the card into the hero, and moving trust cues higher on the page, the page performed better across the actions that mattered most: users stayed longer, clicked through more often, and moved toward prequalification with less hesitation.</p>
+              </header>
+
+              <figure class="kpi-performance-chart" aria-labelledby="results-title" aria-describedby="results-summary">
+                <div class="kpi-chart-plot" aria-hidden="true">
+                  <span class="kpi-grid-line"></span>
+                  <span class="kpi-grid-line"></span>
+                  <span class="kpi-grid-line"></span>
+                  <span class="kpi-grid-line"></span>
+                  <span class="kpi-zero-line"></span>
+
+                  <div class="kpi-bar-group">
+                    <div class="kpi-bar-track">
+                      <div class="kpi-bar" data-kpi-value="38" data-kpi-direction="positive">
+                        <span class="kpi-bar-value">+38%</span>
+                      </div>
+                    </div>
+                    <p class="kpi-bar-label">Conversion Rate</p>
+                  </div>
+
+                  <div class="kpi-bar-group">
+                    <div class="kpi-bar-track">
+                      <div class="kpi-bar" data-kpi-value="-22" data-kpi-direction="negative">
+                        <span class="kpi-bar-value">-22%</span>
+                      </div>
+                    </div>
+                    <p class="kpi-bar-label">Bounce Rate</p>
+                  </div>
+
+                  <div class="kpi-bar-group">
+                    <div class="kpi-bar-track">
+                      <div class="kpi-bar" data-kpi-value="18" data-kpi-direction="positive">
+                        <span class="kpi-bar-value">+18%</span>
+                      </div>
+                    </div>
+                    <p class="kpi-bar-label">Apply-CTR</p>
+                  </div>
+                </div>
+
+                <figcaption id="results-summary" class="kpi-screen-reader-summary">
+                  Fortiva Mastercard performance improvements: Conversion Rate increased by 38 percent, Bounce Rate decreased by 22 percent, and Apply-CTR increased by 18 percent.
+                </figcaption>
+              </figure>
             </section>
 
             <section id="learned" class="fortiva-panel fortiva-text-panel">
               <h2>Learnings</h2>
-              <p>This project reinforced that users rebuilding credit do not respond to broad brand language alone. They need the offer framed in practical, low-friction terms right away: what the card helps them do, why they should trust it, and what action to take next.</p>
-              <p>It also showed that conversion improvements did not come from adding more content, but from improving sequence and emphasis. Clear value framing, visible product cues, and trust placed near action points consistently outperformed the original layout.</p>
+              <p>This project reminded me that users rebuilding credit are not looking for clever wording. They need clear, trustworthy messaging that explains what the card does, why it is relevant to them, and what happens if they decide to apply.</p>
+              <p>The biggest improvement came from reordering the page and making the next step easier to find, not from adding more copy. In future work, I’ll prioritize clarity, trust, and a single obvious action over extra content.</p>
             </section>
           </main>
         </div>
@@ -264,6 +592,12 @@
             active = section;
           }
         });
+
+        const scrollBottom = window.scrollY + window.innerHeight;
+        const pageBottom = document.documentElement.scrollHeight;
+        if (pageBottom - scrollBottom <= 8) {
+          active = trackedSections[trackedSections.length - 1];
+        }
 
         sidebarLinks.forEach((link) => {
           link.classList.toggle("is-active", link.getAttribute("href") === "#" + active.id);
@@ -379,12 +713,19 @@
           callout.style.top = button.dataset.calloutTop;
         }
 
-        if (image && button.dataset.imageSrc) {
-          image.src = button.dataset.imageSrc;
+        const imageSrc = !desktopCalloutMediaQuery.matches && button.dataset.mobileImageSrc
+          ? button.dataset.mobileImageSrc
+          : button.dataset.imageSrc;
+        const imageAlt = !desktopCalloutMediaQuery.matches && button.dataset.mobileImageAlt
+          ? button.dataset.mobileImageAlt
+          : button.dataset.imageAlt;
+
+        if (image && imageSrc) {
+          image.src = imageSrc;
         }
 
-        if (image && button.dataset.imageAlt) {
-          image.alt = button.dataset.imageAlt;
+        if (image && imageAlt) {
+          image.alt = imageAlt;
         }
 
         const imageScroll = !desktopCalloutMediaQuery.matches && button.dataset.mobileImageScroll
@@ -583,6 +924,48 @@
       }
 
       window.addEventListener("resize", refreshActiveCardImageScroll);
+
+      function initKpiPerformanceChart() {
+        const bars = Array.from(document.querySelectorAll(".kpi-bar[data-kpi-value]"));
+        if (!bars.length) {
+          return;
+        }
+
+        const values = bars
+          .map((bar) => Number.parseFloat(bar.dataset.kpiValue))
+          .filter((value) => Number.isFinite(value));
+        const maxValue = Math.max(...values.map((value) => Math.abs(value)), 1);
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        bars.forEach((bar) => {
+          const value = Number.parseFloat(bar.dataset.kpiValue);
+          if (!Number.isFinite(value)) {
+            return;
+          }
+
+          const scale = Math.abs(value) / maxValue;
+          const formattedValue = `${value > 0 ? "+" : ""}${value}%`;
+          const valueLabel = bar.querySelector(".kpi-bar-value");
+
+          bar.dataset.kpiDirection = value < 0 ? "negative" : "positive";
+          bar.setAttribute("aria-label", `${formattedValue} ${value < 0 ? "decrease" : "increase"}`);
+
+          if (valueLabel) {
+            valueLabel.textContent = formattedValue;
+          }
+
+          if (prefersReducedMotion) {
+            bar.style.setProperty("--bar-scale", scale);
+            return;
+          }
+
+          requestAnimationFrame(() => {
+            bar.style.setProperty("--bar-scale", scale);
+          });
+        });
+      }
+
+      initKpiPerformanceChart();
     </script>
   </body>
 </html>

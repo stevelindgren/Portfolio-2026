@@ -6,12 +6,49 @@ $(document).ready(function() {
     "use strict";
     
     // Initialize
+    initFlexNav();
     initScrollEffects();
     initMobileMenu();
     initSmoothScroll();
     initBackToTop();
     initFloatingIconsParallax();
 });
+
+// ================================================
+// FLEXNAV (HAMBURGER MENU)
+// ================================================
+function initFlexNav() {
+    const menuButton = $('#menu-center .menu-button');
+    const nav = $('.flexnav.standard');
+    if (!menuButton.length || !nav.length) return;
+
+    function setMenuState(isMenuOpen) {
+        nav.toggleClass('flexnav-show', isMenuOpen);
+        menuButton.toggleClass('menu-open', !isMenuOpen);
+        menuButton.toggleClass('menu-close', isMenuOpen);
+        menuButton.attr('aria-expanded', isMenuOpen ? 'true' : 'false');
+    }
+
+    menuButton.off('click.flexnav').on('click.flexnav', function(event) {
+        if (window.innerWidth > 1024) return;
+        event.preventDefault();
+        event.stopPropagation();
+        setMenuState(!nav.hasClass('flexnav-show'));
+    });
+
+    nav.find('a').off('click.flexnav').on('click.flexnav', function() {
+        if (window.innerWidth > 1024) return;
+        setMenuState(false);
+    });
+
+    $(window).off('resize.flexnav').on('resize.flexnav', function() {
+        if (window.innerWidth > 1024) {
+            setMenuState(false);
+        }
+    });
+
+    setMenuState(false);
+}
 
 // ================================================
 // SCROLL EFFECTS
