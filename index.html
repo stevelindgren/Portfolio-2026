@@ -34,7 +34,6 @@
     <!-- Core site stylesheets -->
     <link href="css/plugins.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
-    <link href="css/floating-icons.css" rel="stylesheet" />
 
     <title>Steven Lindgren | Design Portfolio</title>
   </head>
@@ -48,19 +47,33 @@
         <div class="header-wrapper">
           <div class="container">
             <div id="logo">
-              <a href="https://stevenlindgren.com/">Steven Lindgren</a>
+              <a href="https://stevenlindgren.com/">
+                <span class="logo-avatar-placeholder" aria-hidden="true"></span>
+                <span class="logo-name">Steven Lindgren</span>
+              </a>
             </div>
             <nav id="menu-center">
+              <div class="nav-desktop-pill" aria-label="Primary">
+                <span class="nav-desktop-pill-indicator" aria-hidden="true"></span>
+                <a href="#top" class="nav-home-link">Home</a>
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#contact">Contact</a>
+              </div>
               <div class="menu-button menu-open">
                 <span class="open-icon" aria-hidden="true"></span>
                 <i class="close-icon ion-android-close"></i>
               </div>
               <ul class="flexnav standard" data-breakpoint="1024">
+                <li><a href="#top" class="nav-home-link">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#work">Work</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="nav-email-cta">
-                  <a href="mailto:steven.lindgren@gmail.com">Send me an email</a>
+                  <a href="mailto:steven.lindgren@gmail.com">
+                    <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                    <span>Say Hello</span>
+                  </a>
                 </li>
                 <li class="nav-linkedin-cta">
                   <a href="https://www.linkedin.com/in/steven-l-9a62487/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
@@ -81,53 +94,18 @@
             <div class="col-sm-12">
               <!-- Hero / About section -->
               <div class="hero-wrapper">
-                <!-- Floating Icons (Desktop only) -->
-                <div class="floating-icon floating-icon-left icon-1" data-parallax-depth="0.86">
-                  <img src="images/scroller/figma.png" alt="Figma" />
-                </div>
-                <div class="floating-icon floating-icon-left icon-2" data-parallax-depth="1.1">
-                  <img src="images/scroller/framer.png" alt="Framer" />
-                </div>
-                <div class="floating-icon floating-icon-left icon-3" data-parallax-depth="0.94">
-                  <img
-                    src="images/scroller/adobe-photoshop.png"
-                    alt="Photoshop"
-                  />
-                </div>
-                <div class="floating-icon floating-icon-left icon-4" data-parallax-depth="1.08">
-                  <img
-                    src="images/scroller/adobe-illustrator.png"
-                    alt="Illustrator"
-                  />
-                </div>
-                <div class="floating-icon floating-icon-right icon-5" data-parallax-depth="1.04">
-                  <img src="images/scroller/sketch.png" alt="Sketch" />
-                </div>
-                <div class="floating-icon floating-icon-right icon-6" data-parallax-depth="0.88">
-                  <img src="images/scroller/monday.png" alt="Monday.com" />
-                </div>
-                <div class="floating-icon floating-icon-right icon-7" data-parallax-depth="1.12">
-                  <img src="images/scroller/tailwind.png" alt="Tailwind" />
-                </div>
-                <div class="floating-icon floating-icon-right icon-8" data-parallax-depth="0.96">
-                  <img src="images/scroller/css.png" alt="CSS" />
-                </div>
-
                 <!-- Hero content: intro text and primary CTA -->
-                <div class="page-title-main centered fade-in" id="about">
-                  <h3>Hello! I'm Steven.</h3>
+                <div class="page-title-main hero-intro-panel fade-in" id="about">
+                  <h3>Hello,I'm Steven.</h3>
+                 
                   <h1 class="hero-headline">
-                    <span class="hero-headline-primary"
-                      >A Visual & Digital Designer</span
-                    >
                     <span class="hero-headline-accent"
-                      >Specializing in Conversion-Focused</span
+                      >I design digital experiences built to convert.</span
                     >
-                    <span class="hero-headline-secondary">Design</span>
                   </h1>
                   <p>
                     I've always been drawn to things that blend art and
-                    precision, from photography and fly fishing to golf and
+                    precision, from fly fishing to golf and
                     design. Each one takes patience, rhythm, and intuition,
                     which is how I approach every project. I focus on creating design that feels balanced,
                     purposeful, and effortless.
@@ -136,43 +114,9 @@
                     href="#contact"
                     class="button hero-cta-button glow-on-hover"
                   >
-                    <span class="hero-cta-label">Get in Touch</span>
+                    <span class="hero-cta-label">Read Case Studies</span>
                     <i class="fa-solid fa-arrow-right hero-cta-arrow" aria-hidden="true"></i>
                   </a>
-
-                  <!-- Mobile icon row (skills/tools) -->
-                  <div class="mobile-icons-row">
-                    <div class="mobile-icon">
-                      <img src="images/scroller/figma.png" alt="Figma" />
-                    </div>
-                    <div class="mobile-icon">
-                      <img src="images/scroller/framer.png" alt="Framer" />
-                    </div>
-                    <div class="mobile-icon">
-                      <img
-                        src="images/scroller/adobe-photoshop.png"
-                        alt="Photoshop"
-                      />
-                    </div>
-                    <div class="mobile-icon">
-                      <img
-                        src="images/scroller/adobe-illustrator.png"
-                        alt="Illustrator"
-                      />
-                    </div>
-                    <div class="mobile-icon">
-                      <img src="images/scroller/sketch.png" alt="Sketch" />
-                    </div>
-                    <div class="mobile-icon">
-                      <img src="images/scroller/monday.png" alt="Monday.com" />
-                    </div>
-                    <div class="mobile-icon">
-                      <img src="images/scroller/tailwind.png" alt="Tailwind" />
-                    </div>
-                    <div class="mobile-icon">
-                      <img src="images/scroller/css.png" alt="CSS" />
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -181,6 +125,9 @@
               <div class="portfolio-wrap fade-in" id="work">
                 <!-- Portfolio Items -->
                 <div id="portfolio-container">
+                  <div class="portfolio-section-heading col-12">
+                    <h2>Web</h2>
+                  </div>
                   <!-- Landing Pages -->
                   <div class="portfolio-item col-lg-6 col-12">
                     <a href="lander-fortiva.html">

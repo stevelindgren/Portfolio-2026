@@ -7,11 +7,11 @@ $(document).ready(function() {
     
     // Initialize
     initFlexNav();
+    initDesktopPillNav();
     initScrollEffects();
     initMobileMenu();
     initSmoothScroll();
     initBackToTop();
-    initFloatingIconsParallax();
 });
 
 // ================================================
@@ -148,9 +148,11 @@ function initSmoothScroll() {
         
         if (target.length) {
             e.preventDefault();
+
+            const isTopAnchor = this.hash === '#top';
             
             $('html, body').animate({
-                scrollTop: target.offset().top - 75
+                scrollTop: isTopAnchor ? 0 : target.offset().top - 75
             }, 600, 'swing');
             
             if (history.pushState) {
@@ -187,6 +189,112 @@ function initSmoothScroll() {
             $('.nav-link').removeClass('active');
         }
     }
+}
+
+// ================================================
+// DESKTOP PILL NAV
+// ================================================
+function initDesktopPillNav() {
+    const pills = Array.from(document.querySelectorAll('.nav-desktop-pill'));
+    if (!pills.length) return;
+
+    pills.forEach((pill) => {
+        const indicator = pill.querySelector('.nav-desktop-pill-indicator');
+        const links = Array.from(pill.querySelectorAll('a'));
+        if (!indicator || !links.length) return;
+
+        let activeLink = null;
+
+        function clearActive() {
+            links.forEach((link) => link.classList.remove('is-active'));
+            activeLink = null;
+            pill.classList.remove('has-active');
+            indicator.style.width = '0px';
+            indicator.style.transform = 'translateX(0px)';
+            indicator.style.opacity = '0';
+        }
+
+        function moveIndicator(link, persistActive = false) {
+            if (!link || window.innerWidth <= 1024) return;
+            const pillRect = pill.getBoundingClientRect();
+            const linkRect = link.getBoundingClientRect();
+            const left = linkRect.left - pillRect.left;
+
+            indicator.style.width = `${linkRect.width}px`;
+            indicator.style.transform = `translateX(${left}px)`;
+            indicator.style.opacity = '1';
+
+            if (persistActive) {
+                links.forEach((item) => item.classList.toggle('is-active', item === link));
+                activeLink = link;
+                pill.classList.add('has-active');
+            }
+        }
+
+        function updateActiveLink() {
+            if (window.innerWidth <= 1024) {
+                clearActive();
+                return;
+            }
+
+            const samePageLinks = links.filter((link) => {
+                const href = link.getAttribute('href') || '';
+                return href.startsWith('#');
+            });
+            const homeLink = pill.querySelector('.nav-home-link');
+            const sectionLinks = samePageLinks.filter((link) => !link.classList.contains('nav-home-link'));
+
+            if (!samePageLinks.length) {
+                clearActive();
+                return;
+            }
+
+            if (homeLink && window.scrollY < 80) {
+                moveIndicator(homeLink, true);
+                return;
+            }
+
+            const scrollPos = window.scrollY + 120;
+            let matchedLink = null;
+
+            sectionLinks.forEach((link) => {
+                const target = document.querySelector(link.getAttribute('href'));
+                if (!target) return;
+
+                const sectionTop = target.offsetTop;
+                const sectionBottom = sectionTop + target.offsetHeight;
+
+                if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                    matchedLink = link;
+                }
+            });
+
+            if (matchedLink) {
+                moveIndicator(matchedLink, true);
+            } else {
+                clearActive();
+            }
+        }
+
+        links.forEach((link) => {
+            link.addEventListener('mouseenter', () => moveIndicator(link, false));
+            link.addEventListener('focus', () => moveIndicator(link, false));
+            link.addEventListener('click', () => moveIndicator(link, true));
+        });
+
+        pill.addEventListener('mouseleave', () => {
+            if (activeLink) {
+                moveIndicator(activeLink, true);
+            } else {
+                clearActive();
+            }
+        });
+
+        window.addEventListener('scroll', updateActiveLink, { passive: true });
+        window.addEventListener('resize', updateActiveLink);
+
+        updateActiveLink();
+    });
 }
 
 // ================================================
