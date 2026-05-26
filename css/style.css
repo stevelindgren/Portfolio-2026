@@ -5303,6 +5303,71 @@ body.fortiva-case-study-new .fortiva-bullets li {
     font-weight: 400;
 }
 
+body.dell-case-study-new .dell-layout-module {
+    margin-top: var(--space-40);
+}
+
+body.dell-case-study-new .dell-layout-module h3 {
+    margin: 0;
+    color: #e8eef7;
+    font-family: var(--fortiva-font-family);
+    font-size: var(--fortiva-h4-size);
+    line-height: var(--fortiva-h4-line);
+    font-weight: 500;
+}
+
+body.dell-case-study-new .dell-layout-module p {
+    margin: 12px 0 0;
+}
+
+body.dell-case-study-new .dell-layout-tabs {
+    margin-top: var(--space-40);
+    margin-bottom: 0;
+}
+
+body.dell-case-study-new .dell-layout-mode-toggle {
+    margin-top: var(--space-40);
+}
+
+body.dell-case-study-new .dell-layout-image-card {
+    margin-top: var(--space-40);
+    padding: 0;
+}
+
+body.dell-case-study-new #wireframing .dell-layout-callout {
+    left: 16px;
+    top: 16px;
+    max-width: min(480px, calc(100% - 32px));
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff;
+    opacity: 1;
+}
+
+body.dell-case-study-new #wireframing .dell-layout-hotspot {
+    left: 24%;
+    top: 34%;
+}
+
+body.dell-case-study-new #wireframing .cs-image-scroll-window {
+    height: auto;
+    overflow: hidden;
+}
+
+body.dell-case-study-new #wireframing .cs-image-scroll-window img {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+    object-position: top center;
+    transform: none;
+}
+
+body.dell-case-study-new .dell-layout-image-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 .cs-tabs {
     margin: 20px 0 14px;
     display: flex;
@@ -5458,6 +5523,27 @@ body.fortiva-case-study-new .fortiva-bullets {
     padding: 16px;
 }
 
+body.dell-case-study-new #flow .fortiva-bullets {
+    margin-top: var(--space-40);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+body.dell-case-study-new #solution .fortiva-bullets {
+    margin-top: var(--space-40);
+}
+
+body.fortiva-case-study-new:not(.dell-case-study-new) #solution .fortiva-bullets {
+    margin-top: var(--space-40);
+}
+
+body.fortiva-case-study-new:not(.dell-case-study-new) #problem .fortiva-columns {
+    margin-top: var(--space-40);
+}
+
 .cs-toggle-row {
     display: flex;
     align-items: center;
@@ -5473,29 +5559,48 @@ body.fortiva-case-study-new #comparison .cs-toggle-row {
     margin: 16px 0;
     display: inline-flex;
     position: relative;
-    isolation: isolate;
     align-items: center;
-    gap: 4px;
-    padding: 4px;
-    border: 1px solid rgba(255, 255, 255, .14);
-    border-radius: 8px;
-    background: #10151b;
-    overflow: hidden;
+    gap: 12px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    overflow: visible;
 }
 
 .cs-toggle::before {
     content: "";
     position: absolute;
-    top: 4px;
-    left: 0;
-    width: var(--toggle-w, 96px);
-    height: calc(100% - 8px);
-    border-radius: 8px;
+    top: 50%;
+    left: 50%;
+    width: 52px;
+    height: 30px;
+    border-radius: 999px;
+    border: 1px solid #006cff;
     background: #006cff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .26);
-    transform: translateX(var(--toggle-x, 4px));
-    transition: transform .32s cubic-bezier(.2, .8, .2, 1), width .32s cubic-bezier(.2, .8, .2, 1);
+    transform: translate(-50%, -50%);
     z-index: 0;
+}
+
+.cs-toggle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 11px);
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+    transform: translate(-50%, -50%);
+    transition: left .22s ease, background-color .22s ease, box-shadow .22s ease;
+    z-index: 1;
+}
+
+.cs-toggle.is-right-active::after {
+    left: calc(50% + 11px);
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(0, 108, 255, .25), 0 1px 3px rgba(0, 0, 0, .35);
 }
 
 .cs-scroll-hint {
@@ -5507,17 +5612,26 @@ body.fortiva-case-study-new #comparison .cs-toggle-row {
 .cs-toggle button {
     border: 0;
     background: transparent;
-    color: #7f8ba0;
-    min-height: 44px;
-    padding: 10px 22px;
+    color: rgba(255, 255, 255, .4);
+    min-height: auto;
+    padding: 0;
     cursor: pointer;
     font-size: 16px;
     line-height: var(--fortiva-h6-line);
     font-weight: 400;
-    border-radius: 8px;
-    transition: color .22s ease, transform .08s ease;
+    border-radius: 0;
+    transition: color .22s ease;
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    white-space: nowrap;
+}
+
+.cs-toggle button:first-child {
+    padding-right: 64px;
+}
+
+.cs-toggle button:last-child {
+    padding-left: 64px;
 }
 
 body.fortiva-case-study-new #content-wrapper .cs-toggle button {
@@ -5536,7 +5650,6 @@ body.fortiva-case-study-new #content-wrapper .cs-toggle button.is-active:hover {
 
 .cs-toggle button:not(.is-active):hover {
     color: #c6d1e2;
-    background: rgba(255, 255, 255, .04);
 }
 
 .cs-toggle button:focus-visible {
@@ -5549,7 +5662,7 @@ body.fortiva-case-study-new #content-wrapper .cs-toggle button.is-active:hover {
 }
 
 .cs-toggle button:active {
-    transform: translateY(1px);
+    transform: none;
 }
 
 .case-results-panel {
@@ -5972,6 +6085,14 @@ body.fortiva-case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         gap: 28px;
     }
 
+    body.dell-case-study-new #wireframing .dell-layout-callout {
+        max-width: min(420px, calc(100% - 28px));
+    }
+
+    body.dell-case-study-new #flow .fortiva-bullets {
+        margin-top: var(--space-40);
+    }
+
     body.fortiva-case-study-new .fortiva-heatmap-grid {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -6108,29 +6229,25 @@ body.fortiva-case-study-new #content-wrapper .cs-toggle button.is-active:hover {
     }
 
     .cs-toggle {
-        width: 100%;
-        justify-content: stretch;
+        width: auto;
+        justify-content: flex-start;
         align-items: center;
-        gap: 0;
-        padding: 4px;
-        border: 1px solid rgba(255, 255, 255, .14) !important;
-        border-radius: 8px !important;
-        background: #10151b !important;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06) !important;
+        gap: 12px;
+        padding: 0;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
     }
 
     .cs-toggle button {
-        flex: 1 1 0;
-        padding-left: 16px;
-        padding-right: 16px;
-        text-align: center;
-        border-radius: 8px !important;
+        flex: 0 0 auto;
+        text-align: left;
+        border-radius: 0 !important;
     }
 
     .cs-toggle::before {
-        top: 4px;
-        height: calc(100% - 8px);
-        box-shadow: 0 4px 14px rgba(0, 0, 0, .32);
+        box-shadow: none;
     }
 
     .cs-hotspot {
@@ -6190,6 +6307,17 @@ body.fortiva-case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         margin-top: var(--space-32);
     }
 
+    body.dell-case-study-new .dell-layout-module,
+    body.dell-case-study-new .dell-layout-tabs,
+    body.dell-case-study-new .dell-layout-mode-toggle,
+    body.dell-case-study-new .dell-layout-image-card {
+        margin-top: var(--space-40);
+    }
+
+    body.dell-case-study-new #flow .fortiva-bullets {
+        margin-top: var(--space-40);
+    }
+
     body.fortiva-case-study-new .fortiva-flow-media {
         margin-top: 18px;
     }
@@ -6197,6 +6325,18 @@ body.fortiva-case-study-new #content-wrapper .cs-toggle button.is-active:hover {
     body.fortiva-case-study-new #solution .fortiva-bullets,
     body.fortiva-case-study-new #solution .cs-tabs {
         margin-top: var(--space-32);
+    }
+
+    body.dell-case-study-new #solution .fortiva-bullets {
+        margin-top: var(--space-40);
+    }
+
+    body.fortiva-case-study-new:not(.dell-case-study-new) #solution .fortiva-bullets {
+        margin-top: var(--space-40);
+    }
+
+    body.fortiva-case-study-new:not(.dell-case-study-new) #problem .fortiva-columns {
+        margin-top: var(--space-40);
     }
 
     body.fortiva-case-study-new #comparison .cs-toggle {
@@ -6340,20 +6480,34 @@ body.fortiva-case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         height: 760px;
     }
 
-    .cs-toggle {
-        padding: 3px;
-    }
-
     .cs-toggle::before {
-        top: 3px;
-        height: calc(100% - 6px);
+        width: 48px;
+        height: 28px;
     }
 
     .cs-toggle button {
-        min-height: 40px;
-        padding: 9px 10px;
+        min-height: auto;
+        padding: 0;
         font-size: 15px;
         line-height: 20px;
+    }
+
+    .cs-toggle button:first-child {
+        padding-right: 58px;
+    }
+
+    .cs-toggle button:last-child {
+        padding-left: 58px;
+    }
+
+    .cs-toggle::after {
+        left: calc(50% - 10px);
+        width: 20px;
+        height: 20px;
+    }
+
+    .cs-toggle.is-right-active::after {
+        left: calc(50% + 10px);
     }
 
     .cs-scroll-hint {

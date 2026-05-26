@@ -561,4 +561,95 @@ document.addEventListener("DOMContentLoaded", function() {
         window.addEventListener("resize", refreshPlayback);
         window.addEventListener("scroll", refreshPlayback, { passive: true });
     }
+
+    initKpiPerformanceCharts();
 });
+
+function initKpiPerformanceCharts() {
+    const charts = Array.from(document.querySelectorAll('.kpi-performance-chart'));
+    if (!charts.length) {
+        return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    charts.forEach((chart) => {
+        const bars = Array.from(chart.querySelectorAll('.kpi-bar[data-kpi-value]'));
+        if (!bars.length) {
+            return;
+        }
+
+        const values = bars
+            .map((bar) => Number.parseFloat(bar.dataset.kpiValue))
+            .filter((value) => Number.isFinite(value));
+
+        const maxValue = Math.max(...values.map((value) => Math.abs(value)), 1);
+
+        bars.forEach((bar) => {
+            const value = Number.parseFloat(bar.dataset.kpiValue);
+            if (!Number.isFinite(value)) {
+                bar.style.setProperty('--bar-scale', '0');
+                return;
+            }
+
+            const scale = Math.min(1, Math.abs(value) / maxValue);
+            const formattedValue = `${value > 0 ? '+' : ''}${value}%`;
+            const valueLabel = bar.querySelector('.kpi-bar-value');
+
+            bar.dataset.kpiDirection = value < 0 ? 'negative' : 'positive';
+            bar.setAttribute('aria-label', `${formattedValue} ${value < 0 ? 'decrease' : 'increase'}`);
+            bar.dataset.kpiScale = String(scale);
+            bar.style.setProperty('--bar-scale', prefersReducedMotion ? String(scale) : '0');
+
+            if (valueLabel) {
+                valueLabel.textContent = formattedValue;
+            }
+        });
+
+        if (prefersReducedMotion) {
+            return;
+        }
+
+        const animateBars = () => {
+            bars.forEach((bar, index) => {
+                const scale = Number.parseFloat(bar.dataset.kpiScale || '0');
+                if (!Number.isFinite(scale)) {
+                    return;
+                }
+
+                window.setTimeout(() => {
+                    bar.style.setProperty('--bar-scale', String(scale));
+                }, index * 120);
+            });
+        };
+
+        let hasAnimated = false;
+        const triggerBars = () => {
+            if (hasAnimated) {
+                return;
+            }
+            hasAnimated = true;
+            window.requestAnimationFrame(animateBars);
+        };
+
+        if (!('IntersectionObserver' in window)) {
+            triggerBars();
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+                triggerBars();
+                observer.disconnect();
+            });
+        }, {
+            threshold: 0.35,
+            rootMargin: '0px 0px -8% 0px'
+        });
+
+        observer.observe(chart);
+    });
+}

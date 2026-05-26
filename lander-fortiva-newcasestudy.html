@@ -632,6 +632,10 @@
           return;
         }
 
+        const toggleButtons = Array.from(group.querySelectorAll("button"));
+        const activeIndex = toggleButtons.indexOf(activeButton);
+        group.classList.toggle("is-right-active", activeIndex === 1);
+
         const groupRect = group.getBoundingClientRect();
         const buttonRect = activeButton.getBoundingClientRect();
         const x = buttonRect.left - groupRect.left;
@@ -983,48 +987,7 @@
         observer.observe(mobileSection);
       }
 
-      function initKpiPerformanceChart() {
-        const bars = Array.from(document.querySelectorAll(".kpi-bar[data-kpi-value]"));
-        if (!bars.length) {
-          return;
-        }
-
-        const values = bars
-          .map((bar) => Number.parseFloat(bar.dataset.kpiValue))
-          .filter((value) => Number.isFinite(value));
-        const maxValue = Math.max(...values.map((value) => Math.abs(value)), 1);
-        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        bars.forEach((bar) => {
-          const value = Number.parseFloat(bar.dataset.kpiValue);
-          if (!Number.isFinite(value)) {
-            return;
-          }
-
-          const scale = Math.abs(value) / maxValue;
-          const formattedValue = `${value > 0 ? "+" : ""}${value}%`;
-          const valueLabel = bar.querySelector(".kpi-bar-value");
-
-          bar.dataset.kpiDirection = value < 0 ? "negative" : "positive";
-          bar.setAttribute("aria-label", `${formattedValue} ${value < 0 ? "decrease" : "increase"}`);
-
-          if (valueLabel) {
-            valueLabel.textContent = formattedValue;
-          }
-
-          if (prefersReducedMotion) {
-            bar.style.setProperty("--bar-scale", scale);
-            return;
-          }
-
-          requestAnimationFrame(() => {
-            bar.style.setProperty("--bar-scale", scale);
-          });
-        });
-      }
-
       initMobileShowcaseAutoScroll();
-      initKpiPerformanceChart();
     </script>
   </body>
 </html>

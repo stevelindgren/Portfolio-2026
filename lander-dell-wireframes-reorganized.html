@@ -14,6 +14,65 @@
     <link href="css/plugins.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <title>Steven Lindgren | Dell Technologies Rewards Landing Page</title>
+
+    <style>
+      .dell-wireframe-grid {
+        display: grid;
+        gap: 28px;
+        margin-top: 28px;
+      }
+
+      .dell-wireframe-pair {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+        align-items: stretch;
+      }
+
+      .dell-wireframe-card {
+        background: #ffffff;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      }
+
+      .dell-wireframe-card figcaption {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px 18px;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1f2937;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      }
+
+      .dell-wireframe-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .dell-wireframe-notes {
+        margin: 12px 0 34px;
+        padding-left: 1.1rem;
+        color: inherit;
+      }
+
+      .dell-wireframe-notes li {
+        margin-bottom: 8px;
+      }
+
+      @media (max-width: 980px) {
+        .dell-wireframe-pair {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body class="fortiva-case-study fortiva-case-study-new dell-case-study-new">
     <div id="page-wrapper">
@@ -91,11 +150,12 @@
             <h2>On this page</h2>
             <nav>
               <a href="#overview" class="is-active">Overview</a>
-              <a href="#problem">Problem</a>
+              <a href="#problem">Design Objectives</a>
+              <a href="#wireframes">Wireframe Structure</a>
               <a href="#flow">Page Flow</a>
               <a href="#attention">Design Approach</a>
               <a href="#solution">Execution</a>
-              <a href="#comparison">Comparison</a>
+              <a href="#comparison">Layout Views</a>
               <a href="#mobile">Mobile Walkthrough</a>
               <a href="#results">Results</a>
               <a href="#learned">Learnings</a>
@@ -109,26 +169,26 @@
             <section class="fortiva-panel fortiva-hero-panel">
               <div class="fortiva-hero-copy">
                 <h1>Dell Technologies Rewards Landing Page</h1>
-                <p>Dell Rewards needed a high-converting landing page that clearly communicated program benefits and drove sign-ups. I designed a user-first experience that kept the brand's visual integrity while simplifying the enrollment decision.</p>
+                <p>I designed a conversion-focused landing page experience that simplified Dell Rewards messaging, improved scanability, and guided users toward enrollment through stronger hierarchy and structure.</p>
               </div>
               <aside class="fortiva-metrics">
                 <div class="fortiva-metric">
                   <span class="fortiva-metric-icon" aria-hidden="true">
                     <img src="images/svg/icon-conversion.svg" alt="" class="fortiva-metric-icon-svg" />
                   </span>
-                  <div class="fortiva-metric-copy"><span>+18% increase in Enrollment</span></div>
+                  <div class="fortiva-metric-copy"><span>24% Enrollment Start Rate</span></div>
                 </div>
                 <div class="fortiva-metric">
                   <span class="fortiva-metric-icon" aria-hidden="true">
                     <img src="images/svg/icon-bouncerate.svg" alt="" class="fortiva-metric-icon-svg" />
                   </span>
-                  <div class="fortiva-metric-copy"><span>-10% decrease in Bounce Rate</span></div>
+                  <div class="fortiva-metric-copy"><span>19% Lower-Than-Benchmark Bounce Rate</span></div>
                 </div>
                 <div class="fortiva-metric">
                   <span class="fortiva-metric-icon" aria-hidden="true">
                     <img src="images/svg/icon-ctr.svg" alt="" class="fortiva-metric-icon-svg" />
                   </span>
-                  <div class="fortiva-metric-copy"><span>+50% conversion lift (12% to 18%)</span></div>
+                  <div class="fortiva-metric-copy"><span>17% CTA Engagement Rate</span></div>
                 </div>
               </aside>
             </section>
@@ -144,7 +204,7 @@
               </article>
               <article>
                 <h5>Role</h5>
-                <p>UI Designer<br />Landing page redesign</p>
+                <p>UI/Visual Designer<br />Acquisition landing page design</p>
               </article>
               <article>
                 <h5>Industry</h5>
@@ -158,12 +218,12 @@
 
             <section id="overview" class="fortiva-panel fortiva-text-panel">
               <h2>Overview</h2>
-              <p>Dell Rewards needed a landing page that communicated value quickly and made the enrollment path feel simple. The project focused on balancing brand trust with clearer messaging, stronger hierarchy, and a more guided decision flow for users evaluating whether to join.</p>
+              <p>Dell Rewards included multiple promotional offers, financing details, and membership benefits, creating the challenge of presenting a large amount of information without overwhelming users. The experience needed to communicate value quickly while guiding users through a clear and structured enrollment journey across desktop and mobile.</p>
             </section>
 
             <section id="problem" class="fortiva-panel fortiva-detail-panel">
-              <h2>Problem</h2>
-              <p class="fortiva-detail-intro">The challenge was translating a rewards program with many features into a page users could scan fast. The old structure carried useful content, but it needed tighter hierarchy and a clearer path toward sign-up.</p>
+              <h2>Design Objectives</h2>
+              <p class="fortiva-detail-intro">The challenge was designing a rewards-focused acquisition experience that balanced promotional messaging, financing information, and membership benefits without creating cognitive overload. The structure needed to help users understand the value quickly while keeping enrollment actions clear throughout the experience.</p>
 
               <div class="fortiva-columns">
                 <article>
@@ -176,13 +236,99 @@
                   </ul>
                 </article>
                 <article>
-                  <h4>What needed work</h4>
+                  <h4>What the experience needed to accomplish</h4>
                   <ul>
-                    <li>Program details needed to be easier to scan in sequence</li>
-                    <li>CTA visibility needed to be stronger across the page</li>
-                    <li>Benefits needed clearer grouping and pacing</li>
-                    <li>Content needed to reduce hesitation before enrollment</li>
-                    <li>The page needed to preserve brand trust while simplifying decisions</li>
+                    <li>Communicate rewards and financing clearly above the fold</li>
+                    <li>Create a structured enrollment journey across the page</li>
+                    <li>Balance promotional messaging without overwhelming users</li>
+                    <li>Make benefits easier to scan quickly</li>
+                    <li>Maintain hierarchy across desktop and mobile layouts</li>
+                    <li>Reinforce trust through product-forward design</li>
+                    <li>Create consistent enrollment actions throughout the experience</li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+
+            <section id="wireframes" class="fortiva-panel fortiva-detail-panel dell-wireframe-panel">
+              <h2>Wireframing &amp; Layout Structure</h2>
+              <p class="fortiva-detail-intro">Because this was a from-scratch landing page, the low-fidelity wireframes were used to establish page structure before moving into visual design. The goal was to plan the hierarchy, section pacing, and enrollment path first, then bring the experience to life with Dell&apos;s brand system and product imagery.</p>
+              <p>Rather than showing the full landing page wireframe as one long, unreadable image, the process is shown section by section. Each crop compares the early layout structure with the final high-fidelity design so the strategic decisions are easier to see.</p>
+
+              <div class="dell-wireframe-grid">
+                <article class="dell-wireframe-set">
+                  <h4>Hero Section</h4>
+                  <div class="dell-wireframe-pair">
+                    <figure class="dell-wireframe-card">
+                      <figcaption><span>Wireframe</span><span>Structure</span></figcaption>
+                      <img src="images/portfolio/landers/dell/wireframes/dell-wireframe-hero.jpg" alt="Dell Rewards hero section low-fidelity wireframe" />
+                    </figure>
+                    <figure class="dell-wireframe-card">
+                      <figcaption><span>Final Design</span><span>Execution</span></figcaption>
+                      <img src="images/portfolio/landers/dell/wireframes/dell-final-hero.jpg" alt="Dell Rewards final hero section design" />
+                    </figure>
+                  </div>
+                  <ul class="dell-wireframe-notes">
+                    <li>Rewards value was prioritized above the fold so users could understand the offer quickly.</li>
+                    <li>The primary enrollment CTA was placed within the first scan path.</li>
+                    <li>Product-forward visuals were planned early to help the experience feel credible and branded.</li>
+                  </ul>
+                </article>
+
+                <article class="dell-wireframe-set">
+                  <h4>Rewards &amp; Benefits Modules</h4>
+                  <div class="dell-wireframe-pair">
+                    <figure class="dell-wireframe-card">
+                      <figcaption><span>Wireframe</span><span>Structure</span></figcaption>
+                      <img src="images/portfolio/landers/dell/wireframes/dell-wireframe-benefits.jpg" alt="Dell Rewards benefits module low-fidelity wireframe" />
+                    </figure>
+                    <figure class="dell-wireframe-card">
+                      <figcaption><span>Final Design</span><span>Execution</span></figcaption>
+                      <img src="images/portfolio/landers/dell/wireframes/dell-final-benefits.jpg" alt="Dell Rewards final benefits module design" />
+                    </figure>
+                  </div>
+                  <ul class="dell-wireframe-notes">
+                    <li>Benefits were grouped into smaller modules to make rewards information easier to scan.</li>
+                    <li>The layout reduced cognitive load by separating program details into clear content blocks.</li>
+                    <li>Card-based sections were planned to stack cleanly across desktop and mobile.</li>
+                  </ul>
+                </article>
+
+                <article class="dell-wireframe-set">
+                  <h4>Enrollment CTA Section</h4>
+                  <div class="dell-wireframe-pair">
+                    <figure class="dell-wireframe-card">
+                      <figcaption><span>Wireframe</span><span>Structure</span></figcaption>
+                      <img src="images/portfolio/landers/dell/wireframes/dell-wireframe-cta.jpg" alt="Dell Rewards enrollment CTA low-fidelity wireframe" />
+                    </figure>
+                    <figure class="dell-wireframe-card">
+                      <figcaption><span>Final Design</span><span>Execution</span></figcaption>
+                      <img src="images/portfolio/landers/dell/wireframes/dell-final-cta.jpg" alt="Dell Rewards final enrollment CTA design" />
+                    </figure>
+                  </div>
+                  <ul class="dell-wireframe-notes">
+                    <li>Enrollment actions were repeated after major decision points instead of forcing users back to the top.</li>
+                    <li>The CTA section was designed to feel clear and helpful, not overly aggressive.</li>
+                    <li>Spacing and hierarchy were used to make the next step obvious across screen sizes.</li>
+                  </ul>
+                </article>
+
+                <article class="dell-wireframe-set">
+                  <h4>FAQ &amp; Trust Section</h4>
+                  <div class="dell-wireframe-pair">
+                    <figure class="dell-wireframe-card">
+                      <figcaption><span>Wireframe</span><span>Structure</span></figcaption>
+                      <img src="images/portfolio/landers/dell/wireframes/dell-wireframe-faq.jpg" alt="Dell Rewards FAQ and trust section low-fidelity wireframe" />
+                    </figure>
+                    <figure class="dell-wireframe-card">
+                      <figcaption><span>Final Design</span><span>Execution</span></figcaption>
+                      <img src="images/portfolio/landers/dell/wireframes/dell-final-faq.jpg" alt="Dell Rewards final FAQ and trust section design" />
+                    </figure>
+                  </div>
+                  <ul class="dell-wireframe-notes">
+                    <li>Support content was placed near the end of the journey to answer questions before enrollment.</li>
+                    <li>The section was structured to reduce hesitation without interrupting the main page flow.</li>
+                    <li>Trust-building details were kept organized so users could scan answers quickly.</li>
                   </ul>
                 </article>
               </div>
@@ -190,7 +336,8 @@
 
             <section id="flow" class="fortiva-panel fortiva-detail-panel fortiva-flow-panel">
               <h2>Page Flow</h2>
-              <p class="fortiva-detail-intro">The page was structured into clear, goal-focused sections that guide users from understanding to action.</p>
+              <p class="fortiva-detail-intro">The experience was intentionally structured to guide users from understanding the rewards program to enrollment without overwhelming them with information too early.</p>
+              <p>Each section was designed to answer a specific user question in sequence: what the program offers, how rewards work, why membership is valuable, and how to enroll.</p>
               <div class="fortiva-bullets">
                 <h4>Flow Breakdown</h4>
                 <div class="fortiva-bullets-columns">
@@ -211,8 +358,8 @@
 
             <section id="attention" class="fortiva-panel fortiva-detail-panel fortiva-attention-panel">
               <h2>Design Approach</h2>
-              <p class="fortiva-detail-intro">The layout followed a direct, benefit-led structure with clear hierarchy. The headline focused on immediacy and value while the visual system stayed consistent with Dell&apos;s design language.</p>
-              <p>The redesign used Dell&apos;s signature blue palette, neutral supporting tones, and modular content blocks to keep the experience branded, trustworthy, and easy to navigate.</p>
+              <p class="fortiva-detail-intro">The visual system focused on hierarchy, spacing, and modular content structure to make rewards information easier to scan while maintaining consistency with Dell&apos;s existing brand language.</p>
+              <p>The layout used Dell&apos;s signature blue palette, structured spacing, and product-forward visuals to create a clean, trustworthy experience that guided attention naturally toward enrollment actions.</p>
               <figure class="fortiva-flow-media">
                 <img src="images/portfolio/landers/dell/dell-display-desktop.jpg" alt="Dell Rewards desktop layout" />
               </figure>
@@ -220,22 +367,22 @@
 
             <section id="solution" class="fortiva-panel fortiva-detail-panel">
               <h2>Execution</h2>
-              <p class="fortiva-detail-intro">Strategic CTA placement and cleaner module sequencing kept enrollment top-of-mind without making the experience feel aggressive.</p>
+              <p class="fortiva-detail-intro">The execution focused on building a structured acquisition page from the ground up, using clear hierarchy, modular content, and consistent CTA placement to support the enrollment journey.</p>
 
               <div class="fortiva-bullets">
-                <h4>What Changed</h4>
+                <h4>How the experience was structured</h4>
                 <div class="fortiva-bullets-columns">
                   <ul>
-                    <li>Simplified the rewards story into clearer, scannable chunks</li>
-                    <li>Prioritized enrollment action with stronger CTA visibility</li>
-                    <li>Aligned each section to a single user question</li>
-                    <li>Used layout and spacing to reduce cognitive load</li>
+                    <li>Prioritized the rewards value proposition above the fold</li>
+                    <li>Used modular content sections to improve scanability</li>
+                    <li>Designed clear CTA hierarchy throughout the experience</li>
+                    <li>Simplified large blocks of information into digestible sections</li>
                   </ul>
                   <ul>
-                    <li>Maintained Dell brand consistency across all touchpoints</li>
-                    <li>Kept modules responsive for desktop and mobile parity</li>
-                    <li>Balanced information density with visual breathing room</li>
-                    <li>Reinforced trust through structure and visual consistency</li>
+                    <li>Used product imagery to reinforce trust and legitimacy</li>
+                    <li>Built responsive layouts that maintained hierarchy across screen sizes</li>
+                    <li>Created consistent spacing and pacing between sections</li>
+                    <li>Structured the page to reduce cognitive overload</li>
                   </ul>
                 </div>
               </div>
@@ -287,8 +434,8 @@
 
             <section id="results" class="fortiva-panel case-results-panel" aria-labelledby="results-title">
               <header class="case-results-header">
-                <h2 id="results-title">Dell Rewards Performance Improvements</h2>
-                <p>The redesigned landing page improved enrollment intent by making program value easier to understand and reducing friction between sections. Clearer hierarchy and stronger CTA emphasis helped users stay engaged and move toward sign-up.</p>
+                <h2 id="results-title">Dell Rewards Launch Performance</h2>
+                <p>After launch, the Dell Rewards landing page showed strong engagement across key acquisition metrics. The page structure helped users understand the rewards value quickly, stay engaged through the content, and move toward enrollment through consistent CTA placement across desktop and mobile.</p>
               </header>
 
               <figure class="kpi-performance-chart" aria-labelledby="results-title" aria-describedby="results-summary">
@@ -301,42 +448,42 @@
 
                   <div class="kpi-bar-group">
                     <div class="kpi-bar-track">
-                      <div class="kpi-bar" data-kpi-value="18" data-kpi-direction="positive">
+                      <div class="kpi-bar" data-kpi-value="24" data-kpi-direction="positive">
                         <span class="kpi-bar-value">+18%</span>
                       </div>
                     </div>
-                    <p class="kpi-bar-label">Enrollment</p>
+                    <p class="kpi-bar-label">Enrollment Start Rate</p>
                   </div>
 
                   <div class="kpi-bar-group">
                     <div class="kpi-bar-track">
-                      <div class="kpi-bar" data-kpi-value="-10" data-kpi-direction="negative">
+                      <div class="kpi-bar" data-kpi-value="19" data-kpi-direction="positive">
                         <span class="kpi-bar-value">-10%</span>
                       </div>
                     </div>
-                    <p class="kpi-bar-label">Bounce Rate</p>
+                    <p class="kpi-bar-label">Bounce Below Benchmark</p>
                   </div>
 
                   <div class="kpi-bar-group">
                     <div class="kpi-bar-track">
-                      <div class="kpi-bar" data-kpi-value="50" data-kpi-direction="positive">
+                      <div class="kpi-bar" data-kpi-value="17" data-kpi-direction="positive">
                         <span class="kpi-bar-value">+50%</span>
                       </div>
                     </div>
-                    <p class="kpi-bar-label">Conversion Rate</p>
+                    <p class="kpi-bar-label">CTA Engagement Rate</p>
                   </div>
                 </div>
 
                 <figcaption id="results-summary" class="kpi-screen-reader-summary">
-                  Dell Rewards performance improvements: Enrollment increased by 18 percent, Bounce Rate decreased by 10 percent, and Conversion Rate increased by 50 percent.
+                  Dell Rewards launch performance: 24 percent Enrollment Start Rate, 19 percent lower-than-benchmark Bounce Rate, and 17 percent CTA Engagement Rate.
                 </figcaption>
               </figure>
             </section>
 
             <section id="learned" class="fortiva-panel fortiva-text-panel">
               <h2>Learnings</h2>
-              <p>This project showed how simplifying hierarchy can unlock performance even when the content set is complex. The biggest gains came from structuring information in a clearer sequence, preserving trust through brand consistency, and keeping the enrollment path visible throughout the experience.</p>
-              <p>Aligning messaging, layout, and interaction intent produced stronger engagement and conversion outcomes without overcomplicating the page design.</p>
+              <p>This project reinforced how important hierarchy and pacing are when designing acquisition-focused landing pages with large amounts of promotional and rewards content. The challenge was not adding more information, but organizing the experience in a way that helped users understand the value quickly without feeling overwhelmed.</p>
+              <p>It also reinforced the importance of designing modular systems that maintain clarity across desktop and mobile experiences. Many of the strongest decisions came from simplifying layout structure, creating more intentional section flow, and guiding attention toward a single clear enrollment path.</p>
             </section>
 
             <section id="similar-projects" class="fortiva-similar-projects" aria-labelledby="similar-projects-title">
@@ -503,32 +650,6 @@
         });
       });
 
-      const bars = Array.from(document.querySelectorAll(".kpi-bar[data-kpi-value]"));
-      if (bars.length) {
-        const maxValue = bars
-          .map((bar) => Number.parseFloat(bar.dataset.kpiValue))
-          .filter((value) => Number.isFinite(value))
-          .reduce((max, value) => Math.max(max, Math.abs(value)), 0);
-
-        bars.forEach((bar) => {
-          const value = Number.parseFloat(bar.dataset.kpiValue);
-          if (!Number.isFinite(value) || maxValue === 0) {
-            bar.style.setProperty("--bar-scale", 0);
-            return;
-          }
-
-          const scale = Math.min(1, Math.abs(value) / maxValue);
-          bar.style.setProperty("--bar-scale", scale.toString());
-          bar.dataset.kpiDirection = value < 0 ? "negative" : "positive";
-
-          const valueLabel = bar.querySelector(".kpi-bar-value");
-          if (valueLabel) {
-            const formattedValue = `${value > 0 ? "+" : ""}${value}%`;
-            valueLabel.textContent = formattedValue;
-            bar.setAttribute("aria-label", `${formattedValue} ${value < 0 ? "decrease" : "increase"}`);
-          }
-        });
-      }
     </script>
   </body>
 </html>
