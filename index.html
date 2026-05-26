@@ -33,7 +33,7 @@
 
     <!-- Core site stylesheets -->
     <link href="css/plugins.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/style.css?v=2026-05-14-1" rel="stylesheet" />
 
     <title>Steven Lindgren | Design Portfolio</title>
   </head>
@@ -42,6 +42,7 @@
   <body>
     <!-- Page Wrapper -->
     <div id="page-wrapper">
+      <div id="top" aria-hidden="true"></div>
       <!-- Header and primary navigation -->
       <header id="header" class="scroll-hide">
         <div class="header-wrapper">
@@ -52,23 +53,48 @@
                 <span class="logo-name">Steven Lindgren</span>
               </a>
             </div>
-            <nav id="menu-center">
-              <div class="nav-desktop-pill" aria-label="Primary">
-                <span class="nav-desktop-pill-indicator" aria-hidden="true"></span>
-                <a href="#top" class="nav-home-link">Home</a>
-                <a href="#about">About</a>
-                <a href="#work">Work</a>
-                <a href="#contact">Contact</a>
+            <div class="nav-desktop-links" aria-label="Primary">
+              <a href="#top" class="nav-home-link nav-primary-link">Home</a>
+              <a href="#about" class="nav-primary-link">About</a>
+              <div class="nav-desktop-item nav-desktop-item-work">
+                <a href="#work" class="nav-primary-link nav-work-trigger" aria-haspopup="true">Work</a>
+                <div class="nav-desktop-submenu" aria-label="Work menu">
+                  <a href="#work" class="nav-work-sublink">Section 01</a>
+                  <a href="#work" class="nav-work-sublink">Section 02</a>
+                  <a href="#work" class="nav-work-sublink">Section 03</a>
+                  <a href="#work" class="nav-work-sublink">Section 04</a>
+                </div>
               </div>
+              <a href="#contact" class="nav-primary-link">Contact</a>
+            </div>
+            <nav id="menu-center">
               <div class="menu-button menu-open">
                 <span class="open-icon" aria-hidden="true"></span>
                 <i class="close-icon ion-android-close"></i>
               </div>
               <ul class="flexnav standard" data-breakpoint="1024">
-                <li><a href="#top" class="nav-home-link">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#top" class="nav-home-link nav-primary-link">Home</a></li>
+                <li><a href="#about" class="nav-primary-link">About</a></li>
+                <li class="nav-has-submenu">
+                  <div class="nav-mobile-parent">
+                    <a href="#work" class="nav-primary-link">Work</a>
+                    <button
+                      type="button"
+                      class="nav-submenu-toggle"
+                      aria-expanded="false"
+                      aria-label="Toggle Work submenu"
+                    >
+                      <span aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <ul class="nav-mobile-submenu" aria-label="Work submenu">
+                    <li><a href="#work">Section 01</a></li>
+                    <li><a href="#work">Section 02</a></li>
+                    <li><a href="#work">Section 03</a></li>
+                    <li><a href="#work">Section 04</a></li>
+                  </ul>
+                </li>
+                <li><a href="#contact" class="nav-primary-link">Contact</a></li>
                 <li class="nav-email-cta">
                   <a href="mailto:steven.lindgren@gmail.com">
                     <i class="fa-regular fa-envelope" aria-hidden="true"></i>
@@ -104,11 +130,7 @@
                     >
                   </h1>
                   <p>
-                    I've always been drawn to things that blend art and
-                    precision, from fly fishing to golf and
-                    design. Each one takes patience, rhythm, and intuition,
-                    which is how I approach every project. I focus on creating design that feels balanced,
-                    purposeful, and effortless.
+                    I've always been drawn to things that blend creativity and precision, from fly fishing to golf. That same mindset shapes how I approach design: clear thinking, attention to detail, and experiences that feel intuitive to use.
                   </p>
                   <a
                     href="#contact"
@@ -407,7 +429,7 @@
     <!-- Scripts -->
     <script src="js/plugins.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=2026-05-14-1"></script>
     <!-- Scripts Ends -->
   </body>
 </html>

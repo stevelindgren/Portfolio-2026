@@ -7,7 +7,6 @@ $(document).ready(function() {
     
     // Initialize
     initFlexNav();
-    initDesktopPillNav();
     initScrollEffects();
     initMobileMenu();
     initSmoothScroll();
@@ -20,13 +19,35 @@ $(document).ready(function() {
 function initFlexNav() {
     const menuButton = $('#menu-center .menu-button');
     const nav = $('.flexnav.standard');
+    const submenuItems = nav.find('.nav-has-submenu');
+    const submenuToggles = submenuItems.find('.nav-submenu-toggle');
+    const submenuParentLinks = submenuItems.find('.nav-mobile-parent > a');
     if (!menuButton.length || !nav.length) return;
+
+    function closeSubmenus() {
+        submenuItems.removeClass('submenu-open');
+        submenuToggles.attr('aria-expanded', 'false');
+    }
+
+    function toggleSubmenu(parentItem, trigger) {
+        const isOpen = parentItem.hasClass('submenu-open');
+
+        submenuItems.not(parentItem).removeClass('submenu-open');
+        submenuToggles.not(trigger).attr('aria-expanded', 'false');
+
+        parentItem.toggleClass('submenu-open', !isOpen);
+        parentItem.find('.nav-submenu-toggle').attr('aria-expanded', !isOpen ? 'true' : 'false');
+    }
 
     function setMenuState(isMenuOpen) {
         nav.toggleClass('flexnav-show', isMenuOpen);
         menuButton.toggleClass('menu-open', !isMenuOpen);
         menuButton.toggleClass('menu-close', isMenuOpen);
         menuButton.attr('aria-expanded', isMenuOpen ? 'true' : 'false');
+
+        if (!isMenuOpen) {
+            closeSubmenus();
+        }
     }
 
     menuButton.off('click.flexnav').on('click.flexnav', function(event) {
@@ -38,7 +59,26 @@ function initFlexNav() {
 
     nav.find('a').off('click.flexnav').on('click.flexnav', function() {
         if (window.innerWidth > 1024) return;
+        if ($(this).closest('.nav-mobile-parent').length) return;
         setMenuState(false);
+    });
+
+    submenuToggles.off('click.flexnav').on('click.flexnav', function(event) {
+        const parentItem = $(this).closest('.nav-has-submenu');
+
+        if (window.innerWidth > 1024) return;
+        event.preventDefault();
+        event.stopPropagation();
+        toggleSubmenu(parentItem, this);
+    });
+
+    submenuParentLinks.off('click.flexnav').on('click.flexnav', function(event) {
+        const parentItem = $(this).closest('.nav-has-submenu');
+
+        if (window.innerWidth > 1024) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        toggleSubmenu(parentItem, parentItem.find('.nav-submenu-toggle').get(0));
     });
 
     $(window).off('resize.flexnav').on('resize.flexnav', function() {
@@ -143,6 +183,12 @@ function initMobileMenu() {
 // SMOOTH SCROLL & ACTIVE STATES
 // ================================================
 function initSmoothScroll() {
+    const navLinks = $('.nav-desktop-links .nav-primary-link, #menu-center .flexnav.standard > li > .nav-primary-link');
+    const sectionLinks = navLinks.filter(function() {
+        const href = $(this).attr('href');
+        return href && href.startsWith('#');
+    });
+
     $('a[href^="#"]').on('click', function(e) {
         const target = $(this.hash);
         
@@ -150,6 +196,10 @@ function initSmoothScroll() {
             e.preventDefault();
 
             const isTopAnchor = this.hash === '#top';
+            const hash = this.hash;
+
+            sectionLinks.removeClass('active');
+            sectionLinks.filter(`[href="${hash}"]`).addClass('active');
             
             $('html, body').animate({
                 scrollTop: isTopAnchor ? 0 : target.offset().top - 75
@@ -162,139 +212,28 @@ function initSmoothScroll() {
     });
     
     $(window).on('scroll', updateActiveNavLinks);
+    updateActiveNavLinks();
     
     function updateActiveNavLinks() {
-        const scrollPos = $(window).scrollTop() + 100;
-        
-        $('.nav-link').each(function() {
-            const link = $(this);
-            const href = link.attr('href');
-            
-            if (href && href.startsWith('#')) {
-                const section = $(href);
-                
-                if (section.length) {
-                    const sectionTop = section.offset().top;
-                    const sectionBottom = sectionTop + section.outerHeight();
-                    
-                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
-                        $('.nav-link').removeClass('active');
-                        link.addClass('active');
-                    }
-                }
+        const scrollPos = $(window).scrollTop() + 120;
+        let activeHref = '#top';
+
+        sectionLinks.each(function() {
+            const href = $(this).attr('href');
+            const section = $(href);
+
+            if (!section.length || href === '#top') {
+                return;
+            }
+
+            if (scrollPos >= section.offset().top) {
+                activeHref = href;
             }
         });
-        
-        if ($(window).scrollTop() < 50) {
-            $('.nav-link').removeClass('active');
-        }
+
+        sectionLinks.removeClass('active');
+        sectionLinks.filter(`[href="${activeHref}"]`).addClass('active');
     }
-}
-
-// ================================================
-// DESKTOP PILL NAV
-// ================================================
-function initDesktopPillNav() {
-    const pills = Array.from(document.querySelectorAll('.nav-desktop-pill'));
-    if (!pills.length) return;
-
-    pills.forEach((pill) => {
-        const indicator = pill.querySelector('.nav-desktop-pill-indicator');
-        const links = Array.from(pill.querySelectorAll('a'));
-        if (!indicator || !links.length) return;
-
-        let activeLink = null;
-
-        function clearActive() {
-            links.forEach((link) => link.classList.remove('is-active'));
-            activeLink = null;
-            pill.classList.remove('has-active');
-            indicator.style.width = '0px';
-            indicator.style.transform = 'translateX(0px)';
-            indicator.style.opacity = '0';
-        }
-
-        function moveIndicator(link, persistActive = false) {
-            if (!link || window.innerWidth <= 1024) return;
-            const pillRect = pill.getBoundingClientRect();
-            const linkRect = link.getBoundingClientRect();
-            const left = linkRect.left - pillRect.left;
-
-            indicator.style.width = `${linkRect.width}px`;
-            indicator.style.transform = `translateX(${left}px)`;
-            indicator.style.opacity = '1';
-
-            if (persistActive) {
-                links.forEach((item) => item.classList.toggle('is-active', item === link));
-                activeLink = link;
-                pill.classList.add('has-active');
-            }
-        }
-
-        function updateActiveLink() {
-            if (window.innerWidth <= 1024) {
-                clearActive();
-                return;
-            }
-
-            const samePageLinks = links.filter((link) => {
-                const href = link.getAttribute('href') || '';
-                return href.startsWith('#');
-            });
-            const homeLink = pill.querySelector('.nav-home-link');
-            const sectionLinks = samePageLinks.filter((link) => !link.classList.contains('nav-home-link'));
-
-            if (!samePageLinks.length) {
-                clearActive();
-                return;
-            }
-
-            if (homeLink && window.scrollY < 80) {
-                moveIndicator(homeLink, true);
-                return;
-            }
-
-            const scrollPos = window.scrollY + 120;
-            let matchedLink = null;
-
-            sectionLinks.forEach((link) => {
-                const target = document.querySelector(link.getAttribute('href'));
-                if (!target) return;
-
-                const sectionTop = target.offsetTop;
-                const sectionBottom = sectionTop + target.offsetHeight;
-
-                if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
-                    matchedLink = link;
-                }
-            });
-
-            if (matchedLink) {
-                moveIndicator(matchedLink, true);
-            } else {
-                clearActive();
-            }
-        }
-
-        links.forEach((link) => {
-            link.addEventListener('mouseenter', () => moveIndicator(link, false));
-            link.addEventListener('focus', () => moveIndicator(link, false));
-            link.addEventListener('click', () => moveIndicator(link, true));
-        });
-
-        pill.addEventListener('mouseleave', () => {
-            if (activeLink) {
-                moveIndicator(activeLink, true);
-            } else {
-                clearActive();
-            }
-        });
-
-        window.addEventListener('scroll', updateActiveLink, { passive: true });
-        window.addEventListener('resize', updateActiveLink);
-
-        updateActiveLink();
-    });
 }
 
 // ================================================
