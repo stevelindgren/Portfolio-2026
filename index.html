@@ -39,7 +39,7 @@
   </head>
   <!-- Google tag (gtag.js) -->
 
-  <body>
+  <body class="home-page">
     <!-- Page Wrapper -->
     <div id="page-wrapper">
       <div id="top" aria-hidden="true"></div>
@@ -57,8 +57,8 @@
               <a href="#top" class="nav-home-link nav-primary-link">Home</a>
               <a href="#about" class="nav-primary-link">About</a>
               <div class="nav-desktop-item nav-desktop-item-work">
-                <a href="#work" class="nav-primary-link nav-work-trigger" aria-haspopup="true">Work</a>
-                <div class="nav-desktop-submenu" aria-label="Work menu">
+                <a href="#work" class="nav-primary-link nav-work-trigger" aria-haspopup="true">Case Studies</a>
+                <div class="nav-desktop-submenu" aria-label="Case Studies menu">
                   <a href="#work" class="nav-work-sublink">Section 01</a>
                   <a href="#work" class="nav-work-sublink">Section 02</a>
                   <a href="#work" class="nav-work-sublink">Section 03</a>
@@ -77,17 +77,17 @@
                 <li><a href="#about" class="nav-primary-link">About</a></li>
                 <li class="nav-has-submenu">
                   <div class="nav-mobile-parent">
-                    <a href="#work" class="nav-primary-link">Work</a>
+                    <a href="#work" class="nav-primary-link">Case Studies</a>
                     <button
                       type="button"
                       class="nav-submenu-toggle"
                       aria-expanded="false"
-                      aria-label="Toggle Work submenu"
+                      aria-label="Toggle Case Studies submenu"
                     >
                       <span aria-hidden="true"></span>
                     </button>
                   </div>
-                  <ul class="nav-mobile-submenu" aria-label="Work submenu">
+                  <ul class="nav-mobile-submenu" aria-label="Case Studies submenu">
                     <li><a href="#work">Section 01</a></li>
                     <li><a href="#work">Section 02</a></li>
                     <li><a href="#work">Section 03</a></li>
@@ -130,10 +130,10 @@
                     >
                   </h1>
                   <p>
-                    I've always been drawn to things that blend creativity and precision, from fly fishing to golf. That same mindset shapes how I approach design: clear thinking, attention to detail, and experiences that feel intuitive to use.
+                    I've always been drawn to things that blend creativity and precision, from Photography to fly fishing. That same mindset shapes how I approach design: clear thinking, attention to detail, and experiences that feel intuitive to use.
                   </p>
                   <a
-                    href="#contact"
+                    href="#work"
                     class="button hero-cta-button glow-on-hover"
                   >
                     <span class="hero-cta-label">Read Case Studies</span>
@@ -147,26 +147,36 @@
               <div class="portfolio-wrap fade-in" id="work">
                 <!-- Portfolio Items -->
                 <div id="portfolio-container">
-                  <div class="portfolio-section-heading col-12">
+                  <!-- <div class="portfolio-section-heading col-12">
                     <h2>Web</h2>
-                  </div>
+                  </div> -->
                   <!-- Landing Pages -->
                   <div class="portfolio-item col-lg-6 col-12">
-                    <a href="lander-fortiva.html">
+                    <a href="lander-fortiva-newcasestudy.html">
                       <div class="portfolio-content">
                         <div class="portfolio-img-content">
-                          <img
-                            src="images/portfolio/landers/fortiva/display-port-600x400-fortiva.jpg"
-                            alt="Fortiva Mastercard Landing Page"
-                            class="portfolio-image"
-                          />
+                          <video
+                            class="portfolio-video"
+                            loop
+                            muted
+                            playsinline
+                            preload="metadata"
+                            data-play-when-full-view="true"
+                            poster="images/portfolio/landers/fortiva/new/fortiva-video-poster.png"
+                            aria-label="Fortiva Mastercard landing page preview video"
+                          >
+                            <source
+                              src="images/portfolio/landers/fortiva/new/fortiva-index-display.mp4"
+                              type="video/mp4"
+                            />
+                          </video>
                         </div>
                         <div class="portfolio-footer">
                           <div class="portfolio-text">
                             <h3>Fortiva Mastercard</h3>
-                            <h4>UI Design-Landing Page</h4>
+                            <h4>Landing Page Design</h4>
                           </div>
-                          <button class="overlay-button">View Project</button>
+                          <button class="overlay-button">View Case Study</button>
                         </div>
                       </div>
                     </a>
@@ -186,7 +196,7 @@
                             <h3>Dell Technologies</h3>
                             <h4>UI Design-Landing page</h4>
                           </div>
-                          <button class="overlay-button">View Project</button>
+                          <button class="overlay-button">View Case Study</button>
                         </div>
                       </div>
                     </a>
@@ -429,7 +439,7 @@
     <!-- Scripts -->
     <script src="js/plugins.js"></script>
 
-    <script src="js/main.js?v=2026-05-14-1"></script>
+    <script src="js/main.js?v=2026-05-21-1"></script>
     <!-- Scripts Ends -->
   </body>
 </html>

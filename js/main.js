@@ -399,16 +399,18 @@ $('#portfolio-slider4').owlCarousel({
 
 $(window).on('load', function() {
     var $container = $('#portfolio-container');
-    $container.isotope({
-        masonry: { columnWidth: '.portfolio-item' },
-        itemSelector: '.portfolio-item'
-    });
-    $('#filters').on('click', 'li', function() {
-        $('#filters li').removeClass('active');
-        $(this).addClass('active');
-        var filterValue = $(this).attr('data-filter');
-        $container.isotope({ filter: filterValue });
-    });
+    if (!$('body').hasClass('home-page')) {
+        $container.isotope({
+            masonry: { columnWidth: '.portfolio-item' },
+            itemSelector: '.portfolio-item'
+        });
+        $('#filters').on('click', 'li', function() {
+            $('#filters li').removeClass('active');
+            $(this).addClass('active');
+            var filterValue = $(this).attr('data-filter');
+            $container.isotope({ filter: filterValue });
+        });
+    }
 });
 
 $(document).ready(function() {
@@ -434,6 +436,27 @@ $('.cs-image-popup').magnificPopup({
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+    const isHomePage = document.body.classList.contains('home-page');
+
+    if (isHomePage) {
+        const caseStudyContainer = document.querySelector('#work #portfolio-container');
+        const caseStudyItems = Array.from(document.querySelectorAll('#work .portfolio-item'));
+        const caseStudyCount = caseStudyItems.length;
+
+        if (caseStudyContainer && caseStudyCount > 0) {
+            caseStudyContainer.style.setProperty('--case-study-count', String(caseStudyCount));
+        }
+
+        caseStudyItems.forEach((item, index) => {
+            item.classList.remove('scroll-in', 'scroll-in-left', 'scroll-in-right', 'scroll-in-up', 'show');
+            item.style.setProperty('--case-study-index', String(index + 1));
+            item.style.setProperty('--case-study-index0', String(index));
+            item.style.setProperty('--case-study-reverse-index', String(caseStudyCount - index));
+            item.style.setProperty('--case-study-reverse-index0', String((caseStudyCount - index) - 1));
+            item.style.setProperty('--case-study-stack-z', String(index + 1));
+        });
+    }
+
     const scrollElements = document.querySelectorAll(".scroll-in");
     
     const elementInView = (el, dividend = 1) => {
@@ -456,4 +479,86 @@ document.addEventListener("DOMContentLoaded", function() {
     
     handleScrollAnimation();
     window.addEventListener("scroll", handleScrollAnimation);
+
+    const fullViewVideos = Array.from(
+        document.querySelectorAll('video[data-play-when-full-view="true"]')
+    );
+
+    if (fullViewVideos.length) {
+        const getVisibleRatio = (video) => {
+            const rect = video.getBoundingClientRect();
+            const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+            const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+            const visibleWidth = Math.max(0, Math.min(rect.right, viewportWidth) - Math.max(rect.left, 0));
+            const visibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
+            const visibleArea = visibleWidth * visibleHeight;
+            const totalArea = rect.width * rect.height;
+
+            return totalArea > 0 ? (visibleArea / totalArea) : 0;
+        };
+
+        const isVideoFullyInViewport = (video) => {
+            const rect = video.getBoundingClientRect();
+            const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+            const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+            const tolerance = 1;
+            const fullyFitsViewport =
+                rect.width <= viewportWidth + tolerance &&
+                rect.height <= viewportHeight + tolerance;
+
+            if (fullyFitsViewport) {
+                return (
+                    rect.top >= -tolerance &&
+                    rect.left >= -tolerance &&
+                    rect.bottom <= viewportHeight + tolerance &&
+                    rect.right <= viewportWidth + tolerance
+                );
+            }
+
+            const visibleRatio = getVisibleRatio(video);
+            const maxVisibleArea = Math.min(rect.width, viewportWidth) * Math.min(rect.height, viewportHeight);
+            const maxVisibleRatio = rect.width > 0 && rect.height > 0
+                ? Math.min(1, maxVisibleArea / (rect.width * rect.height))
+                : 0;
+            const adaptiveThreshold = Math.max(0.72, maxVisibleRatio - 0.02);
+
+            return (
+                visibleRatio >= adaptiveThreshold &&
+                rect.bottom > tolerance &&
+                rect.top < (viewportHeight - tolerance)
+            );
+        };
+
+        const syncVideoPlayback = (video) => {
+            if (isVideoFullyInViewport(video)) {
+                const playPromise = video.play();
+                if (playPromise && typeof playPromise.catch === "function") {
+                    playPromise.catch(() => {});
+                }
+            } else {
+                video.pause();
+            }
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                syncVideoPlayback(entry.target);
+            });
+        }, {
+            threshold: [0, 0.25, 0.5, 0.7, 0.85, 1]
+        });
+
+        fullViewVideos.forEach((video) => {
+            video.pause();
+            observer.observe(video);
+            syncVideoPlayback(video);
+        });
+
+        const refreshPlayback = () => {
+            fullViewVideos.forEach(syncVideoPlayback);
+        };
+
+        window.addEventListener("resize", refreshPlayback);
+        window.addEventListener("scroll", refreshPlayback, { passive: true });
+    }
 });

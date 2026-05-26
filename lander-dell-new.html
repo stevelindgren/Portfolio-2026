@@ -21,18 +21,59 @@
         <div class="header-wrapper">
           <div class="container">
             <div id="logo">
-              <a href="https://stevenlindgren.com/">Steven Lindgren</a>
+              <a href="https://stevenlindgren.com/">
+                <span class="logo-avatar-placeholder" aria-hidden="true"></span>
+                <span class="logo-name">Steven Lindgren</span>
+              </a>
+            </div>
+            <div class="nav-desktop-links" aria-label="Primary">
+              <a href="#top" class="nav-home-link nav-primary-link">Home</a>
+              <a href="#about" class="nav-primary-link">About</a>
+              <div class="nav-desktop-item nav-desktop-item-work">
+                <a href="#work" class="nav-primary-link nav-work-trigger" aria-haspopup="true">Case Studies</a>
+                <div class="nav-desktop-submenu" aria-label="Case Studies menu">
+                  <a href="#work" class="nav-work-sublink">Section 01</a>
+                  <a href="#work" class="nav-work-sublink">Section 02</a>
+                  <a href="#work" class="nav-work-sublink">Section 03</a>
+                  <a href="#work" class="nav-work-sublink">Section 04</a>
+                </div>
+              </div>
+              <a href="#contact" class="nav-primary-link">Contact</a>
             </div>
             <nav id="menu-center">
               <div class="menu-button menu-open">
                 <span class="open-icon" aria-hidden="true"></span>
                 <i class="close-icon ion-android-close"></i>
               </div>
-              <ul class="flexnav standard" data-breakpoint="800">
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#work">Work</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-                <li class="nav-email-cta"><a href="mailto:steven.lindgren@gmail.com">Send me an email</a></li>
+              <ul class="flexnav standard" data-breakpoint="1024">
+                <li><a href="#top" class="nav-home-link nav-primary-link">Home</a></li>
+                <li><a href="#about" class="nav-primary-link">About</a></li>
+                <li class="nav-has-submenu">
+                  <div class="nav-mobile-parent">
+                    <a href="#work" class="nav-primary-link">Case Studies</a>
+                    <button
+                      type="button"
+                      class="nav-submenu-toggle"
+                      aria-expanded="false"
+                      aria-label="Toggle Case Studies submenu"
+                    >
+                      <span aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <ul class="nav-mobile-submenu" aria-label="Case Studies submenu">
+                    <li><a href="#work">Section 01</a></li>
+                    <li><a href="#work">Section 02</a></li>
+                    <li><a href="#work">Section 03</a></li>
+                    <li><a href="#work">Section 04</a></li>
+                  </ul>
+                </li>
+                <li><a href="#contact" class="nav-primary-link">Contact</a></li>
+                <li class="nav-email-cta">
+                  <a href="mailto:steven.lindgren@gmail.com">
+                    <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                    <span>Say Hello</span>
+                  </a>
+                </li>
                 <li class="nav-linkedin-cta">
                   <a href="https://www.linkedin.com/in/steven-l-9a62487/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
                     <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
