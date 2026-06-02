@@ -131,17 +131,101 @@
                     >
                   </h1>
                   <p>
-                    I've always been drawn to things that blend creativity and precision, from Photography to fly fishing. That same mindset shapes how I approach design: clear thinking, attention to detail, and experiences that feel intuitive to use.
+                    I've always been drawn to things that blend creativity and precision, from
+                    <a
+                      class="hero-interest-chip hero-interest-chip-photography"
+                      href="https://500px.com/manager?view=photos&amp;filter=all"
+                      target="_blank"
+                      rel="noreferrer"
+                      tabindex="0"
+                      data-interest-preview="photography"
+                      data-preview-title="Through my lens"
+                      data-preview-copy="Finding the right frame through light, timing, and small details."
+                    >
+                      <i class="fa-brands fa-500px" aria-hidden="true"></i>
+                      Photography
+                    </a>
+                    to
+                    <span
+                      class="hero-interest-chip hero-interest-chip-fishing"
+                      tabindex="0"
+                      data-interest-preview="fishing"
+                      data-preview-title="Where I slow down"
+                      data-preview-copy="Time on the water helps me reset, stay present, and appreciate the details."
+                    >
+                      <i class="fa-solid fa-water" aria-hidden="true"></i>
+                      fly fishing
+                    </span>.
+                    That same mindset shapes how I approach design: clear thinking, attention to detail, and experiences that feel intuitive to use.
                   </p>
-                  <a
-                    href="#work"
-                    class="button hero-cta-button glow-on-hover"
-                  >
-                    <span class="hero-cta-label">Read Case Studies</span>
-                    <i class="fa-solid fa-arrow-right hero-cta-arrow" aria-hidden="true"></i>
-                  </a>
+                  <section class="hero-case-stack" aria-label="Featured case studies">
+                    <article class="hero-case-preview hero-case-preview-fortiva">
+                      <div class="hero-case-preview-content hero-case-preview-content-featured">
+                        <h2>Recent work</h2>
+                        <p>See how I turn landing page ideas into clear, conversion-focused digital experiences.</p>
+                        <a href="#work">Read Case Studies</a>
+                      </div>
+                    </article>
+                    <div class="hero-case-work-fan" aria-hidden="true">
+                      <img
+                        class="hero-case-work-fan-item hero-case-work-fan-left"
+                        src="images/portfolio/landers/dell/display-port-600x400-dell.jpg"
+                        alt=""
+                      />
+                      <img
+                        class="hero-case-work-fan-item hero-case-work-fan-center"
+                        src="images/portfolio/landers/fortiva/new/display-port-600x400-fortiva.jpg"
+                        alt=""
+                      />
+                      <img
+                        class="hero-case-work-fan-item hero-case-work-fan-right"
+                        src="images/portfolio/landers/aboc/display-port-600x400-aboc.jpg"
+                        alt=""
+                      />
+                    </div>
+
+                    <article class="hero-case-preview hero-case-preview-dell hero-case-preview-photo">
+                      <button
+                        class="hero-case-video-trigger"
+                        type="button"
+                        aria-label="Play introduction video"
+                        aria-haspopup="dialog"
+                        aria-controls="hero-intro-video-modal"
+                      >
+                        <img class="hero-case-photo" src="images/main/me.JPG" alt="Portrait of Steven Lindgren" />
+                      </button>
+                    </article>
+
+                    <article class="hero-case-preview hero-case-preview-aboc">
+                      <div class="hero-case-preview-content hero-case-preview-content-featured">
+                        <h2>About me</h2>
+                        <p>I blend visual design, digital thinking, and a growth mindset to make experiences feel clear and intentional.</p>
+                        <a href="#about">More About Me</a>
+                      </div>
+                    </article>
+
+                    <article class="hero-case-preview hero-case-preview-revive">
+                      <div class="hero-case-preview-content hero-case-preview-content-featured">
+                        <h2>Let's connect</h2>
+                        <p>Have a role, project, or landing page challenge in mind? I'd love to hear about it.</p>
+                        <a href="mailto:steven.lindgren@gmail.com">Say Hello</a>
+                      </div>
+                    </article>
+                  </section>
                 </div>
               </div>
+
+              <aside class="hero-interest-preview" aria-hidden="true">
+                <div class="hero-interest-preview-media">
+                  <img class="hero-interest-preview-photo" src="images/main/photography-preview.jpg" alt="" />
+                  <img class="hero-interest-preview-fishing" src="images/main/photography-preview-fly-fishing.jpg" alt="" />
+                  <i class="fa-brands fa-500px" aria-hidden="true"></i>
+                </div>
+                <div class="hero-interest-preview-copy">
+                  <strong>Through my lens</strong>
+                  <span>Finding the right frame through light, timing, and small details.</span>
+                </div>
+              </aside>
 
               <!-- Portfolio Wrap -->
 
@@ -437,6 +521,36 @@
       /></span>
     </div>
     <!-- Page Wrapper Ends -->
+    <div
+      class="hero-video-modal"
+      id="hero-intro-video-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="hero-intro-video-title"
+      hidden
+    >
+      <div class="hero-video-modal-backdrop" data-hero-video-close></div>
+      <div class="hero-video-modal-dialog">
+        <h2 class="sr-only" id="hero-intro-video-title">Introduction video</h2>
+        <button
+          class="hero-video-modal-close"
+          type="button"
+          aria-label="Close introduction video"
+          data-hero-video-close
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <video
+          class="hero-video-modal-player"
+          controls
+          playsinline
+          preload="metadata"
+          poster="images/main/me.JPG"
+        >
+          <source src="images/main/me.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
     <!-- Scripts -->
     <script src="js/plugins.js"></script>
 

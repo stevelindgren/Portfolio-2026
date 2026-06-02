@@ -11,6 +11,8 @@ $(document).ready(function() {
     initMobileMenu();
     initSmoothScroll();
     initBackToTop();
+    initHeroVideoModal();
+    initHeroInterestPreviews();
 });
 
 // ================================================
@@ -260,6 +262,140 @@ function initBackToTop() {
             e.preventDefault();
             $(this).trigger('click');
         }
+    });
+}
+
+// ================================================
+// HERO INTRO VIDEO MODAL
+// ================================================
+function initHeroVideoModal() {
+    const modal = document.querySelector('#hero-intro-video-modal');
+    const trigger = document.querySelector('.hero-case-video-trigger');
+
+    if (!modal || !trigger) {
+        return;
+    }
+
+    const video = modal.querySelector('.hero-video-modal-player');
+    const closeButton = modal.querySelector('.hero-video-modal-close');
+    const closeTargets = Array.from(modal.querySelectorAll('[data-hero-video-close]'));
+    let closeTimer;
+
+    function openModal() {
+        window.clearTimeout(closeTimer);
+        modal.hidden = false;
+        document.body.classList.add('hero-video-modal-open');
+
+        window.requestAnimationFrame(() => {
+            modal.classList.add('is-open');
+        });
+
+        if (closeButton) {
+            closeButton.focus();
+        }
+
+        if (video) {
+            const playPromise = video.play();
+            if (playPromise) {
+                playPromise.catch(() => {});
+            }
+        }
+    }
+
+    function closeModal() {
+        modal.classList.remove('is-open');
+        document.body.classList.remove('hero-video-modal-open');
+
+        if (video) {
+            video.pause();
+        }
+
+        closeTimer = window.setTimeout(() => {
+            modal.hidden = true;
+        }, 240);
+
+        trigger.focus();
+    }
+
+    trigger.addEventListener('click', openModal);
+
+    closeTargets.forEach((target) => {
+        target.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modal.hidden) {
+            closeModal();
+        }
+    });
+}
+
+// ================================================
+// HERO INTEREST PREVIEWS
+// ================================================
+function initHeroInterestPreviews() {
+    const chips = Array.from(document.querySelectorAll('[data-interest-preview]'));
+    const preview = document.querySelector('.hero-interest-preview');
+
+    if (!chips.length || !preview) {
+        return;
+    }
+
+    const previewIcon = preview.querySelector('.hero-interest-preview-media i');
+    const previewTitle = preview.querySelector('.hero-interest-preview-copy strong');
+    const previewCopy = preview.querySelector('.hero-interest-preview-copy span');
+    const edgeInset = 16;
+    const previewGap = 12;
+
+    function setPreviewContent(chip) {
+        const previewType = chip.dataset.interestPreview;
+
+        preview.dataset.previewActive = previewType;
+        previewTitle.textContent = chip.dataset.previewTitle || '';
+        previewCopy.textContent = chip.dataset.previewCopy || '';
+        previewIcon.className = previewType === 'fishing'
+            ? 'fa-solid fa-water'
+            : 'fa-brands fa-500px';
+    }
+
+    function positionPreview(chip, clientX) {
+        const chipRect = chip.getBoundingClientRect();
+        const previewRect = preview.getBoundingClientRect();
+        const maxX = window.innerWidth - previewRect.width - edgeInset;
+        const x = Math.min(Math.max(edgeInset, clientX - (previewRect.width / 2)), maxX);
+        const y = Math.max(edgeInset, chipRect.top - previewRect.height - previewGap);
+
+        preview.style.setProperty('--interest-preview-x', `${x}px`);
+        preview.style.setProperty('--interest-preview-y', `${y}px`);
+    }
+
+    function showPreview(chip, clientX) {
+        setPreviewContent(chip);
+        positionPreview(chip, clientX);
+        preview.classList.add('is-visible');
+    }
+
+    function hidePreview() {
+        preview.classList.remove('is-visible');
+    }
+
+    chips.forEach((chip) => {
+        chip.addEventListener('mouseenter', (event) => {
+            showPreview(chip, event.clientX);
+        });
+
+        chip.addEventListener('mousemove', (event) => {
+            positionPreview(chip, event.clientX);
+        });
+
+        chip.addEventListener('mouseleave', hidePreview);
+
+        chip.addEventListener('focus', () => {
+            const rect = chip.getBoundingClientRect();
+            showPreview(chip, rect.left + (rect.width / 2));
+        });
+
+        chip.addEventListener('blur', hidePreview);
     });
 }
 
