@@ -15,7 +15,11 @@ p, p.summary-text {
     --space-48: 48px;
     --space-64: 64px;
     --section-gap: var(--space-48);
-    --section-gap-mobile: var(--space-24)
+    --section-gap-mobile: var(--space-24);
+    --site-accent: #39bfb3;
+    --site-accent-strong: #2ca999;
+    --site-accent-hover: #56cec4;
+    --site-accent-soft: #b8ebe6;
 }
 
 a.button.dark, a.button:hover {
@@ -419,7 +423,7 @@ a.button, button {
 }
 
 .btn-animated {
-    background: #006cff;
+    background: var(--site-accent);
     color: #fff;
     transition: background-color .2s ease-in-out;
     border: none;
@@ -428,12 +432,12 @@ a.button, button {
 }
 
 .btn-primary, a.button {
-    background-color: #006cff;
+    background-color: var(--site-accent);
     color: #fff
 }
 
 .btn-animated:hover {
-    background-color: #0078ff;
+    background-color: var(--site-accent-hover);
 }
 
 @keyframes gradientAnimation {
@@ -447,17 +451,17 @@ a.button, button {
 }
 
 .btn-primary {
-    border-color: #006cff
+    border-color: var(--site-accent)
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #0078ff;
-    border-color: #0078ff
+    background-color: var(--site-accent-hover);
+    border-color: var(--site-accent-hover)
 }
 
 a.button {
-    border: 1px solid #006cff;
+    border: 1px solid var(--site-accent);
     border-radius: 10px;
     -webkit-transition: .3s;
     -moz-transition: .3s;
@@ -465,20 +469,20 @@ a.button {
 }
 
 a.button:hover {
-    background: #0078ff;
-    border-color: #0078ff;
+    background: var(--site-accent-hover);
+    border-color: var(--site-accent-hover);
     color: #fff
 }
 
 a.button.dark:hover {
-    background: #0078ff;
+    background: var(--site-accent-hover);
     color: #fff
 }
 
 button {
     color: #fff;
-    background-color: #006cff;
-    border: 1px solid #006cff;
+    background-color: var(--site-accent);
+    border: 1px solid var(--site-accent);
     -webkit-transition: .3s;
     -moz-transition: .3s;
     transition: .3s
@@ -486,8 +490,8 @@ button {
 
 button:hover {
     color: #fff;
-    background-color: #0078ff;
-    border-color: #0078ff
+    background-color: var(--site-accent-hover);
+    border-color: var(--site-accent-hover)
 }
 
 #header {
@@ -770,7 +774,7 @@ button:hover {
     font-weight: 300;
     line-height: 1.2em;
     letter-spacing: -2px;
-    background: linear-gradient(to left, #fe757d, #006cff, #fe757d, #006cff);
+    background: linear-gradient(to left, #fe757d, var(--site-accent), #fe757d, var(--site-accent));
     -webkit-background-clip: text;
     background-clip: text;
     text-fill-color: transparent;
@@ -946,8 +950,8 @@ button:hover {
     justify-content: center;
     width: 40px;
     height: 40px;
-    border: 2px solid #006cff;
-    background-color: #006cff;
+    border: 2px solid var(--site-accent);
+    background-color: var(--site-accent);
     border-radius: 50px;
     cursor: pointer;
     transition: background-color .3s, color .3s, border-color .3s;
@@ -963,8 +967,8 @@ button:hover {
 }
 
 .image-container:hover+.text-container .pill-button {
-    background-color: #0078ff;
-    border-color: #0078ff
+    background-color: var(--site-accent-hover);
+    border-color: var(--site-accent-hover)
 }
 
 #filters li {
@@ -1077,7 +1081,7 @@ button:hover {
     border: none;
     font-size: inherit;
     color: #ffffff;
-    background-color: #006cff;
+    background-color: var(--site-accent);
     border-radius: 5px;
     transition: background-color .2s ease-in-out, color .2s ease-in-out;
     font-weight: 500
@@ -1088,7 +1092,7 @@ button:hover {
 }
 
 .overlay-button:hover {
-    background-color: #0078ff;
+    background-color: var(--site-accent-hover);
     color: #ffffff
 }
 
@@ -1694,7 +1698,7 @@ button:hover {
     margin-right: 8px;
     top: 1px;
     font-weight: 100;
-    color: #006cff
+    color: var(--site-accent)
 }
 
 .project-desc span {
@@ -1806,7 +1810,7 @@ button:hover {
 
 .back-button {
     cursor: pointer;
-    color: #006cff
+    color: var(--site-accent)
 }
 
 .circle-arrow {
@@ -1828,12 +1832,12 @@ button:hover {
 }
 
 .back-button svg circle, .back-button svg path {
-    stroke: #006cff !important
+    stroke: var(--site-accent) !important
 }
 
 .back-button:hover .back-text, .back-button:hover .circle-arrow svg circle, .back-button:hover .circle-arrow svg path {
-    stroke: #0078ff;
-    color: #0078ff
+    stroke: var(--site-accent-hover);
+    color: var(--site-accent-hover)
 }
 
 .back-button:hover .circle-arrow svg path {
@@ -1873,7 +1877,7 @@ textarea {
     letter-spacing: 1px;
     color: #fff;
     border: 0;
-    background: #006cff;
+    background: var(--site-accent);
     padding: 12px 25px;
     margin-top: 10px;
     -webkit-transition: .3s;
@@ -1886,7 +1890,7 @@ textarea {
 }
 
 .form-submit button:hover {
-    background: #0078ff
+    background: var(--site-accent-hover)
 }
 
 .contact-wrap {
@@ -1898,7 +1902,7 @@ textarea {
 
 .contact-wrap .icon {
     font-size: 50px;
-    background: linear-gradient(to left top, #fe757d, #006cff);
+    background: linear-gradient(to left top, #fe757d, var(--site-accent));
     -webkit-background-clip: text;
     display: inline-block;
     margin: 0;
@@ -2034,7 +2038,7 @@ textarea {
 }
 
 .scrolltotop {
-    background: #006cff;
+    background: var(--site-accent);
     border-radius: 50%;
     bottom: 40px;
     color: #fff;
@@ -2050,7 +2054,7 @@ textarea {
 }
 
 .scrolltotop:hover {
-    background: #0078ff
+    background: var(--site-accent-hover)
 }
 
 @media all and (min-width:1024px) {
@@ -2293,7 +2297,7 @@ textarea {
         width: 100%;
         height: 1px;
         z-index: 0;
-        background: #006cff;
+        background: var(--site-accent);
         transform: scaleX(0);
         transform-origin: right;
         transition: transform .4s ease-out, opacity .4s ease-out .4s

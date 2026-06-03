@@ -1,4 +1,21 @@
-<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M1.875 15C3.875 10.875 8.0625 8.25 15 8.25C21.9375 8.25 26.125 10.875 28.125 15C26.125 19.125 21.9375 21.75 15 21.75C8.0625 21.75 3.875 19.125 1.875 15Z" stroke="#0D99FF" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="15" cy="15" r="4.125" fill="#0D99FF"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 30 30">
+  <!-- Generator: Adobe Illustrator 30.4.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 226)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #39bfb3;
+      }
+
+      .st1 {
+        fill: none;
+        stroke: #39bfb3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2.2px;
+      }
+    </style>
+  </defs>
+  <path class="st1" d="M1.9,15c2-4.1,6.2-6.8,13.1-6.8s11.1,2.6,13.1,6.8c-2,4.1-6.2,6.8-13.1,6.8S3.9,19.1,1.9,15Z"/>
+  <circle class="st0" cx="15" cy="15" r="4.1"/>
 </svg>
