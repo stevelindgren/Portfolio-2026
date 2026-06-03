@@ -656,7 +656,7 @@ button.mfp-close:focus {
     gap: 8px;
     min-height: 42px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 600 !important;
     line-height: 20px;
     padding: 10px 14px;
     letter-spacing: .03em;
@@ -4192,6 +4192,8 @@ textarea {
     gap: 18px;
     text-align: center;
     background: rgba(5, 7, 11, 0.86);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     opacity: 0;
     transform: translateY(14%);
     transition: opacity 0.32s ease, transform 0.32s ease;
@@ -4509,7 +4511,7 @@ textarea {
     --hero-card-y: 10px;
     --hero-card-rotate: 6.5deg;
     z-index: 4;
-    background: #f2c6a4;
+    background: #d6c8b4;
     animation-delay: 0.08s;
 }
 
@@ -4862,6 +4864,8 @@ body.hero-video-modal-open {
 }
 
 .hero-wrapper .page-title-main h1 {
+    font-size: 64px !important;
+    font-weight: 600;
     line-height: 1.06 !important;
     margin-bottom: 28px;
 }
@@ -4869,8 +4873,8 @@ body.hero-video-modal-open {
 .hero-wrapper .page-title-main h3 {
     margin-top: 0;
     margin-bottom: 12px;
-    font-size: 60px !important;
-    font-weight: 400;
+    font-size: 64px !important;
+    font-weight: 600;
     line-height: 1.06 !important;
     letter-spacing: -1px;
     color: #155cf6;
@@ -5078,11 +5082,11 @@ button:not(.mobile-menu-toggle):not(.mfp-close) {
     }
 
     .hero-wrapper .page-title-main h1 {
-        font-size: clamp(52px, 4.4vw, 60px) !important;
+        font-size: 64px !important;
     }
 
     .hero-wrapper .page-title-main h3 {
-        font-size: clamp(52px, 4.4vw, 60px) !important;
+        font-size: 64px !important;
     }
 }
 
@@ -5101,6 +5105,10 @@ button:not(.mobile-menu-toggle):not(.mfp-close) {
     .hero-wrapper .page-title-main h1 {
         font-size: clamp(44px, 5.6vw, 52px) !important;
         line-height: 1.08 !important;
+    }
+
+    .hero-wrapper .page-title-main h3 {
+        font-size: clamp(44px, 5.6vw, 52px) !important;
     }
 
     #work #portfolio-container > .portfolio-item:first-child {
@@ -5401,6 +5409,98 @@ button:not(.mobile-menu-toggle):not(.mfp-close) {
         animation: none;
         transition: none;
     }
+}
+
+/* Homepage alternate accent trial. Original blue declarations remain above for quick rollback. */
+body.home-page {
+    --home-primary-blue: #006cff;
+    --home-primary: #39bfb3;
+    --home-primary-hover: #56cec4;
+    --home-primary-ink: #102522;
+    --home-primary-ring: rgba(57, 191, 179, 0.38);
+}
+
+body.home-page #header .header-wrapper #logo .logo-avatar-placeholder {
+    border-color: var(--home-primary);
+}
+
+body.home-page #menu-center .flexnav.standard > li.nav-email-cta > a,
+body.home-page #menu-center .flexnav.standard > li.nav-linkedin-cta > a,
+body.home-page #work .portfolio-footer .overlay-button,
+body.home-page .scrolltotop {
+    border-color: var(--home-primary);
+    background: var(--home-primary);
+    color: var(--home-primary-ink);
+}
+
+body.home-page #menu-center .flexnav.standard > li.nav-email-cta > a:hover,
+body.home-page #menu-center .flexnav.standard > li.nav-linkedin-cta > a:hover,
+body.home-page #work .portfolio-content:hover .overlay-button,
+body.home-page #work .portfolio-content:focus-within .overlay-button,
+body.home-page #work .portfolio-item > a:focus-visible .overlay-button,
+body.home-page .scrolltotop:hover {
+    border-color: var(--home-primary-hover);
+    background: var(--home-primary-hover);
+    color: var(--home-primary-ink);
+}
+
+body.home-page .hero-case-preview-content a {
+    background: #05070b;
+    color: #fff;
+}
+
+body.home-page .hero-case-preview-content a:hover,
+body.home-page .hero-case-preview-content a:focus-visible {
+    background: #151a22;
+    color: #fff;
+}
+
+body.home-page #menu-center .flexnav.standard > li:not(.nav-email-cta):not(.nav-linkedin-cta) > a:hover,
+body.home-page #menu-center .flexnav.standard > li:not(.nav-email-cta):not(.nav-linkedin-cta) > a:focus-visible,
+body.home-page .hero-wrapper .page-title-main h3,
+body.home-page .hero-headline-accent,
+body.home-page #contact .animated-text {
+    color: var(--home-primary);
+    -webkit-text-fill-color: var(--home-primary);
+    text-fill-color: var(--home-primary);
+}
+
+body.home-page #menu-center .flexnav.standard > li:not(.nav-email-cta):not(.nav-linkedin-cta) > a::after,
+body.home-page .nav-desktop-links .nav-primary-link::before {
+    background: var(--home-primary);
+}
+
+body.home-page .nav-desktop-links .nav-primary-link::before {
+    box-shadow: 0 0 0 4px rgba(57, 191, 179, 0.2);
+}
+
+body.home-page #menu-center .flexnav.standard > li.nav-email-cta > a:focus-visible,
+body.home-page #menu-center .flexnav.standard > li.nav-linkedin-cta > a:focus-visible,
+body.home-page #work .portfolio-item > a:focus-visible .overlay-button,
+body.home-page #work .portfolio-footer .overlay-button:focus-visible {
+    box-shadow: 0 0 0 4px var(--home-primary-ring);
+}
+
+body.home-page .hero-intro-panel::before {
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.07) 1.1px, transparent 1.1px),
+        radial-gradient(rgba(57, 191, 179, 0.2) 1.1px, transparent 1.1px);
+}
+
+body.home-page .hero-interest-chip-photography i {
+    background: var(--home-primary);
+    color: var(--home-primary-ink);
+}
+
+body.home-page .hero-interest-preview-media {
+    background:
+        radial-gradient(circle at 36% 34%, rgba(255, 255, 255, 0.7), transparent 22%),
+        linear-gradient(145deg, #b8ebe6, var(--home-primary));
+}
+
+body.home-page .hero-case-work-fan-right {
+    border-color: var(--home-primary);
+    background: var(--home-primary);
 }
 
 /* ================================================
