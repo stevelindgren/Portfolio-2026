@@ -270,9 +270,9 @@ function initBackToTop() {
 // ================================================
 function initHeroVideoModal() {
     const modal = document.querySelector('#hero-intro-video-modal');
-    const trigger = document.querySelector('.hero-case-video-trigger');
+    const triggers = Array.from(document.querySelectorAll('.hero-case-video-trigger'));
 
-    if (!modal || !trigger) {
+    if (!modal || !triggers.length) {
         return;
     }
 
@@ -280,8 +280,10 @@ function initHeroVideoModal() {
     const closeButton = modal.querySelector('.hero-video-modal-close');
     const closeTargets = Array.from(modal.querySelectorAll('[data-hero-video-close]'));
     let closeTimer;
+    let activeTrigger = null;
 
-    function openModal() {
+    function openModal(trigger) {
+        activeTrigger = trigger;
         window.clearTimeout(closeTimer);
         modal.hidden = false;
         document.body.classList.add('hero-video-modal-open');
@@ -314,10 +316,14 @@ function initHeroVideoModal() {
             modal.hidden = true;
         }, 240);
 
-        trigger.focus();
+        if (activeTrigger) {
+            activeTrigger.focus();
+        }
     }
 
-    trigger.addEventListener('click', openModal);
+    triggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => openModal(trigger));
+    });
 
     closeTargets.forEach((target) => {
         target.addEventListener('click', closeModal);
@@ -336,6 +342,7 @@ function initHeroVideoModal() {
 function initHeroInterestPreviews() {
     const chips = Array.from(document.querySelectorAll('[data-interest-preview]'));
     const preview = document.querySelector('.hero-interest-preview');
+    const desktopMediaQuery = window.matchMedia('(min-width: 1025px)');
 
     if (!chips.length || !preview) {
         return;
@@ -370,6 +377,11 @@ function initHeroInterestPreviews() {
     }
 
     function showPreview(chip, clientX) {
+        if (!desktopMediaQuery.matches) {
+            hidePreview();
+            return;
+        }
+
         setPreviewContent(chip);
         positionPreview(chip, clientX);
         preview.classList.add('is-visible');
@@ -396,6 +408,12 @@ function initHeroInterestPreviews() {
         });
 
         chip.addEventListener('blur', hidePreview);
+    });
+
+    desktopMediaQuery.addEventListener('change', (event) => {
+        if (!event.matches) {
+            hidePreview();
+        }
     });
 }
 
