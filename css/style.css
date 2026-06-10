@@ -6020,13 +6020,16 @@ body.case-study-new .case-shot-panel {
 }
 
 body.case-study-new .case-shot-panel img,
-.cs-image-card img {
+body.case-study-new .case-shot-panel video,
+.cs-image-card img,
+.cs-image-card video {
     display: block;
     width: 100%;
     border-radius: 8px;
 }
 
-body.case-study-new .case-shot-panel img {
+body.case-study-new .case-shot-panel img,
+body.case-study-new .case-shot-panel video {
     height: 886px;
     object-fit: cover;
     object-position: top center;
@@ -6039,13 +6042,17 @@ body.case-study-new .case-shot-panel img {
     border-radius: 8px;
 }
 
-.cs-image-scroll-window img {
+.cs-image-scroll-window img,
+.cs-image-scroll-window video {
     display: block;
     width: 100%;
     height: auto;
     min-height: 0;
     object-fit: cover;
     object-position: top center;
+}
+
+.cs-image-scroll-window img {
     transform: translateY(0);
     transition: transform .6s cubic-bezier(.2, .7, .2, 1);
     will-change: transform;

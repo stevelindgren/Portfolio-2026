@@ -150,11 +150,11 @@
                 >
                 <h1>Cool Fox Refrigerated Vehicles Website Redesign</h1>
                 <p>
-                  The project focused on transforming an outdated
-                  website into a modern digital experience through improved
-                  information architecture, navigation, messaging, SEO, and
-                  service discovery while better reflecting the quality of the
-                  company and its products.
+                  The project focused on transforming an outdated website into a
+                  modern digital experience through improved information
+                  architecture, navigation, messaging, SEO, and service
+                  discovery while better reflecting the quality of the company
+                  and its products.
                 </p>
               </div>
               <aside class="case-metrics">
@@ -468,7 +468,12 @@
             <section id="solution" class="case-panel case-detail-panel">
               <h2>Solution</h2>
               <p class="case-detail-intro">
-                The redesign focused on solving the navigation, content, and usability issues identified during the audit while creating a stronger foundation for future growth. Rather than simply modernizing the visual design, the goal was to improve how customers discovered information, understood the company's capabilities, and moved toward making contact.
+                The redesign focused on solving the navigation, content, and
+                usability issues identified during the audit while creating a
+                stronger foundation for future growth. Rather than simply
+                modernizing the visual design, the goal was to improve how
+                customers discovered information, understood the company's
+                capabilities, and moved toward making contact.
               </p>
 
               <div class="case-bullets case-bullets-spaced">
@@ -476,30 +481,39 @@
                 <div class="case-bullets-columns">
                   <ul>
                     <li>
-                      Replaced the rotating homepage carousel with a focused value proposition and clear calls to action
+                      Replaced the rotating homepage carousel with a focused
+                      value proposition and clear calls to action
                     </li>
                     <li>
-                      Introduced a stronger content hierarchy and spacing system to improve scannability
+                      Introduced a stronger content hierarchy and spacing system
+                      to improve scannability
                     </li>
                     <li>
-                     Reorganized navigation around clearer content groupings and improved mobile usability
+                      Reorganized navigation around clearer content groupings
+                      and improved mobile usability
                     </li>
                     <li>
-                      Added educational content including services, FAQs, build process information, and industry-specific pathways
+                      Added educational content including services, FAQs, build
+                      process information, and industry-specific pathways
                     </li>
                   </ul>
                   <ul>
                     <li>
-                      Integrated testimonials, trust signals, and supporting content throughout the experience
+                      Integrated testimonials, trust signals, and supporting
+                      content throughout the experience
                     </li>
                     <li>
-                      Replaced the traditional contact form with direct communication pathways aligned with customer behavior
+                      Replaced the traditional contact form with direct
+                      communication pathways aligned with customer behavior
                     </li>
                     <li>
-                      Rebuilt the site using an updated framework with improvements to responsiveness, maintainability, and performance
+                      Rebuilt the site using an updated framework with
+                      improvements to responsiveness, maintainability, and
+                      performance
                     </li>
                     <li>
-                      Improved site structure, metadata, internal linking, and content organization to support SEO growth
+                      Improved site structure, metadata, internal linking, and
+                      content organization to support SEO growth
                     </li>
                   </ul>
                 </div>
@@ -527,7 +541,7 @@
                   data-image-alt="After redesign Coolfox hero section with clearer headline and primary CTA"
                   data-mobile-image-alt="After redesign Coolfox hero section with clearer headline and primary CTA"
                 >
-                  Hero Content Hierarchy & Engagement
+                  Hero Content & Engagement
                 </button>
                 <button
                   type="button"
@@ -567,7 +581,7 @@
                 </button>
                 <button
                   type="button"
-                  data-callout="The card is now part of the hero, so users see the actual product immediately."
+                  data-callout="The redesign introduced a dedicated value proposition section to highlight the factors that set Cool Fox apart from competitors. Key differentiators such as lead times, insulation quality, durability, and local service support were presented in a more visual and digestible format, making the company's strengths easier to understand at a glance."
                   data-callout-left="68%"
                   data-callout-top="28%"
                   data-callout-align="right"
@@ -577,12 +591,12 @@
                   data-mobile-image-scroll="0"
                   data-mobile-hotspot-left="50%"
                   data-mobile-hotspot-top="50%"
-                  data-image-src="images/portfolio/landers/fortiva/new/fortiva-desktop-full.jpg"
-                  data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/new/fortiva-mobile-new-product-eyeflow.png"
-                  data-image-alt="After redesign Fortiva desktop page"
-                  data-mobile-image-alt="After redesign Fortiva mobile product eyeflow section"
+                  data-image-src="images/portfolio/landers/coolfox/solution/coolfox-keydifferentiators.mp4"
+                  data-mobile-image-src="images/portfolio/landers/coolfox/solution/coolfox-keydifferentiators.mp4"
+                  data-image-alt="Cool Fox differentiators section walkthrough video"
+                  data-mobile-image-alt="Cool Fox differentiators section walkthrough video"
                 >
-                  Product+ eyeflow
+                  Communicating Key Differentiators
                 </button>
                 <button
                   type="button"
@@ -974,10 +988,101 @@
 
       const desktopCalloutMediaQuery = window.matchMedia("(min-width: 981px)");
 
-      function applyImageScroll(card) {
-        const image = card.querySelector(".cs-image-scroll-window img");
+      function isVideoSource(src) {
+        return /\.(mp4|webm|ogg)(?:[?#]|$)/i.test(src || "");
+      }
+
+      function getCardMedia(windowFrame) {
+        return windowFrame
+          ? windowFrame.querySelector("img, video")
+          : null;
+      }
+
+      function syncCardMedia(card, src, alt) {
         const windowFrame = card.querySelector(".cs-image-scroll-window");
-        if (!image || !windowFrame) {
+        if (!windowFrame) {
+          return null;
+        }
+
+        const shouldRenderVideo = isVideoSource(src);
+        let media = getCardMedia(windowFrame);
+
+        if (shouldRenderVideo) {
+          if (!(media instanceof HTMLVideoElement)) {
+            const video = document.createElement("video");
+            video.muted = true;
+            video.loop = true;
+            video.autoplay = true;
+            video.playsInline = true;
+            video.preload = "metadata";
+            video.setAttribute("muted", "");
+            video.setAttribute("loop", "");
+            video.setAttribute("autoplay", "");
+            video.setAttribute("playsinline", "");
+
+            if (media) {
+              media.replaceWith(video);
+            } else {
+              windowFrame.appendChild(video);
+            }
+
+            media = video;
+          }
+
+          if (src && media.getAttribute("src") !== src) {
+            media.src = src;
+            media.load();
+          }
+
+          media.setAttribute(
+            "aria-label",
+            alt || "Case study walkthrough video",
+          );
+
+          const playPromise = media.play();
+          if (playPromise && typeof playPromise.catch === "function") {
+            playPromise.catch(() => {});
+          }
+
+          return media;
+        }
+
+        if (!(media instanceof HTMLImageElement)) {
+          const image = document.createElement("img");
+
+          if (media instanceof HTMLVideoElement) {
+            media.pause();
+          }
+
+          if (media) {
+            media.replaceWith(image);
+          } else {
+            windowFrame.appendChild(image);
+          }
+
+          media = image;
+        }
+
+        if (src) {
+          media.src = src;
+        }
+
+        if (alt) {
+          media.alt = alt;
+        }
+
+        return media;
+      }
+
+      function applyImageScroll(card) {
+        const windowFrame = card.querySelector(".cs-image-scroll-window");
+        const media = getCardMedia(windowFrame);
+        if (!media || !windowFrame) {
+          return;
+        }
+
+        if (media instanceof HTMLVideoElement) {
+          windowFrame.scrollTop = 0;
           return;
         }
 
@@ -1011,7 +1116,6 @@
           : card.querySelector(".cs-callout");
         const usesExternalCallout = Boolean(calloutBoxSelector);
         const hotspot = card.querySelector(".cs-hotspot");
-        const image = card.querySelector(".cs-image-scroll-window img");
         const pulseGap = 32;
 
         if (callout && button.dataset.callout) {
@@ -1112,13 +1216,7 @@
             ? button.dataset.mobileImageAlt
             : button.dataset.imageAlt;
 
-        if (image && imageSrc) {
-          image.src = imageSrc;
-        }
-
-        if (image && imageAlt) {
-          image.alt = imageAlt;
-        }
+        const media = syncCardMedia(card, imageSrc, imageAlt);
 
         const imageScroll =
           !desktopCalloutMediaQuery.matches && button.dataset.mobileImageScroll
@@ -1131,8 +1229,8 @@
           card.dataset.activeImageScroll = "0";
         }
 
-        if (image && !image.complete) {
-          image.addEventListener("load", () => applyImageScroll(card), {
+        if (media instanceof HTMLImageElement && !media.complete) {
+          media.addEventListener("load", () => applyImageScroll(card), {
             once: true,
           });
         }
