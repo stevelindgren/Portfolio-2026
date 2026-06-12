@@ -128,7 +128,7 @@
               <a href="#mobile">Mobile Walkthrough</a>
               <a href="#results">Results</a>
               <a href="#learned">Learnings</a>
-              <a href="#similar-projects">Similar Projects</a>
+              <a href="#similar-projects">Other Projects</a>
             </nav>
           </aside>
 
@@ -920,7 +920,7 @@
               class="case-similar-projects"
               aria-labelledby="similar-projects-title"
             >
-              <h2 id="similar-projects-title">Similar Projects</h2>
+              <h2 id="similar-projects-title">Other Projects</h2>
               <div class="case-similar-projects-grid">
                 <article class="case-similar-project">
                   <div class="case-similar-project-preview">
@@ -1408,7 +1408,7 @@
           return;
         }
 
-        const interactionCooldownMs = 4200;
+        const interactionCooldownMs = 5200;
         let lastUserInteractionTs = 0;
         let isSectionVisible = false;
         let runToken = 0;
@@ -1511,17 +1511,17 @@
           }
 
           const downPath = [
-            { ratio: 0.2, duration: 640, pause: 150 },
-            { ratio: 0.42, duration: 720, pause: 190 },
-            { ratio: 0.66, duration: 810, pause: 240 },
-            { ratio: 0.86, duration: 860, pause: 280 },
-            { ratio: 1, duration: 920, pause: 620 },
+            { ratio: 0.2, duration: 840, pause: 220 },
+            { ratio: 0.42, duration: 940, pause: 260 },
+            { ratio: 0.66, duration: 1060, pause: 320 },
+            { ratio: 0.86, duration: 1140, pause: 360 },
+            { ratio: 1, duration: 1220, pause: 820 },
           ];
 
           const upPath = [
-            { ratio: 0.74, duration: 720, pause: 200 },
-            { ratio: 0.44, duration: 700, pause: 180 },
-            { ratio: 0, duration: 780, pause: 360 },
+            { ratio: 0.74, duration: 960, pause: 280 },
+            { ratio: 0.44, duration: 920, pause: 240 },
+            { ratio: 0, duration: 1040, pause: 480 },
           ];
 
           for (const step of downPath) {

@@ -6019,6 +6019,11 @@ body.case-study-new .case-shot-panel {
     box-shadow: none;
 }
 
+body.case-study-new .cs-image-card,
+body.case-study-new .cs-image-scroll-window {
+    background: #10151B;
+}
+
 body.case-study-new .case-shot-panel img,
 body.case-study-new .case-shot-panel video,
 .cs-image-card img,
@@ -6606,8 +6611,8 @@ body.case-study-new #wireframing .case-layout-image-card {
 }
 
 body.case-study-new #wireframing .case-layout-mode-toggle {
-    display: flex;
-    width: fit-content;
+    display: grid;
+    width: max-content;
     margin-left: auto;
     margin-right: auto;
 }
@@ -6693,9 +6698,9 @@ body.case-study-new #problem .cs-tabs[data-callout-target][data-callout-box] {
     box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
 }
 
-#wireframing .case-layout-callout-label,
-#solution .case-solution-callout .case-layout-callout-label,
-#problem .case-problem-callout .case-layout-callout-label {
+body.case-study-new #content-wrapper #wireframing .case-layout-callout-label,
+body.case-study-new #content-wrapper #solution .case-solution-callout .case-layout-callout-label,
+body.case-study-new #content-wrapper #problem .case-problem-callout .case-layout-callout-label {
     min-width: 76px;
     padding: 12px 10px;
     display: flex;
@@ -6709,9 +6714,11 @@ body.case-study-new #problem .cs-tabs[data-callout-target][data-callout-box] {
     background: var(--site-accent);
     color: var(--site-accent-ink) !important;
     -webkit-text-fill-color: var(--site-accent-ink);
+    font-family: var(--case-font-family) !important;
     font-size: 12px;
     line-height: 1.1;
-    font-weight: 500;
+    font-style: normal !important;
+    font-weight: 600 !important;
     letter-spacing: .02em;
     text-transform: none;
     white-space: nowrap;

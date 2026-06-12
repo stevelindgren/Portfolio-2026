@@ -128,7 +128,7 @@
               <a href="#mobile">Mobile Walkthrough</a>
               <a href="#results">Results</a>
               <a href="#learned">Learnings</a>
-              <a href="#similar-projects">Similar Projects</a>
+              <a href="#similar-projects">Other Projects</a>
             </nav>
           </aside>
 
@@ -799,7 +799,7 @@
                   class="cs-callout case-layout-callout case-solution-callout"
                 >
                   <span class="case-layout-callout-label" aria-hidden="true"
-                    >Solution</span
+                    >Finding</span
                   >
                   <span
                     id="solution-callout-text"
@@ -1033,7 +1033,7 @@
               class="case-similar-projects"
               aria-labelledby="similar-projects-title"
             >
-              <h2 id="similar-projects-title">Similar Projects</h2>
+              <h2 id="similar-projects-title">Other Projects</h2>
               <div class="case-similar-projects-grid">
                 <article class="case-similar-project">
                   <div class="case-similar-project-preview">
@@ -1642,7 +1642,7 @@
           return;
         }
 
-        const interactionCooldownMs = 4200;
+        const interactionCooldownMs = 5200;
         let lastUserInteractionTs = 0;
         let isSectionVisible = false;
         let runToken = 0;
@@ -1745,17 +1745,17 @@
           }
 
           const downPath = [
-            { ratio: 0.2, duration: 760, pause: 190 },
-            { ratio: 0.42, duration: 860, pause: 230 },
-            { ratio: 0.66, duration: 970, pause: 280 },
-            { ratio: 0.86, duration: 1030, pause: 320 },
-            { ratio: 1, duration: 1100, pause: 760 },
+            { ratio: 0.2, duration: 940, pause: 240 },
+            { ratio: 0.42, duration: 1060, pause: 280 },
+            { ratio: 0.66, duration: 1200, pause: 340 },
+            { ratio: 0.86, duration: 1280, pause: 380 },
+            { ratio: 1, duration: 1380, pause: 920 },
           ];
 
           const upPath = [
-            { ratio: 0.74, duration: 860, pause: 240 },
-            { ratio: 0.44, duration: 840, pause: 220 },
-            { ratio: 0, duration: 940, pause: 440 },
+            { ratio: 0.74, duration: 1080, pause: 300 },
+            { ratio: 0.44, duration: 1040, pause: 260 },
+            { ratio: 0, duration: 1160, pause: 540 },
           ];
 
           for (const step of downPath) {
