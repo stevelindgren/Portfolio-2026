@@ -2037,7 +2037,7 @@ button.mfp-close:focus {
     font-size: 12px;
     letter-spacing: 0.6px;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1;
     color: #ffffff;
     background: rgba(15, 15, 18, 0.76);
@@ -5917,7 +5917,7 @@ body.case-study-new #content-wrapper .case-study-back:focus {
 body.case-study-new .case-panel {
     border-radius: 12px;
     border: 0;
-    background: linear-gradient(180deg, #0f1520 0%, #0b1019 100%);
+    background: #10151B;
     margin-bottom: 96px;
     box-shadow: 0 20px 45px rgba(0, 0, 0, .28);
 }
@@ -6014,7 +6014,7 @@ body.case-study-new .case-metric-icon-fa {
 
 body.case-study-new .case-shot-panel {
     padding: 0;
-    background: transparent;
+    background: #10151B;
     border: 0;
     box-shadow: none;
 }
@@ -6037,7 +6037,7 @@ body.case-study-new .case-shot-panel video {
 
 .cs-image-scroll-window {
     height: auto;
-    aspect-ratio: 1440 / 1024;
+    aspect-ratio: var(--cs-media-aspect-ratio, 1440 / 1024);
     overflow: hidden;
     border-radius: 8px;
 }
@@ -6050,6 +6050,17 @@ body.case-study-new .case-shot-panel video {
     min-height: 0;
     object-fit: cover;
     object-position: top center;
+}
+
+.cs-image-scroll-window.has-video-media {
+    background: #05070b;
+}
+
+.cs-image-scroll-window.has-video-media video {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    object-fit: var(--cs-media-fit, contain);
 }
 
 .cs-image-scroll-window img {
@@ -6378,17 +6389,7 @@ body.case-study-new .case-device-frame {
 }
 
 body.case-study-new .case-device-notch {
-    width: 40%;
-    max-width: 120px;
-    min-width: 88px;
-    height: 22px;
-    border-radius: 0 0 14px 14px;
-    background: #05070b;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
+    display: none;
 }
 
 body.case-study-new .case-device-screen {
@@ -6396,7 +6397,7 @@ body.case-study-new .case-device-screen {
     background: rgba(11, 17, 27, .94);
     border: 0;
     width: 393px;
-    height: 932px;
+    height: 800px;
     display: block;
     padding: 0;
     overflow-y: auto;
@@ -6413,6 +6414,54 @@ body.case-study-new .case-device-screen img {
     display: block;
     width: 100%;
     height: auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    body.case-study-new .case-device-frame::before {
+        content: "";
+        position: absolute;
+        inset: 10px;
+        border-radius: 28px;
+        background: linear-gradient(180deg, rgba(5, 7, 11, 0) 0%, rgba(5, 7, 11, .1) 56%, rgba(5, 7, 11, .34) 100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .22s ease;
+        z-index: 3;
+    }
+
+    body.case-study-new .case-device-frame::after {
+        content: "Scroll to view";
+        position: absolute;
+        left: 50%;
+        bottom: 28px;
+        transform: translateX(-50%);
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(5, 7, 11, .72);
+        border: 1px solid rgba(255, 255, 255, .14);
+        color: rgba(255, 255, 255, .84);
+        font-size: 13px;
+        line-height: 18px;
+        font-weight: 500;
+        letter-spacing: .01em;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .22s ease, transform .22s ease;
+        z-index: 4;
+    }
+
+    body.case-study-new .case-device-frame:hover::before,
+    body.case-study-new .case-device-frame:hover::after,
+    body.case-study-new .case-device-frame:focus-within::before,
+    body.case-study-new .case-device-frame:focus-within::after {
+        opacity: 1;
+    }
+
+    body.case-study-new .case-device-frame:hover::after,
+    body.case-study-new .case-device-frame:focus-within::after {
+        transform: translateX(-50%) translateY(-2px);
+    }
 }
 
 body.case-study-new .case-flow-media img {
@@ -6662,7 +6711,7 @@ body.case-study-new #problem .cs-tabs[data-callout-target][data-callout-box] {
     -webkit-text-fill-color: var(--site-accent-ink);
     font-size: 12px;
     line-height: 1.1;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: .02em;
     text-transform: none;
     white-space: nowrap;
@@ -6675,12 +6724,14 @@ body.case-study-new #problem .cs-tabs[data-callout-target][data-callout-box] {
     position: absolute;
     top: 50%;
     right: -7px;
+    bottom: auto;
     transform: translateY(-50%);
     width: 0;
     height: 0;
     border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
+    border-right: 0;
     border-left: 8px solid var(--site-accent);
+    border-bottom: 8px solid transparent;
 }
 
 #wireframing .case-layout-callout-text {
@@ -6816,7 +6867,7 @@ body.case-study-new #content-wrapper .cs-tabs button.is-active:hover {
     position: relative;
     background: #fff;
     border-radius: 8px;
-    padding: 10px;
+    padding: 0;
 }
 
 .cs-callout {
@@ -6839,9 +6890,9 @@ body.case-study-new #content-wrapper .cs-tabs button.is-active:hover {
 }
 
 body.case-study-new #content-wrapper .cs-callout {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff;
-    font-weight: 500;
+    color: rgba(255, 255, 255, .8) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .8);
+    font-weight: 300;
 }
 
 .cs-hotspot {
@@ -6855,6 +6906,10 @@ body.case-study-new #content-wrapper .cs-callout {
     background: var(--site-accent-hover);
     z-index: 3;
     pointer-events: none;
+}
+
+.cs-image-card.has-video-media .cs-hotspot {
+    display: none;
 }
 
 .cs-hotspot::before,
@@ -6952,8 +7007,62 @@ body.case-study-fortiva #comparison .cs-toggle-row {
     margin-bottom: var(--space-32);
 }
 
+body.case-study-coolfox #comparison .cs-toggle-row {
+    margin-top: var(--space-48);
+    margin-bottom: var(--space-32);
+}
+
 body.case-study #comparison .cs-toggle {
     margin: 0;
+}
+
+body.case-study-new #content-wrapper .case-comparison-cta {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 14px;
+    border: 1px solid var(--site-accent);
+    border-radius: 8px;
+    background: var(--site-accent);
+    color: var(--site-accent-ink);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600 !important;
+    letter-spacing: .03em;
+    text-decoration: none;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease, color .16s ease;
+}
+
+body.case-study-new #content-wrapper .case-comparison-cta:hover,
+body.case-study-new #content-wrapper .case-comparison-cta:focus-visible {
+    background: var(--site-accent-hover);
+    border-color: var(--site-accent-hover);
+    color: var(--site-accent-ink);
+    opacity: 1;
+}
+
+body.case-study-new #content-wrapper .case-comparison-cta:focus-visible {
+    outline: 2px solid rgba(224, 240, 255, .95);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--site-accent-ring-strong);
+}
+
+body.case-study-new #content-wrapper .case-comparison-cta:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+}
+
+body.case-study-new #content-wrapper .case-comparison-cta:active {
+    opacity: .65;
+}
+
+.case-comparison-cta-desktop-only {
+    display: inline-flex;
 }
 
 .cs-toggle {
@@ -6961,8 +7070,8 @@ body.case-study #comparison .cs-toggle {
     display: inline-flex;
     position: relative;
     align-items: center;
-    gap: 16px;
-    padding: 16px;
+    gap: 0;
+    padding: 6px;
     border: 1px solid #1e2630;
     border-radius: 16px;
     background: #10151b;
@@ -6973,19 +7082,47 @@ body.case-study #comparison .cs-toggle {
 .cs-toggle::before {
     content: "";
     position: absolute;
-    top: 50%;
-    left: var(--toggle-center, 50%);
-    width: 64px;
-    height: 32px;
-    border-radius: 999px;
-    border: 1px solid var(--site-accent);
+    top: 6px;
+    left: calc(var(--toggle-x, 0px) + 6px);
+    width: var(--toggle-w, 120px);
+    height: calc(100% - 12px);
+    border-radius: 12px;
     background: var(--site-accent);
-    transform: translate(-50%, -50%);
+    transition: left .22s ease, width .22s ease, background-color .22s ease;
     z-index: 0;
     pointer-events: none;
 }
 
 .cs-toggle::after {
+    content: none;
+}
+
+.cs-toggle-switch {
+    margin: 0;
+    display: inline-grid;
+    grid-template-columns: max-content 64px max-content;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+    padding: 8px;
+}
+
+.cs-toggle-switch::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: var(--toggle-center, 50%);
+    width: 64px;
+    height: 32px;
+    border-radius: 999px;
+    border: 1px solid #d4f2ee;
+    background: #d4f2ee;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.cs-toggle-switch::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -6993,18 +7130,18 @@ body.case-study #comparison .cs-toggle {
     width: 24px;
     height: 24px;
     border-radius: 999px;
-    background: #ffffff;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+    background: var(--site-accent);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .46);
     transform: translate(-50%, -50%);
     transition: left .22s ease, background-color .22s ease, box-shadow .22s ease;
     z-index: 1;
     pointer-events: none;
 }
 
-.cs-toggle.is-right-active::after {
+.cs-toggle-switch.is-right-active::after {
     left: calc(var(--toggle-center, 50%) + 16px);
-    background: #ffffff;
-    box-shadow: 0 0 0 2px var(--site-accent-glow), 0 1px 3px rgba(0, 0, 0, .35);
+    background: var(--site-accent);
+    box-shadow: 0 0 0 2px var(--site-accent-glow), 0 2px 2px rgba(0, 0, 0, .46);
 }
 
 .cs-scroll-hint {
@@ -7042,6 +7179,8 @@ body.case-study #comparison .cs-toggle {
     border: 0;
     background: transparent;
     color: rgba(255, 255, 255, .86);
+    display: flex;
+    align-items: center;
     min-height: 40px;
     padding: 0;
     cursor: pointer;
@@ -7051,16 +7190,23 @@ body.case-study #comparison .cs-toggle {
     border-radius: 0;
     transition: color .22s ease;
     position: relative;
-    z-index: 2;
+    z-index: 1;
     white-space: nowrap;
+    justify-content: center;
+    text-align: center;
+    padding: 0 18px;
 }
 
-.cs-toggle button:first-child {
-    padding-right: 40px;
+.cs-toggle-switch button:first-child {
+    grid-column: 1;
+    justify-content: flex-end;
+    padding-right: 0;
 }
 
-.cs-toggle button:last-child {
-    padding-left: 40px;
+.cs-toggle-switch button:last-child {
+    grid-column: 3;
+    justify-content: flex-start;
+    padding-left: 0;
 }
 
 body.case-study-new #content-wrapper .cs-toggle button {
@@ -7068,11 +7214,20 @@ body.case-study-new #content-wrapper .cs-toggle button {
 }
 
 .cs-toggle button.is-active {
+    color: var(--site-accent-ink);
+}
+
+.cs-toggle-switch button.is-active {
     color: var(--site-accent);
 }
 
-body.case-study-new #content-wrapper .cs-toggle button.is-active,
 body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
+    color: var(--site-accent-ink);
+    font-weight: 500;
+}
+
+body.case-study-new #content-wrapper .cs-toggle-switch button.is-active,
+body.case-study-new #content-wrapper .cs-toggle-switch button.is-active:hover {
     color: var(--site-accent);
     font-weight: 500;
 }
@@ -7087,6 +7242,10 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
 }
 
 .cs-toggle button.is-active:hover {
+    color: var(--site-accent-ink);
+}
+
+.cs-toggle-switch button.is-active:hover {
     color: var(--site-accent);
 }
 
@@ -7133,12 +7292,10 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
     align-items: stretch;
     gap: clamp(18px, 5vw, 72px);
     padding: var(--chart-pad-top) clamp(18px, 4vw, 54px) var(--chart-pad-bottom);
-    border: 1px solid rgba(255, 255, 255, .1);
+    border: 1px solid #1e2630;
     border-radius: 16px;
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, .05) 0%, rgba(255, 255, 255, 0) 100%),
-        #0b111b;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+    background: #10151b;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, .22);
 }
 
 .kpi-grid-line,
@@ -7411,17 +7568,20 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         margin-bottom: 18px;
     }
 
+    body.case-study-new .case-panel,
+    body.case-study-new .case-text-panel,
+    body.case-study-new .case-detail-panel,
+    body.case-study-new .case-meta-panel,
+    body.case-study-new .case-shot-panel {
+        padding: 24px;
+    }
+
     body.case-study-new .case-panel {
-        padding-left: 24px;
-        padding-right: 24px;
         margin-bottom: 64px;
     }
 
-    body.case-study-new .case-panel,
-    body.case-study-new .case-meta-panel,
     body.case-study-new .case-bullets,
-    body.case-study-new .cs-image-card,
-    body.case-study-new #comparison .cs-toggle {
+    body.case-study-new .cs-image-card {
         background: transparent;
         border: 0;
         border-radius: 0;
@@ -7437,15 +7597,9 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         grid-template-columns: 1fr;
     }
 
-    body.case-study-new .case-shot-panel {
-        padding-left: 24px;
-        padding-right: 24px;
-    }
-
     body.case-study-new .case-hero-panel {
         gap: 32px;
-        padding-top: 10px;
-        padding-bottom: 0;
+        padding: 24px;
         margin-bottom: 64px;
     }
 
@@ -7514,6 +7668,11 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         gap: 28px;
     }
 
+    body.case-study-new #discovery-research .case-columns {
+        margin-top: var(--space-32);
+        gap: 28px;
+    }
+
     body.case-study-new .case-columns-split-lists ul {
         columns: 1;
     }
@@ -7547,8 +7706,23 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         margin-bottom: var(--space-32);
     }
 
+    body.case-study-new #comparison .cs-toggle {
+        margin: 0;
+    }
+
     body.case-study-new #comparison .cs-toggle-row {
+        margin-top: var(--space-40);
         margin-bottom: var(--space-40);
+    }
+
+    body.case-study-new #comparison .case-comparison-cta {
+        margin-left: 0;
+        order: 3;
+        width: 100%;
+    }
+
+    .case-comparison-cta-desktop-only {
+        display: none !important;
     }
 
     body.case-study #comparison .cs-toggle-row {
@@ -7558,6 +7732,11 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
     }
 
     body.case-study-fortiva #comparison .cs-toggle-row {
+        margin-top: var(--space-32);
+        margin-bottom: var(--space-32);
+    }
+
+    body.case-study-coolfox #comparison .cs-toggle-row {
         margin-top: var(--space-32);
         margin-bottom: var(--space-32);
     }
@@ -7621,6 +7800,13 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         line-height: 22px;
     }
 
+    #solution .case-solution-callout,
+    #problem .case-problem-callout {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+
     #wireframing .case-layout-callout-label,
     #solution .case-solution-callout .case-layout-callout-label,
     #problem .case-problem-callout .case-layout-callout-label {
@@ -7630,11 +7816,17 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         align-self: auto;
         margin: -12px -14px 24px;
         border-radius: 6px 6px 0 0;
+        font-size: 15px;
+        line-height: 20px;
     }
 
-    #wireframing .case-layout-callout-label::after,
     #solution .case-solution-callout .case-layout-callout-label::after,
     #problem .case-problem-callout .case-layout-callout-label::after {
+        content: none;
+    }
+
+    #wireframing .case-layout-callout-label::after {
+        content: "";
         top: auto;
         right: 50%;
         bottom: -8px;
@@ -7667,6 +7859,25 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
     body.case-study-new #solution .cs-image-scroll-window,
     body.case-study-new #comparison .cs-image-scroll-window {
         border-radius: 6px;
+    }
+
+    body.case-study-new #problem .cs-image-scroll-window {
+        height: auto;
+    }
+
+    body.case-study-new #problem .cs-image-scroll-window img {
+        min-height: 0;
+        height: auto;
+    }
+
+    body.case-study-new #solution .cs-image-scroll-window {
+        height: auto;
+    }
+
+    body.case-study-new #solution .cs-image-scroll-window img,
+    body.case-study-new #solution .cs-image-scroll-window video {
+        min-height: 0;
+        height: auto;
     }
 
     body.case-study-new #problem .cs-image-scroll-window,
@@ -7709,20 +7920,21 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         text-align: right;
     }
 
-    .cs-toggle {
+    .cs-toggle-switch {
         width: auto;
-        justify-content: flex-start;
+        grid-template-columns: max-content 64px max-content;
+        justify-content: center;
         align-items: center;
-        gap: 0;
+        column-gap: 8px;
     }
 
-    .cs-toggle button {
+    .cs-toggle-switch button {
         flex: 0 0 auto;
         text-align: left;
         border-radius: 0;
     }
 
-    .cs-toggle::before {
+    .cs-toggle-switch::before {
         box-shadow: none;
     }
 
@@ -7783,6 +7995,10 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         margin-top: var(--space-24);
     }
 
+    body.case-study-new #discovery-research .case-columns {
+        margin-top: var(--space-24);
+    }
+
     body.case-study-new .case-flow-media {
         margin-top: 18px;
     }
@@ -7817,12 +8033,22 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
     }
 
     body.case-study-new #comparison .cs-toggle {
+        margin: 0;
+    }
+
+    body.case-study-new #comparison .cs-toggle-row {
         margin-top: var(--space-32);
         margin-bottom: var(--space-32);
     }
 
-    body.case-study-new #comparison .cs-toggle-row {
-        margin-bottom: var(--space-32);
+    body.case-study-new #comparison .case-comparison-cta {
+        margin-left: 0;
+        order: 3;
+        width: 100%;
+    }
+
+    .case-comparison-cta-desktop-only {
+        display: none !important;
     }
 
     body.case-study #comparison .cs-toggle-row {
@@ -7836,12 +8062,17 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         margin-bottom: var(--space-24);
     }
 
+    body.case-study-coolfox #comparison .cs-toggle-row {
+        margin-top: var(--space-24);
+        margin-bottom: var(--space-24);
+    }
+
     body.case-study-new .case-panel,
     body.case-study-new .case-text-panel,
     body.case-study-new .case-detail-panel,
-    body.case-study-new .case-meta-panel {
-        padding-left: 16px;
-        padding-right: 16px;
+    body.case-study-new .case-meta-panel,
+    body.case-study-new .case-shot-panel {
+        padding: 24px;
     }
 
     body.case-study-new .case-panel {
@@ -7850,15 +8081,8 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
 
     body.case-study-new .case-hero-panel {
         gap: 32px;
-        padding-top: 0;
-        padding-left: 16px;
-        padding-right: 16px;
+        padding: 24px;
         margin-bottom: 40px;
-    }
-
-    body.case-study-new .case-shot-panel {
-        padding-left: 16px;
-        padding-right: 16px;
     }
 
     body.case-study-new .case-similar-projects h2 {
@@ -7939,13 +8163,14 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
     }
 
     .cs-tabs button {
+        --cs-tab-font-size: 15px;
         --cs-tab-line-height: 22px;
     }
 
     .cs-callout {
         margin-bottom: 10px;
         padding: 11px 12px;
-        font-size: 14px;
+        font-size: 15px;
         line-height: 20px;
     }
 
@@ -7969,33 +8194,33 @@ body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
         height: 760px;
     }
 
-    .cs-toggle::before {
+    .cs-toggle-switch::before {
         width: 64px;
         height: 32px;
     }
 
-    .cs-toggle button {
+    .cs-toggle-switch button {
         min-height: 40px;
         padding: 8px 0;
         font-size: 15px;
         line-height: 20px;
     }
 
-    .cs-toggle button:first-child {
-        padding-right: 40px;
+    .cs-toggle-switch button:first-child {
+        padding-right: 0;
     }
 
-    .cs-toggle button:last-child {
-        padding-left: 40px;
+    .cs-toggle-switch button:last-child {
+        padding-left: 0;
     }
 
-    .cs-toggle::after {
+    .cs-toggle-switch::after {
         left: calc(var(--toggle-center, 50%) - 16px);
         width: 24px;
         height: 24px;
     }
 
-    .cs-toggle.is-right-active::after {
+    .cs-toggle-switch.is-right-active::after {
         left: calc(var(--toggle-center, 50%) + 16px);
     }
 

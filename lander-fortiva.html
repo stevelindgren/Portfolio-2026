@@ -721,7 +721,7 @@
                 >
               </p>
               <div class="cs-toggle-row">
-                <div class="cs-toggle" data-compare-target="#comparison-image">
+                <div class="cs-toggle cs-toggle-switch" data-compare-target="#comparison-image">
                   <button
                     class="is-active"
                     type="button"
@@ -742,6 +742,13 @@
                     After
                   </button>
                 </div>
+                <a
+                  class="case-comparison-cta case-comparison-cta-desktop-only"
+                  href="images/portfolio/landers/fortiva/new/fortiva-desktop-old.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View Full Screen</a
+                >
               </div>
               <div class="cs-image-card">
                 <div class="cs-image-scroll-window">
@@ -1276,7 +1283,18 @@
         const nextAlt = isMobileViewport
           ? button.dataset.compareMobileAlt || button.dataset.compareAlt
           : button.dataset.compareAlt;
+        const fullScreenLink = group
+          .closest(".cs-toggle-row")
+          ?.querySelector(".case-comparison-cta-desktop-only");
         const currentSrc = image.getAttribute("src");
+
+        if (fullScreenLink && button.dataset.compareSrc) {
+          fullScreenLink.href = button.dataset.compareSrc;
+          fullScreenLink.setAttribute(
+            "aria-label",
+            `View full screen ${button.textContent.trim()} comparison image`,
+          );
+        }
 
         if (nextSrc && nextSrc !== currentSrc) {
           const swapToken = String(Date.now());
