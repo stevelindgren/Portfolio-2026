@@ -639,81 +639,113 @@ document.addEventListener("DOMContentLoaded", function() {
     );
 
     if (fullViewVideos.length) {
-        const getVisibleRatio = (video) => {
-            const rect = video.getBoundingClientRect();
-            const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-            const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-            const visibleWidth = Math.max(0, Math.min(rect.right, viewportWidth) - Math.max(rect.left, 0));
-            const visibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
-            const visibleArea = visibleWidth * visibleHeight;
-            const totalArea = rect.width * rect.height;
-
-            return totalArea > 0 ? (visibleArea / totalArea) : 0;
-        };
-
-        const isVideoFullyInViewport = (video) => {
-            const rect = video.getBoundingClientRect();
+        const isElementFullyInViewport = (element) => {
+            const rect = element.getBoundingClientRect();
             const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
             const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
             const tolerance = 1;
-            const fullyFitsViewport =
-                rect.width <= viewportWidth + tolerance &&
-                rect.height <= viewportHeight + tolerance;
-
-            if (fullyFitsViewport) {
-                return (
-                    rect.top >= -tolerance &&
-                    rect.left >= -tolerance &&
-                    rect.bottom <= viewportHeight + tolerance &&
-                    rect.right <= viewportWidth + tolerance
-                );
-            }
-
-            const visibleRatio = getVisibleRatio(video);
-            const maxVisibleArea = Math.min(rect.width, viewportWidth) * Math.min(rect.height, viewportHeight);
-            const maxVisibleRatio = rect.width > 0 && rect.height > 0
-                ? Math.min(1, maxVisibleArea / (rect.width * rect.height))
-                : 0;
-            const adaptiveThreshold = Math.max(0.72, maxVisibleRatio - 0.02);
 
             return (
-                visibleRatio >= adaptiveThreshold &&
-                rect.bottom > tolerance &&
-                rect.top < (viewportHeight - tolerance)
+                rect.top >= -tolerance &&
+                rect.left >= -tolerance &&
+                rect.bottom <= viewportHeight + tolerance &&
+                rect.right <= viewportWidth + tolerance
             );
         };
 
-        const syncVideoPlayback = (video) => {
-            if (isVideoFullyInViewport(video)) {
+        fullViewVideos.forEach((video) => {
+            video.muted = true;
+            video.loop = true;
+            video.autoplay = false;
+            video.dataset.buttonHoverPaused = 'false';
+            video.dataset.fullViewStarted = 'false';
+            video.pause();
+
+            const ensurePlayback = () => {
+                if (
+                    video.dataset.buttonHoverPaused === 'true' ||
+                    video.dataset.fullViewStarted !== 'true'
+                ) {
+                    return;
+                }
                 const playPromise = video.play();
                 if (playPromise && typeof playPromise.catch === "function") {
                     playPromise.catch(() => {});
                 }
+            };
+
+            const content = video.closest('.portfolio-content');
+            const button = content ? content.querySelector('.overlay-button') : null;
+
+            const handleViewportChange = () => {
+                if (!content) {
+                    return;
+                }
+
+                if (!isElementFullyInViewport(content)) {
+                    video.dataset.fullViewStarted = 'false';
+                    video.dataset.buttonHoverPaused = 'false';
+                    video.pause();
+
+                    if (video.readyState >= 1) {
+                        video.currentTime = 0;
+                    }
+                    return;
+                }
+
+                if (video.dataset.fullViewStarted !== 'true') {
+                    video.dataset.fullViewStarted = 'true';
+                }
+
+                ensurePlayback();
+            };
+
+            if (video.readyState >= 2) {
+                handleViewportChange();
             } else {
-                video.pause();
+                video.addEventListener("loadeddata", handleViewportChange, { once: true });
             }
-        };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                syncVideoPlayback(entry.target);
+            window.addEventListener('scroll', handleViewportChange, { passive: true });
+            window.addEventListener('resize', handleViewportChange);
+
+            if (!content || !button) {
+                return;
+            }
+
+            const syncButtonHoverPlayback = (clientX, clientY) => {
+                const buttonRect = button.getBoundingClientRect();
+                const isOverButton =
+                    clientX >= buttonRect.left &&
+                    clientX <= buttonRect.right &&
+                    clientY >= buttonRect.top &&
+                    clientY <= buttonRect.bottom;
+
+                if (isOverButton) {
+                    if (video.dataset.buttonHoverPaused !== 'true') {
+                        video.dataset.buttonHoverPaused = 'true';
+                        video.pause();
+                    }
+                    return;
+                }
+
+                if (video.dataset.buttonHoverPaused === 'true') {
+                    video.dataset.buttonHoverPaused = 'false';
+                    ensurePlayback();
+                }
+            };
+
+            content.addEventListener('mousemove', (event) => {
+                syncButtonHoverPlayback(event.clientX, event.clientY);
             });
-        }, {
-            threshold: [0, 0.25, 0.5, 0.7, 0.85, 1]
+
+            content.addEventListener('mouseleave', () => {
+                if (video.dataset.buttonHoverPaused === 'true') {
+                    video.dataset.buttonHoverPaused = 'false';
+                    ensurePlayback();
+                }
+            });
         });
-
-        fullViewVideos.forEach((video) => {
-            video.pause();
-            observer.observe(video);
-            syncVideoPlayback(video);
-        });
-
-        const refreshPlayback = () => {
-            fullViewVideos.forEach(syncVideoPlayback);
-        };
-
-        window.addEventListener("resize", refreshPlayback);
-        window.addEventListener("scroll", refreshPlayback, { passive: true });
     }
 
     initKpiPerformanceCharts();

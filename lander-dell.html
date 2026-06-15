@@ -27,7 +27,7 @@
       }
     </style>
   </head>
-  <body class="case-study case-study-new">
+  <body class="case-study case-study-new case-study-dell">
     <div id="page-wrapper">
       <header id="header" class="scroll-hide">
         <div class="header-wrapper">
@@ -321,7 +321,12 @@
                     data-compare-mobile-alt="Dell Rewards final mobile landing page design"
                   >Final Design</button>
                 </div>
-                <span class="cs-scroll-hint">Scroll within the window to view <span class="cs-scroll-hint-arrow" aria-hidden="true">&darr;</span></span>
+                <a
+                  class="case-comparison-cta case-comparison-cta-desktop-only"
+                  href="images/portfolio/landers/dell/new/dell-full-view-wireframe.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >View Full Screen</a>
               </div>
               <div class="cs-image-card">
                 <div class="cs-image-scroll-window">
@@ -579,6 +584,9 @@
 
         const image = document.querySelector(targetSelector);
         const scrollWindow = image ? image.closest(".cs-image-scroll-window") : null;
+        const fullScreenLink = group
+          .closest(".cs-toggle-row")
+          ?.querySelector(".case-comparison-cta-desktop-only");
         if (!image) {
           return;
         }
@@ -597,6 +605,14 @@
 
         if (nextAlt) {
           image.alt = nextAlt;
+        }
+
+        if (fullScreenLink && button.dataset.compareSrc) {
+          fullScreenLink.href = button.dataset.compareSrc;
+          fullScreenLink.setAttribute(
+            "aria-label",
+            `View full screen ${button.textContent.trim()} comparison image`,
+          );
         }
 
         if (scrollWindow) {
