@@ -39,18 +39,9 @@
               </a>
             </div>
             <div class="nav-desktop-links" aria-label="Primary">
-              <a href="#top" class="nav-home-link nav-primary-link">Home</a>
-              <a href="#about" class="nav-primary-link">About</a>
-              <div class="nav-desktop-item nav-desktop-item-work">
-                <a href="#work" class="nav-primary-link nav-work-trigger" aria-haspopup="true">Case Studies</a>
-                <div class="nav-desktop-submenu" aria-label="Case Studies menu">
-                  <a href="#work" class="nav-work-sublink">Section 01</a>
-                  <a href="#work" class="nav-work-sublink">Section 02</a>
-                  <a href="#work" class="nav-work-sublink">Section 03</a>
-                  <a href="#work" class="nav-work-sublink">Section 04</a>
-                </div>
-              </div>
-              <a href="#contact" class="nav-primary-link">Contact</a>
+              <a href="index.html#top" class="nav-home-link nav-primary-link">Home</a>
+              <a href="index.html#about" class="nav-primary-link">About</a>
+              <a href="index.html#work" class="nav-primary-link active">Case Studies</a>
             </div>
             <nav id="menu-center">
               <div class="menu-button menu-open">
@@ -58,28 +49,9 @@
                 <i class="close-icon ion-android-close"></i>
               </div>
               <ul class="flexnav standard" data-breakpoint="1024">
-                <li><a href="#top" class="nav-home-link nav-primary-link">Home</a></li>
-                <li><a href="#about" class="nav-primary-link">About</a></li>
-                <li class="nav-has-submenu">
-                  <div class="nav-mobile-parent">
-                    <a href="#work" class="nav-primary-link">Case Studies</a>
-                    <button
-                      type="button"
-                      class="nav-submenu-toggle"
-                      aria-expanded="false"
-                      aria-label="Toggle Case Studies submenu"
-                    >
-                      <span aria-hidden="true"></span>
-                    </button>
-                  </div>
-                  <ul class="nav-mobile-submenu" aria-label="Case Studies submenu">
-                    <li><a href="#work">Section 01</a></li>
-                    <li><a href="#work">Section 02</a></li>
-                    <li><a href="#work">Section 03</a></li>
-                    <li><a href="#work">Section 04</a></li>
-                  </ul>
-                </li>
-                <li><a href="#contact" class="nav-primary-link">Contact</a></li>
+                <li><a href="index.html#top" class="nav-home-link nav-primary-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-primary-link">About</a></li>
+                <li><a href="index.html#work" class="nav-primary-link active">Case Studies</a></li>
                 <li class="nav-email-cta">
                   <a href="mailto:steven.lindgren@gmail.com">
                     <i class="fa-regular fa-envelope" aria-hidden="true"></i>
@@ -109,8 +81,7 @@
               <a href="#comparison">Final Design</a>
               <a href="#mobile">Mobile Walkthrough</a>
               <a href="#results">Results</a>
-              <a href="#learned">Learnings</a>
-              <a href="#similar-projects">Other Projects</a>
+              <a href="#learned">Conclusion</a>
             </nav>
           </aside>
 
@@ -212,6 +183,85 @@
               <h2>Wireframing &amp; Layout Structure</h2>
               <p class="case-detail-intro">The project started with low-fidelity wireframes to establish layout structure, content hierarchy, section pacing, and the enrollment path before moving into high-fidelity design. The goal was to organize rewards information in a way that felt easier to scan while maintaining consistency with Dell’s brand system and product imagery.</p>
               <p>Each section focuses on a specific part of the enrollment journey, comparing the early wireframe structure with the final high-fidelity design.</p>
+              <div class="case-bullets case-bullets-spaced case-design-decisions">
+                <h4>Wireframe Decisions</h4>
+                <div class="case-design-decisions-grid">
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-bullhorn"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Hero Structure</h5>
+                      <p>
+                        The hero section was structured to communicate Dell
+                        Rewards value immediately while keeping the enrollment
+                        path clear and visually dominant.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-tags"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Featured Deals</h5>
+                      <p>
+                        This section was designed to surface promotional offers
+                        quickly while preserving a clean scan pattern.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-coins"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Rewards Education</h5>
+                      <p>
+                        The points module was structured to explain how earning
+                        works in simple steps with clear sequencing and pacing.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-layer-group"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Member Benefits</h5>
+                      <p>
+                        The benefits area used a modular grid to make features
+                        easier to scan and compare at a glance.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-chart-line"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Account Value</h5>
+                      <p>
+                        This section framed long-term member value with balanced
+                        visual weight and clear transitions from promo content.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-circle-question"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>FAQ &amp; Objection Handling</h5>
+                      <p>
+                        The FAQ block was placed to resolve enrollment
+                        hesitation with concise objection handling before final
+                        CTA actions.
+                      </p>
+                    </div>
+                  </article>
+                </div>
+              </div>
               <div class="case-layout-module" data-case-layout-module>
                 <div class="cs-tabs case-layout-tabs" role="tablist" aria-label="Wireframe section views">
                   <button class="is-active" type="button" data-layout-key="hero">Hero Section</button>
@@ -220,13 +270,6 @@
                   <button type="button" data-layout-key="memberBenefits">Member Benefits Grid</button>
                   <button type="button" data-layout-key="accountValue">Account Value Section</button>
                   <button type="button" data-layout-key="faq">FAQ / Objection Handling</button>
-                </div>
-
-                <div class="case-layout-callout-wrap">
-                  <div class="cs-callout case-layout-callout">
-                    <span class="case-layout-callout-label" aria-hidden="true">Finding</span>
-                    <span class="case-layout-callout-text" data-layout-callout>The hero section was structured to communicate Dell Rewards value immediately while keeping the enrollment path clear and visually dominant.</span>
-                  </div>
                 </div>
 
                 <div class="cs-image-card case-layout-image-card">
@@ -308,29 +351,29 @@
                   <button
                     class="is-active"
                     type="button"
-                    data-compare-src="images/portfolio/landers/dell/new/dell-full-view-wireframe.jpg"
-                    data-compare-mobile-src="images/portfolio/landers/dell/dell-wireframe-mobile.jpg"
-                    data-compare-alt="Dell Rewards low-fidelity wireframe"
-                    data-compare-mobile-alt="Dell Rewards mobile wireframe"
-                  >Wireframe</button>
-                  <button
-                    type="button"
                     data-compare-src="images/portfolio/landers/dell/new/dell-full-view-desktop.jpg"
                     data-compare-mobile-src="images/portfolio/landers/dell/dell-mobile-full.jpg"
                     data-compare-alt="Dell Rewards final high-fidelity landing page design"
                     data-compare-mobile-alt="Dell Rewards final mobile landing page design"
                   >Final Design</button>
+                  <button
+                    type="button"
+                    data-compare-src="images/portfolio/landers/dell/new/dell-full-view-wireframe.jpg"
+                    data-compare-mobile-src="images/portfolio/landers/dell/new/dell-mobile-wireframe.jpg"
+                    data-compare-alt="Dell Rewards low-fidelity wireframe"
+                    data-compare-mobile-alt="Dell Rewards mobile wireframe"
+                  >Wireframe</button>
                 </div>
                 <a
                   class="case-comparison-cta case-comparison-cta-desktop-only"
-                  href="images/portfolio/landers/dell/new/dell-full-view-wireframe.jpg"
+                  href="images/portfolio/landers/dell/new/dell-full-view-desktop.jpg"
                   target="_blank"
                   rel="noopener noreferrer"
                 >View Full Screen</a>
               </div>
               <div class="cs-image-card">
                 <div class="cs-image-scroll-window">
-                  <img id="comparison-image" src="images/portfolio/landers/dell/new/dell-full-view-wireframe.jpg" alt="Dell Rewards low-fidelity wireframe" />
+                  <img id="comparison-image" src="images/portfolio/landers/dell/new/dell-full-view-desktop.jpg" alt="Dell Rewards final high-fidelity landing page design" />
                 </div>
               </div>
             </section>
@@ -411,7 +454,7 @@
             </section>
 
             <section id="learned" class="case-panel case-text-panel">
-              <h2>Learnings</h2>
+              <h2>Conclusion</h2>
               <p>This project reinforced how important hierarchy and pacing are when designing acquisition-focused landing pages with large amounts of promotional and rewards content. The challenge was not adding more information, but organizing the experience in a way that helped users understand the value quickly without feeling overwhelmed.</p>
               <p>It also reinforced the importance of designing modular systems that maintain clarity across desktop and mobile experiences. Many of the strongest decisions came from simplifying layout structure, creating more intentional section flow, and guiding attention toward a single clear enrollment path.</p>
             </section>
@@ -420,30 +463,31 @@
               <h2 id="similar-projects-title">Other Projects</h2>
               <div class="case-similar-projects-grid">
                 <article class="case-similar-project">
-                  <a class="case-similar-project-link" href="lander-aboc.html">
-                    <div class="case-similar-project-preview">
-                      <img src="images/portfolio/landers/aboc/display-port-600x400-aboc.jpg" alt="ABOC Mastercard preview" />
-                    </div>
-                    <h3>ABOC Mastercard</h3>
-                    <p>UI Design</p>
-                  </a>
-                </article>
-                <article class="case-similar-project">
                   <a class="case-similar-project-link" href="lander-fortiva.html">
                     <div class="case-similar-project-preview">
-                      <img src="images/portfolio/landers/fortiva/display-port-600x400-fortiva.jpg" alt="Fortiva Mastercard preview" />
+                      <video autoplay loop muted playsinline preload="metadata" data-lazy-video="true" data-autoplay-when-visible="true" poster="images/portfolio/landers/fortiva/new/fortiva-video-poster.png" aria-label="Fortiva Mastercard landing page preview video">
+                        <source data-src="images/portfolio/landers/fortiva/new/fortiva-index-display.mp4" type="video/mp4" />
+                      </video>
+                      <div class="case-similar-project-overlay">
+                        <span class="overlay-button" aria-hidden="true">View Case Study</span>
+                      </div>
                     </div>
                     <h3>Fortiva Mastercard</h3>
-                    <p>UI Design</p>
+                    <p>Landing Page Design</p>
                   </a>
                 </article>
                 <article class="case-similar-project">
-                  <a class="case-similar-project-link" href="lander-revive.html">
+                  <a class="case-similar-project-link" href="lander-coolfox.html">
                     <div class="case-similar-project-preview">
-                      <img src="images/portfolio/landers/revive/display-port-600x400-revive.jpg" alt="Revive Credit preview" />
+                      <video autoplay loop muted playsinline preload="metadata" data-lazy-video="true" data-autoplay-when-visible="true" poster="images/portfolio/landers/coolfox/solution/coolfox-solution-new-hero.jpg" aria-label="CoolFox Refrigerated Vehicles website redesign preview video">
+                        <source data-src="images/portfolio/landers/coolfox/coolfox-index-display.mp4" type="video/mp4" />
+                      </video>
+                      <div class="case-similar-project-overlay">
+                        <span class="overlay-button" aria-hidden="true">View Case Study</span>
+                      </div>
                     </div>
-                    <h3>Revive Credit</h3>
-                    <p>UI Design</p>
+                    <h3>CoolFox Refrigerated Vehicles</h3>
+                    <p>Website Redesign</p>
                   </a>
                 </article>
               </div>
@@ -452,6 +496,24 @@
         </div>
       </div>
     </div>
+
+    <!-- Footer -->
+    <div class="container">
+      <footer id="footer">
+        <div class="row">
+          <div class="col-xs-12 col-md-6 copyrights">
+            <p>&COPY; 2026 StevenLindgren.com</p>
+          </div>
+          <div class="col-xs-12 col-md-6 footer-socials">
+            <a href="https://www.linkedin.com/in/steven-lindgren-9a62487/"
+              >Linkedin</a
+            >
+            <a href="https://500px.com/p/stevel77?view=photos">500px</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Footer Ends -->
 
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
@@ -662,6 +724,23 @@
         });
       }
 
+      function scrollCaseStudyTargetIntoView(target) {
+        if (!target) {
+          return;
+        }
+
+        const header = document.getElementById("header");
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+
+        window.requestAnimationFrame(() => {
+          window.scrollTo({
+            top: Math.max(0, top),
+            behavior: "smooth",
+          });
+        });
+      }
+
       comparisonGroups.forEach((group) => {
         const buttons = Array.from(group.querySelectorAll("button"));
         if (!buttons.length) {
@@ -688,9 +767,9 @@
         const layoutTabButtons = Array.from(layoutModule.querySelectorAll("[data-layout-key]"));
         const layoutModeGroup = layoutModule.querySelector("[data-layout-mode-toggle]");
         const layoutModeButtons = layoutModeGroup ? Array.from(layoutModeGroup.querySelectorAll("[data-layout-mode]")) : [];
-        const layoutCallout = layoutModule.querySelector("[data-layout-callout]");
         const layoutHotspot = layoutModule.querySelector("[data-layout-hotspot]");
         const layoutImage = layoutModule.querySelector("[data-layout-image]");
+        const layoutImageCard = layoutModule.querySelector(".case-layout-image-card");
         const layoutImageScrollWindow = layoutImage ? layoutImage.closest(".cs-image-scroll-window") : null;
         let activeLayoutKey = layoutTabButtons.find((button) => button.classList.contains("is-active"))?.dataset.layoutKey || "hero";
         let activeLayoutMode = layoutModeButtons.find((button) => button.classList.contains("is-active"))?.dataset.layoutMode || "wireframe";
@@ -701,12 +780,8 @@
             return;
           }
 
-          if (layoutCallout) {
-            layoutCallout.textContent = content.callout || content.description;
-          }
-
           if (layoutHotspot) {
-            // Keep hotspot centered directly below the top callout across all layout tabs.
+            // Keep the hotspot centered consistently across all layout tabs.
             layoutHotspot.style.left = "50%";
             layoutHotspot.style.top = "174px";
           }
@@ -743,6 +818,7 @@
             button.classList.add("is-active");
             activeLayoutKey = button.dataset.layoutKey || "hero";
             renderLayoutModule();
+            scrollCaseStudyTargetIntoView(layoutImageCard);
           });
         });
 

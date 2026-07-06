@@ -41,23 +41,9 @@
               </a>
             </div>
             <div class="nav-desktop-links" aria-label="Primary">
-              <a href="#top" class="nav-home-link nav-primary-link">Home</a>
-              <a href="#about" class="nav-primary-link">About</a>
-              <div class="nav-desktop-item nav-desktop-item-work">
-                <a
-                  href="#work"
-                  class="nav-primary-link nav-work-trigger"
-                  aria-haspopup="true"
-                  >Case Studies</a
-                >
-                <div class="nav-desktop-submenu" aria-label="Case Studies menu">
-                  <a href="#work" class="nav-work-sublink">Section 01</a>
-                  <a href="#work" class="nav-work-sublink">Section 02</a>
-                  <a href="#work" class="nav-work-sublink">Section 03</a>
-                  <a href="#work" class="nav-work-sublink">Section 04</a>
-                </div>
-              </div>
-              <a href="#contact" class="nav-primary-link">Contact</a>
+              <a href="index.html#top" class="nav-home-link nav-primary-link">Home</a>
+              <a href="index.html#about" class="nav-primary-link">About</a>
+              <a href="index.html#work" class="nav-primary-link active">Case Studies</a>
             </div>
             <nav id="menu-center">
               <div class="menu-button menu-open">
@@ -66,32 +52,10 @@
               </div>
               <ul class="flexnav standard" data-breakpoint="1024">
                 <li>
-                  <a href="#top" class="nav-home-link nav-primary-link">Home</a>
+                  <a href="index.html#top" class="nav-home-link nav-primary-link">Home</a>
                 </li>
-                <li><a href="#about" class="nav-primary-link">About</a></li>
-                <li class="nav-has-submenu">
-                  <div class="nav-mobile-parent">
-                    <a href="#work" class="nav-primary-link">Case Studies</a>
-                    <button
-                      type="button"
-                      class="nav-submenu-toggle"
-                      aria-expanded="false"
-                      aria-label="Toggle Case Studies submenu"
-                    >
-                      <span aria-hidden="true"></span>
-                    </button>
-                  </div>
-                  <ul
-                    class="nav-mobile-submenu"
-                    aria-label="Case Studies submenu"
-                  >
-                    <li><a href="#work">Section 01</a></li>
-                    <li><a href="#work">Section 02</a></li>
-                    <li><a href="#work">Section 03</a></li>
-                    <li><a href="#work">Section 04</a></li>
-                  </ul>
-                </li>
-                <li><a href="#contact" class="nav-primary-link">Contact</a></li>
+                <li><a href="index.html#about" class="nav-primary-link">About</a></li>
+                <li><a href="index.html#work" class="nav-primary-link active">Case Studies</a></li>
                 <li class="nav-email-cta">
                   <a href="mailto:steven.lindgren@gmail.com">
                     <i class="fa-regular fa-envelope" aria-hidden="true"></i>
@@ -122,13 +86,11 @@
               <a href="#overview" class="is-active">Overview</a>
               <a href="#problem">Problem</a>
               <a href="#flow">Page Flow</a>
-              <a href="#attention">Attention Shift</a>
               <a href="#solution">Solution</a>
               <a href="#comparison">Comparison</a>
               <a href="#mobile">Mobile Walkthrough</a>
               <a href="#results">Results</a>
-              <a href="#learned">Learnings</a>
-              <a href="#similar-projects">Other Projects</a>
+              <a href="#learned">Conclusion</a>
             </nav>
           </aside>
 
@@ -249,55 +211,99 @@
                 explain the benefit faster and build trust earlier.
               </p>
 
-              <div class="case-columns case-columns-spaced">
-                <article>
-                  <h4>Who it&apos;s for</h4>
-                  <ul>
-                    <li>People rebuilding credit</li>
-                    <li>
-                      Visitors checking if they prequalify or responding to a
-                      mail offer
-                    </li>
-                    <li>
-                      People who may have been overlooked by other card issuers
-                    </li>
-                    <li>
-                      Users trying to decide quickly if the card fits their
-                      everyday spending needs
-                    </li>
-                  </ul>
-                </article>
-                <article>
-                  <h4>What was broken</h4>
-                  <ul>
-                    <li>
-                      The page did not make prequalification feel like a clear
-                      next step
-                    </li>
-                    <li>
-                      The quick application and instant decision message was not
-                      easy enough to find
-                    </li>
-                    <li>
-                      The copy did not connect strongly enough to people working
-                      toward credit goals
-                    </li>
-                    <li>Trust cues and cardholder proof showed up too late</li>
-                    <li>
-                      Everyday-use benefits were present, but not easy to scan
-                    </li>
-                    <li>
-                      The page felt more like separate content blocks than one
-                      guided path to apply
-                    </li>
-                  </ul>
-                </article>
+              <div class="case-challenge-cards case-bullets-spaced">
+                <h4>Key Findings</h4>
+                <div class="case-challenge-card-grid">
+                  <article class="case-challenge-card">
+                    <span class="case-challenge-card-icon" aria-hidden="true">
+                      <i class="fa-solid fa-bullhorn"></i>
+                    </span>
+                    <div class="case-challenge-card-copy">
+                      <h5>Vague headline</h5>
+                      <p>
+                        The headline was too broad and did not quickly explain
+                        why the card was relevant. Users had to work too hard to
+                        understand the core value before deciding whether to keep
+                        reading.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-challenge-card">
+                    <span class="case-challenge-card-icon" aria-hidden="true">
+                      <i class="fa-solid fa-arrow-pointer"></i>
+                    </span>
+                    <div class="case-challenge-card-copy">
+                      <h5>Competing CTAs</h5>
+                      <p>
+                        Multiple buttons carried similar visual weight, so the
+                        primary next step was not clear. Instead of guiding
+                        users toward prequalification, the page created
+                        hesitation around what action mattered most.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-challenge-card">
+                    <span class="case-challenge-card-icon" aria-hidden="true">
+                      <i class="fa-solid fa-image"></i>
+                    </span>
+                    <div class="case-challenge-card-copy">
+                      <h5>Generic lifestyle imagery</h5>
+                      <p>
+                        The hero image felt generic and did not help explain the
+                        product, offer, or next step. On mobile, it also showed
+                        up before the strongest value message, weakening early
+                        engagement.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-challenge-card">
+                    <span class="case-challenge-card-icon" aria-hidden="true">
+                      <i class="fa-solid fa-shield-halved"></i>
+                    </span>
+                    <div class="case-challenge-card-copy">
+                      <h5>Trust appeared too late</h5>
+                      <p>
+                        Trust cues were pushed too far down the page, even
+                        though this audience needed reassurance early. Users had
+                        to scroll before seeing signals that could build
+                        confidence in the offer.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-challenge-card">
+                    <span class="case-challenge-card-icon" aria-hidden="true">
+                      <i class="fa-solid fa-route"></i>
+                    </span>
+                    <div class="case-challenge-card-copy">
+                      <h5>Disconnected flow</h5>
+                      <p>
+                        The page felt like a series of separate content blocks
+                        instead of one guided path. Users were not clearly moved
+                        from understanding the offer to feeling confident enough
+                        to apply.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-challenge-card">
+                    <span class="case-challenge-card-icon" aria-hidden="true">
+                      <i class="fa-solid fa-list-check"></i>
+                    </span>
+                    <div class="case-challenge-card-copy">
+                      <h5>Hard-to-scan benefits</h5>
+                      <p>
+                        The benefits were present, but they were not organized
+                        for fast scanning. Users had to slow down to understand
+                        the offer, which weakened clarity and made the value
+                        harder to compare at a glance.
+                      </p>
+                    </div>
+                  </article>
+                </div>
               </div>
 
               <div
                 class="cs-tabs"
                 data-callout-target="#problem-card"
-                data-callout-box="#problem-callout-text"
               >
                 <button
                   class="is-active"
@@ -411,23 +417,6 @@
                 </button>
               </div>
 
-              <div class="case-layout-callout-wrap case-problem-callout-wrap">
-                <div
-                  class="cs-callout case-layout-callout case-problem-callout"
-                >
-                  <span class="case-layout-callout-label" aria-hidden="true"
-                    >Finding</span
-                  >
-                  <span
-                    id="problem-callout-text"
-                    class="case-layout-callout-text"
-                    data-callout-text
-                    >The headline was too broad. It did not quickly tell someone
-                    why this card might be useful for them.</span
-                  >
-                </div>
-              </div>
-
               <div id="problem-card" class="cs-image-card case-before-card">
                 <span class="cs-hotspot" aria-hidden="true"></span>
                 <div class="cs-image-scroll-window">
@@ -463,36 +452,7 @@
               </figure>
             </section>
 
-            <section
-              id="attention"
-              class="case-panel case-detail-panel case-attention-panel"
-            >
-              <h2>Attention Shift</h2>
-              <p class="case-detail-intro">
-                The heatmap comparison helped validate the direction of the
-                redesign. In the original hero, attention was split between a
-                broad headline, generic lifestyle imagery, and two competing
-                CTAs. In the redesign, attention moved toward the rewards
-                message, the card, and the prequalification action.
-              </p>
-
-              <div class="case-heatmap-grid">
-                <figure class="case-heatmap-card">
-                  <figcaption>Before</figcaption>
-                  <img
-                    src="images/portfolio/landers/fortiva/new/heatmaps-old.jpg"
-                    alt="Heatmap of the original Fortiva hero showing attention split across the headline, lifestyle image, and two competing calls to action"
-                  />
-                </figure>
-                <figure class="case-heatmap-card">
-                  <figcaption>After</figcaption>
-                  <img
-                    src="images/portfolio/landers/fortiva/new/heatmaps-new.jpg"
-                    alt="Heatmap of the redesigned Fortiva hero showing attention around the rewards headline, card visual, and prequalification call to action"
-                  />
-                </figure>
-              </div>
-            </section>
+          
 
             <section id="solution" class="case-panel case-detail-panel">
               <h2>Solution</h2>
@@ -502,53 +462,112 @@
                 user&apos;s questions in a better order.
               </p>
 
-              <div class="case-bullets case-bullets-spaced">
-                <h4>How it was improved</h4>
-                <div class="case-bullets-columns">
-                  <ul>
-                    <li>
-                      The main value proposition was clarified immediately so
-                      users could understand the core benefit without having to
-                      search for it
-                    </li>
-                    <li>
-                      One primary action was made visually dominant instead of
-                      forcing users to choose between competing buttons
-                    </li>
-                    <li>
-                      Trust cues were moved closer to key decision-making
-                      moments throughout the experience
-                    </li>
-                    <li>
-                      Benefits were reorganized into a more scannable layout for
-                      faster comprehension
-                    </li>
-                  </ul>
-                  <ul>
-                    <li>
-                      The middle of the page was broken into clearer sections to
-                      improve flow and readability
-                    </li>
-                    <li>
-                      Apply actions were repeated strategically throughout the
-                      page so users did not have to search for them
-                    </li>
-                    <li>
-                      The Fortiva card was brought directly into the hero
-                      section so the product was visible immediately
-                    </li>
-                    <li>
-                      Hero artwork was positioned to guide attention back toward
-                      the card and primary apply area
-                    </li>
-                  </ul>
+              <div class="case-bullets case-bullets-spaced case-design-decisions">
+                <h4>Design Decisions</h4>
+                <div class="case-design-decisions-grid">
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-bullhorn"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Clearer Value</h5>
+                      <p>
+                        The headline was rewritten to explain the offer faster
+                        and make the core benefit easier to understand. Users no
+                        longer had to search for the reason to keep reading.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-arrow-pointer"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Established CTA hierarchy</h5>
+                      <p>
+                        The primary action was given stronger visual priority so
+                        the next step felt obvious. The page now guides users
+                        more directly toward prequalification instead of splitting
+                        attention across competing buttons.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-credit-card"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Product+ eyeflow</h5>
+                      <p>
+                        The card was brought directly into the hero so users saw
+                        the product immediately. Supporting artwork was arranged
+                        to guide attention back toward the card and primary
+                        action area.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-shield-halved"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Brought trust forward</h5>
+                      <p>
+                        Trust cues were moved higher in the experience so users
+                        saw them earlier. This reduced the distance between the
+                        value message and the confidence-building signals needed
+                        to continue.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-list-check"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Clearer benefits</h5>
+                      <p>
+                        Benefits were reorganized into a cleaner pattern so the
+                        offer could be understood more quickly. The updated
+                        layout made the information easier to scan without
+                        slowing users down.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-grip"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Scannable modules</h5>
+                      <p>
+                        The middle of the page was broken into clearer content
+                        sections to improve rhythm and readability. Users could
+                        compare information more easily without feeling like the
+                        page was one continuous block.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-hand-pointer"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Reinforced primary actions</h5>
+                      <p>
+                        The main apply action was repeated in key places where
+                        users were likely ready to move forward. This reduced the
+                        need to search and kept the conversion path visible
+                        throughout the page.
+                      </p>
+                    </div>
+                  </article>
                 </div>
               </div>
 
               <div
                 class="cs-tabs"
                 data-callout-target="#solution-card"
-                data-callout-box="#solution-callout-text"
               >
                 <button
                   class="is-active"
@@ -678,23 +697,6 @@
                 >
                   Reinforced primary actions
                 </button>
-              </div>
-
-              <div class="case-layout-callout-wrap case-solution-callout-wrap">
-                <div
-                  class="cs-callout case-layout-callout case-solution-callout"
-                >
-                  <span class="case-layout-callout-label" aria-hidden="true"
-                    >Finding</span
-                  >
-                  <span
-                    id="solution-callout-text"
-                    class="case-layout-callout-text"
-                    data-callout-text
-                    >The new headline gets to the point faster and gives users a
-                    clearer reason to keep reading.</span
-                  >
-                </div>
               </div>
 
               <div id="solution-card" class="cs-image-card case-after-card">
@@ -896,7 +898,7 @@
             </section>
 
             <section id="learned" class="case-panel case-text-panel">
-              <h2>Learnings</h2>
+              <h2>Conclusion</h2>
               <p>
                 This project reinforced how important clarity and trust are when
                 designing for users rebuilding credit, especially a younger
@@ -923,19 +925,32 @@
               <h2 id="similar-projects-title">Other Projects</h2>
               <div class="case-similar-projects-grid">
                 <article class="case-similar-project">
-                  <div class="case-similar-project-preview">
-                    Project Preview 1
-                  </div>
+                  <a class="case-similar-project-link" href="lander-dell.html">
+                    <div class="case-similar-project-preview">
+                      <video autoplay loop muted playsinline preload="metadata" data-lazy-video="true" data-autoplay-when-visible="true" poster="images/portfolio/landers/dell/dell-display-desktop.jpg" aria-label="Dell Rewards landing page preview video">
+                        <source data-src="images/portfolio/landers/dell/new/dell-index-display.mp4" type="video/mp4" />
+                      </video>
+                      <div class="case-similar-project-overlay">
+                        <span class="overlay-button" aria-hidden="true">View Case Study</span>
+                      </div>
+                    </div>
+                    <h3>Dell Technologies</h3>
+                    <p>Rewards Landing Page</p>
+                  </a>
                 </article>
                 <article class="case-similar-project">
-                  <div class="case-similar-project-preview">
-                    Project Preview 2
-                  </div>
-                </article>
-                <article class="case-similar-project">
-                  <div class="case-similar-project-preview">
-                    Project Preview 3
-                  </div>
+                  <a class="case-similar-project-link" href="lander-coolfox.html">
+                    <div class="case-similar-project-preview">
+                      <video autoplay loop muted playsinline preload="metadata" data-lazy-video="true" data-autoplay-when-visible="true" poster="images/portfolio/landers/coolfox/solution/coolfox-solution-new-hero.jpg" aria-label="CoolFox Refrigerated Vehicles website redesign preview video">
+                        <source data-src="images/portfolio/landers/coolfox/coolfox-index-display.mp4" type="video/mp4" />
+                      </video>
+                      <div class="case-similar-project-overlay">
+                        <span class="overlay-button" aria-hidden="true">View Case Study</span>
+                      </div>
+                    </div>
+                    <h3>CoolFox Refrigerated Vehicles</h3>
+                    <p>Website Redesign</p>
+                  </a>
                 </article>
               </div>
             </section>
@@ -943,6 +958,24 @@
         </div>
       </div>
     </div>
+
+    <!-- Footer -->
+    <div class="container">
+      <footer id="footer">
+        <div class="row">
+          <div class="col-xs-12 col-md-6 copyrights">
+            <p>&COPY; 2026 StevenLindgren.com</p>
+          </div>
+          <div class="col-xs-12 col-md-6 footer-socials">
+            <a href="https://www.linkedin.com/in/steven-lindgren-9a62487/"
+              >Linkedin</a
+            >
+            <a href="https://500px.com/p/stevel77?view=photos">500px</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Footer Ends -->
 
     <script src="js/plugins.js"></script>
     <script src="js/main.js?v=2026-05-14-1"></script>
@@ -1165,6 +1198,36 @@
         applyImageScroll(card);
       }
 
+      function scrollCaseStudyTargetIntoView(target) {
+        if (!target) {
+          return;
+        }
+
+        const header = document.getElementById("header");
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const top =
+          target.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+
+        window.requestAnimationFrame(() => {
+          window.scrollTo({
+            top: Math.max(0, top),
+            behavior: "smooth",
+          });
+        });
+      }
+
+      function getInteractiveScrollTarget(group) {
+        if (!group) {
+          return null;
+        }
+
+        if (group.dataset.calloutTarget) {
+          return document.querySelector(group.dataset.calloutTarget);
+        }
+
+        return null;
+      }
+
       function wireButtonGroup(groupSelector) {
         const groups = document.querySelectorAll(groupSelector);
         if (!groups.length) {
@@ -1184,6 +1247,7 @@
               applyTabCardState(button, group);
               applyComparisonState(button, group);
               updateToggleIndicator(group, button);
+              scrollCaseStudyTargetIntoView(getInteractiveScrollTarget(group));
             });
 
             button.addEventListener("keydown", (event) => {

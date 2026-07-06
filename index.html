@@ -59,22 +59,13 @@
             </div>
             <div class="nav-desktop-links" aria-label="Primary">
               <a href="#top" class="nav-home-link nav-primary-link">Home</a>
-              <a href="#about" class="nav-primary-link">About</a>
-              <div class="nav-desktop-item nav-desktop-item-work">
-                <a
-                  href="#work"
-                  class="nav-primary-link nav-work-trigger"
-                  aria-haspopup="true"
-                  >Case Studies</a
-                >
-                <div class="nav-desktop-submenu" aria-label="Case Studies menu">
-                  <a href="#work" class="nav-work-sublink">Section 01</a>
-                  <a href="#work" class="nav-work-sublink">Section 02</a>
-                  <a href="#work" class="nav-work-sublink">Section 03</a>
-                  <a href="#work" class="nav-work-sublink">Section 04</a>
-                </div>
-              </div>
-              <a href="#contact" class="nav-primary-link">Contact</a>
+              <a
+                href="#about"
+                class="nav-primary-link"
+                data-home-page-view-trigger="about"
+                >About</a
+              >
+              <a href="#work" class="nav-primary-link">Case Studies</a>
             </div>
             <nav id="menu-center">
               <div class="menu-button menu-open">
@@ -85,30 +76,17 @@
                 <li>
                   <a href="#top" class="nav-home-link nav-primary-link">Home</a>
                 </li>
-                <li><a href="#about" class="nav-primary-link">About</a></li>
-                <li class="nav-has-submenu">
-                  <div class="nav-mobile-parent">
-                    <a href="#work" class="nav-primary-link">Case Studies</a>
-                    <button
-                      type="button"
-                      class="nav-submenu-toggle"
-                      aria-expanded="false"
-                      aria-label="Toggle Case Studies submenu"
-                    >
-                      <span aria-hidden="true"></span>
-                    </button>
-                  </div>
-                  <ul
-                    class="nav-mobile-submenu"
-                    aria-label="Case Studies submenu"
+                <li>
+                  <a
+                    href="#about"
+                    class="nav-primary-link"
+                    data-home-page-view-trigger="about"
+                    >About</a
                   >
-                    <li><a href="#work">Section 01</a></li>
-                    <li><a href="#work">Section 02</a></li>
-                    <li><a href="#work">Section 03</a></li>
-                    <li><a href="#work">Section 04</a></li>
-                  </ul>
                 </li>
-                <li><a href="#contact" class="nav-primary-link">Contact</a></li>
+                <li>
+                  <a href="#work" class="nav-primary-link">Case Studies</a>
+                </li>
                 <li class="nav-email-cta">
                   <a href="mailto:steven.lindgren@gmail.com">
                     <i class="fa-regular fa-envelope" aria-hidden="true"></i>
@@ -137,155 +115,187 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-12">
-              <!-- Hero / About section -->
-              <div class="hero-wrapper">
-                <!-- Hero content: intro text and primary CTA -->
-                <div
-                  class="page-title-main hero-intro-panel fade-in"
-                  id="about"
-                >
-                  <h3>Hi,I'm Steven.</h3>
-
-                  <h1 class="hero-headline">
-                    <span class="hero-headline-accent"
-                      >I design digital experiences built to convert.</span
-                    >
-                  </h1>
-                  <p>
-                    I've always been drawn to things that blend creativity and
-                    precision, from
-                    <a
-                      class="hero-interest-chip hero-interest-chip-photography"
-                      href="https://500px.com/manager?view=photos&amp;filter=all"
-                      target="_blank"
-                      rel="noreferrer"
-                      tabindex="0"
-                      data-interest-preview="photography"
-                      data-preview-title="Through my lens"
-                      data-preview-copy="Finding the right frame through light, timing, and small details."
-                    >
-                      <i class="fa-brands fa-500px" aria-hidden="true"></i>
-                      Photography
-                    </a>
-                    to
-                    <span
-                      class="hero-interest-chip hero-interest-chip-fishing"
-                      tabindex="0"
-                      data-interest-preview="fishing"
-                      data-preview-title="Where I slow down"
-                      data-preview-copy="Time on the water helps me reset, stay present, and appreciate the details."
-                    >
-                      <i class="fa-solid fa-water" aria-hidden="true"></i>
-                      fly fishing </span
-                    >. That same mindset shapes how I approach design: clear
-                    thinking, attention to detail, and experiences that feel
-                    intuitive to use.
-                  </p>
+              <div data-home-page-default-only>
+                <!-- Hero / About section -->
+                <div class="hero-wrapper">
+                  <!-- Hero content: intro text and primary CTA -->
                   <div
-                    class="hero-mobile-cta-group"
-                    role="group"
-                    aria-label="Hero actions"
+                    class="page-title-main hero-intro-panel fade-in"
+                    id="intro"
                   >
-                    <a
-                      class="hero-mobile-cta hero-mobile-cta-primary"
-                      href="#work"
-                    >
-                      Check out my recent work
-                    </a>
-                    <button
-                      class="hero-mobile-cta hero-mobile-cta-secondary hero-case-video-trigger"
-                      type="button"
-                      aria-haspopup="dialog"
-                      aria-controls="hero-intro-video-modal"
-                    >
-                      Learn more about me
-                    </button>
-                  </div>
-                  <section
-                    class="hero-case-stack"
-                    aria-label="Featured case studies"
-                  >
-                    <article
-                      class="hero-case-preview hero-case-preview-fortiva"
-                    >
-                      <div
-                        class="hero-case-preview-content hero-case-preview-content-featured"
-                      >
-                        <h2>Recent work</h2>
-                        <p>
-                          See how I turn landing page ideas into clear,
-                          conversion-focused digital experiences.
-                        </p>
-                        <a href="#work">Read Case Studies</a>
-                      </div>
-                    </article>
-                    <div class="hero-case-work-fan" aria-hidden="true">
-                      <img
-                        class="hero-case-work-fan-item hero-case-work-fan-left"
-                        src="images/portfolio/landers/dell/display-port-600x400-dell.jpg"
-                        alt=""
-                      />
-                      <img
-                        class="hero-case-work-fan-item hero-case-work-fan-center"
-                        src="images/portfolio/landers/fortiva/new/display-port-600x400-fortiva.jpg"
-                        alt=""
-                      />
-                      <img
-                        class="hero-case-work-fan-item hero-case-work-fan-right"
-                        src="images/portfolio/landers/aboc/display-port-600x400-aboc.jpg"
-                        alt=""
-                      />
-                    </div>
+                    <h3>Hi,I'm Steven.</h3>
 
-                    <article
-                      class="hero-case-preview hero-case-preview-dell hero-case-preview-photo"
+                    <h1 class="hero-headline">
+                      <span class="hero-headline-accent"
+                        >I design digital experiences built to convert.</span
+                      >
+                    </h1>
+                    <p>
+                      I've always been drawn to things that blend creativity and
+                      precision, from
+                      <a
+                        class="hero-interest-chip hero-interest-chip-photography"
+                        href="https://500px.com/p/stevel77?view=photos"
+                        target="_blank"
+                        rel="noreferrer"
+                        tabindex="0"
+                        data-interest-preview="photography"
+                        data-preview-title="Through my lens"
+                        data-preview-copy="Finding the right frame through light, timing, and small details."
+                      >
+                        <i class="fa-brands fa-500px" aria-hidden="true"></i>
+                        Photography
+                      </a>
+                      to
+                      <span
+                        class="hero-interest-chip hero-interest-chip-fishing"
+                        tabindex="0"
+                        data-interest-preview="fishing"
+                        data-preview-title="Where I slow down"
+                        data-preview-copy="Time on the water helps me reset, stay present, and appreciate the details."
+                      >
+                        <i class="fa-solid fa-water" aria-hidden="true"></i>
+                        fly fishing </span
+                      >. That same mindset shapes how I approach design: clear
+                      thinking, attention to detail, and experiences that feel
+                      intuitive to use.
+                    </p>
+                    <div
+                      class="hero-mobile-cta-group"
+                      role="group"
+                      aria-label="Hero actions"
                     >
+                      <a
+                        class="hero-mobile-cta hero-mobile-cta-primary"
+                        href="#work"
+                      >
+                        Check out my recent work
+                      </a>
                       <button
-                        class="hero-case-video-trigger"
+                        class="hero-mobile-cta hero-mobile-cta-secondary hero-case-video-trigger"
                         type="button"
-                        aria-label="Play introduction video"
                         aria-haspopup="dialog"
                         aria-controls="hero-intro-video-modal"
                       >
-                        <img
-                          class="hero-case-photo"
-                          src="images/main/me.JPG"
-                          alt="Portrait of Steven Lindgren"
-                        />
+                        Learn more about me
                       </button>
-                    </article>
-
-                    <article class="hero-case-preview hero-case-preview-aboc">
-                      <div
-                        class="hero-case-preview-content hero-case-preview-content-featured"
+                    </div>
+                    <section
+                      class="hero-case-stack"
+                      aria-label="Featured case studies"
+                    >
+                      <article
+                        class="hero-case-preview hero-case-preview-fortiva"
                       >
-                        <h2>About me</h2>
-                        <p>
-                          I blend visual design, digital thinking, and a growth
-                          mindset to make experiences feel clear and
-                          intentional.
-                        </p>
-                        <a href="#about">More About Me</a>
+                        <div
+                          class="hero-case-preview-content hero-case-preview-content-featured"
+                        >
+                          <h2>Recent work</h2>
+                          <p>
+                            See how I turn landing page ideas into clear,
+                            conversion-focused digital experiences.
+                          </p>
+                          <a href="#work">Read Case Studies</a>
+                        </div>
+                      </article>
+                      <div class="hero-case-work-fan" aria-hidden="true">
+                        <img
+                          class="hero-case-work-fan-item hero-case-work-fan-left"
+                          src="images/portfolio/landers/coolfox/solution/coolfox-solution-new-hero.jpg"
+                          alt="CoolFox Refrigerated Vehicles landing page preview"
+                        />
+                        <img
+                          class="hero-case-work-fan-item hero-case-work-fan-center"
+                          src="images/portfolio/landers/dell/new/hifi-hero.jpg"
+                          alt="Dell Rewards landing page preview"
+                        />
+                        <img
+                          class="hero-case-work-fan-item hero-case-work-fan-right"
+                          src="images/portfolio/landers/fortiva/new/fortiva-hero-preview.png"
+                          alt="Fortiva landing page preview"
+                        />
                       </div>
-                    </article>
 
-                    <article class="hero-case-preview hero-case-preview-revive">
-                      <div
-                        class="hero-case-preview-content hero-case-preview-content-featured"
+                      <article
+                        class="hero-case-preview hero-case-preview-dell hero-case-preview-photo"
                       >
-                        <h2>Let's connect</h2>
-                        <p>
-                          Have a role, project, or landing page challenge in
-                          mind? I'd love to hear about it.
-                        </p>
-                        <a href="mailto:steven.lindgren@gmail.com">Say Hello</a>
-                      </div>
-                    </article>
-                  </section>
+                        <button
+                          class="hero-case-video-trigger"
+                          type="button"
+                          aria-label="Play introduction video"
+                          aria-haspopup="dialog"
+                          aria-controls="hero-intro-video-modal"
+                        >
+                          <span
+                            class="hero-case-video-hover-note"
+                            aria-hidden="true"
+                          >
+                            <span class="hero-case-video-hover-copy">
+                              The guy behind the results
+                            </span>
+                            <span class="hero-case-video-hover-arrow">
+                              <img
+                                src="images/main/arrow-hero.svg"
+                                alt=""
+                                aria-hidden="true"
+                              />
+                            </span>
+                          </span>
+                          <span
+                            class="hero-case-video-media"
+                            aria-hidden="true"
+                          >
+                            <img
+                              class="hero-case-photo"
+                              src="images/main/me.JPG"
+                              alt="Portrait of Steven Lindgren"
+                            />
+                          </span>
+                        </button>
+                      </article>
+
+                      <article class="hero-case-preview hero-case-preview-aboc">
+                        <div
+                          class="hero-case-preview-content hero-case-preview-content-featured"
+                        >
+                          <h2>About me</h2>
+                          <p>
+                            I blend visual design, digital thinking, and a
+                            growth mindset to make experiences feel clear and
+                            intentional.
+                          </p>
+                          <a href="#about" data-home-page-view-trigger="about"
+                            >More About Me</a
+                          >
+                        </div>
+                      </article>
+
+                      <article
+                        class="hero-case-preview hero-case-preview-revive"
+                      >
+                        <div
+                          class="hero-case-preview-content hero-case-preview-content-featured"
+                        >
+                          <h2>Let's connect</h2>
+                          <p>
+                            Have a role, project, or landing page challenge in
+                            mind? I'd love to hear about it.
+                          </p>
+                          <a href="mailto:steven.lindgren@gmail.com"
+                            >Get In Touch</a
+                          >
+                        </div>
+                      </article>
+                    </section>
+                  </div>
                 </div>
               </div>
 
-              <aside class="hero-interest-preview" aria-hidden="true">
+              <aside
+                class="hero-interest-preview"
+                aria-hidden="true"
+                data-home-page-default-only
+              >
                 <div class="hero-interest-preview-media">
                   <img
                     class="hero-interest-preview-photo"
@@ -310,14 +320,18 @@
 
               <!-- Portfolio Wrap -->
 
-              <div class="portfolio-wrap fade-in" id="work">
+              <div
+                class="portfolio-wrap fade-in"
+                id="work"
+                data-home-page-default-only
+              >
                 <!-- Portfolio Items -->
                 <div id="portfolio-container">
                   <!-- <div class="portfolio-section-heading col-12">
                     <h2>Web</h2>
                   </div> -->
                   <!-- Landing Pages ----------------------------------------->
-                  
+
                   <!-- Dell Case Study -->
                   <div class="portfolio-item col-lg-6 col-12">
                     <a href="lander-dell.html">
@@ -330,11 +344,12 @@
                             playsinline
                             preload="metadata"
                             data-play-when-full-view="true"
-                            poster="images/portfolio/landers/dell/new/dell-index-display.mp4"
+                            data-lazy-video="true"
+                            poster="images/portfolio/landers/dell/dell-video-poster.jpg"
                             aria-label="Dell Rewards landing page preview video"
                           >
                             <source
-                              src="images/portfolio/landers/dell/new/dell-index-display.mp4"
+                              data-src="images/portfolio/landers/dell/new/dell-index-display.mp4"
                               type="video/mp4"
                             />
                           </video>
@@ -365,11 +380,12 @@
                             playsinline
                             preload="metadata"
                             data-play-when-full-view="true"
+                            data-lazy-video="true"
                             poster="images/portfolio/landers/fortiva/new/fortiva-video-poster.png"
                             aria-label="Fortiva Mastercard landing page preview video"
                           >
                             <source
-                              src="images/portfolio/landers/fortiva/new/fortiva-index-display.mp4"
+                              data-src="images/portfolio/landers/fortiva/new/fortiva-index-display.mp4"
                               type="video/mp4"
                             />
                           </video>
@@ -400,11 +416,12 @@
                             playsinline
                             preload="metadata"
                             data-play-when-full-view="true"
-                            poster="images/portfolio/landers/dell/new/dell-index-display.mp4"
-                            aria-label="Dell Rewards landing page preview video"
+                            data-lazy-video="true"
+                            poster="images/portfolio/landers/coolfox/coolfox-video-poster.jpg"
+                            aria-label="CoolFox Refrigerated Vehicles landing page preview video"
                           >
                             <source
-                              src="images/portfolio/landers/dell/new/dell-index-display.mp4"
+                              data-src="images/portfolio/landers/coolfox/coolfox-index-display.mp4"
                               type="video/mp4"
                             />
                           </video>
@@ -423,12 +440,10 @@
                   </div>
                   <!-- End Coolfox Case Study -->
 
-
-                 
                   <!-- End Landing Pages -->
 
                   <!-- Branding -->
-                  <div
+                  <!-- <div
                     class="portfolio-item col-lg-6 col-12 scroll-in scroll-in-left"
                   >
                     <a href="logo-britebox.html">
@@ -449,141 +464,115 @@
                         </div>
                       </div>
                     </a>
-                  </div>
-                  <div
-                    class="portfolio-item col-lg-6 col-12 scroll-in scroll-in-right"
-                  >
-                    <a href="logo-sonamedia.html">
-                      <div class="portfolio-content">
-                        <div class="portfolio-img-content">
-                          <img
-                            src="images/portfolio/logos/sona/display-port-600x400-logo-sonamedia.jpg"
-                            alt="Sona Media"
-                            class="portfolio-image"
-                          />
-                        </div>
-                        <div class="portfolio-footer">
-                          <div class="portfolio-text">
-                            <h3>Sona Media</h3>
-                            <h4>Logo Design</h4>
-                          </div>
-                          <button class="overlay-button">View Project</button>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-
-                  <div
-                    class="portfolio-item col-lg-6 col-12 scroll-in scroll-in-left"
-                  >
-                    <a href="logo-dorado.html">
-                      <div class="portfolio-content">
-                        <div class="portfolio-img-content">
-                          <img
-                            src="images/portfolio/logos/dorado/display-port-600x400-logo-dorado.jpg"
-                            alt="Dorado Digital"
-                            class="portfolio-image"
-                          />
-                        </div>
-                        <div class="portfolio-footer">
-                          <div class="portfolio-text">
-                            <h3>Dorado Digital</h3>
-                            <h4>Logo Design</h4>
-                          </div>
-                          <button class="overlay-button">View Project</button>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-
-                  <div
-                    class="portfolio-item col-lg-6 col-12 scroll-in scroll-in-right"
-                  >
-                    <a href="logo-sorensen.html">
-                      <div class="portfolio-content">
-                        <div class="portfolio-img-content">
-                          <img
-                            src="images/portfolio/logos/sorensen/display-port-600x400-logo-sorensen.jpg"
-                            alt="Sorensen Yacht Service"
-                            class="portfolio-image"
-                          />
-                        </div>
-                        <div class="portfolio-footer">
-                          <div class="portfolio-text">
-                            <h3>Sorensen Yacht Service</h3>
-                            <h4>Logo Design</h4>
-                          </div>
-                          <button class="overlay-button">View Project</button>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-
+                  </div> -->
                   <!-- End Branding -->
                 </div>
                 <!-- Portfolio Items Ends -->
               </div>
               <!-- Portfolio Wrap Ends -->
+
+              <section
+                class="home-about-view fade-in"
+                id="about"
+                data-home-page-about-view
+                hidden
+                aria-hidden="true"
+              >
+                <div class="home-about-view-grid">
+                  <div class="home-about-view-intro">
+                    <h1>
+                      Design is how I solve problems. Building is how I bring
+                      them to life.
+                    </h1>
+                    <div class="home-about-view-copy">
+                      <p>
+                        I've been designing digital experiences that help
+                        businesses grow. I started my career in agencies, where
+                        I learned to think beyond aesthetics and understand how
+                        design supports marketing, branding, and business goals.
+                        Since then, I've partnered with startups, established
+                        brands, and marketing teams across finance, healthcare,
+                        automotive, retail, and technology, creating everything
+                        from visual identities and websites to landing pages,
+                        email campaigns, digital advertising, and
+                        conversion-focused experiences.
+                      </p>
+
+                      <p>
+                        While visual design has always been my foundation, I've
+                        developed a deep understanding of the entire digital
+                        ecosystem. I enjoy collaborating with developers, I'm
+                        comfortable working with HTML and CSS, and I understand
+                        the technical considerations that turn great designs
+                        into polished products. My experience also extends into
+                        UX, conversion rate optimization, analytics, SEO, A/B
+                        testing, and performance marketing, allowing me to make
+                        design decisions that are informed by both creativity
+                        and data.
+                      </p>
+                      <p>
+                        Outside of work, I'm happiest anywhere I can be creative
+                        or outdoors. You'll usually find me on a golf course
+                        chasing a lower handicap, standing on the bow of a boat
+                        fly fishing the Long Island flats, or behind a camera
+                        capturing landscapes and wildlife. Those hobbies have
+                        shaped the way I approach design. Golf has taught me
+                        that small adjustments create big improvements. Fly
+                        fishing rewards patience, observation, and precision.
+                        Photography constantly reminds me to pay attention to
+                        composition, light, and the details that most people
+                        overlook.
+                      </p>
+                      <p>
+                        Today, I focus on creating thoughtful digital
+                        experiences that balance strong visual design with
+                        measurable business results. Whether I'm developing a
+                        brand identity, designing a marketing website, crafting
+                        an email campaign, or optimizing a landing page for
+                        higher conversions, my goal is always the same: create
+                        work that's intuitive, engaging, and built to perform.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="home-about-view-side">
+                    <div class="home-about-view-media">
+                      <img
+                        class="home-about-view-image"
+                        src="images/main/about-me-photo.jpg"
+                        alt="Steven Lindgren"
+                      />
+                    </div>
+                    <div
+                      class="home-about-view-facts"
+                      aria-label="About highlights"
+                    >
+                      <div class="home-about-view-fact">
+                        <h2>Education</h2>
+                        <p>New York Institute of Technology</p>
+                      </div>
+                      <div class="home-about-view-fact">
+                        <h2>Focus Areas</h2>
+                        <p>
+                          UI/UX Design,Visual Design, front-end development,
+                          CRO, analytics, SEO, and performance marketing.
+                        </p>
+                      </div>
+                      <div class="home-about-view-fact">
+                        <h2>Not at my desk</h2>
+                        <p>
+                          Golf, fly fishing, landscape photography, and wildlife
+                          photography.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
         </div>
       </div>
       <!-- Content Wrapper Ends -->
-
-      <!-- Contact Section -->
-      <div id="contact">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="page-title centered">
-                <p>Let's collaborate and bring your vision to life!</p>
-                <h1 class="animated-text">Get in touch</h1>
-                <i
-                  class="fa-solid fa-arrow-down contact-down-arrow"
-                  aria-hidden="true"
-                ></i>
-              </div>
-            </div>
-
-            <div class="col-sm-12">
-              <div class="contact-info">
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="contact-wrap">
-                      <div class="icon">
-                        <img
-                          src="images/main/mail_56dp_E8EAED_FILL0_wght400_GRAD0_opsz48.svg"
-                          alt=""
-                          aria-hidden="true"
-                        />
-                      </div>
-
-                      <h3>Email</h3>
-                      <a href="mailto:steven.lindgren@gmail.com"
-                        >steven.lindgren@gmail.com</a
-                      >
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="contact-wrap">
-                      <div class="icon">
-                        <img
-                          src="images/main/home_pin_56dp_E8EAED_FILL0_wght400_GRAD0_opsz48.svg"
-                          alt=""
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <h3>Location</h3>
-                      New York
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Contact Section Ends -->
 
       <!-- Footer -->
       <div class="container">
@@ -602,17 +591,6 @@
         </footer>
       </div>
       <!-- Footer Ends -->
-      <!-- Scroll-to-top button -->
-      <span
-        class="scrolltotop"
-        role="button"
-        tabindex="0"
-        aria-label="Scroll to top"
-        ><img
-          src="images/main/keyboard_arrow_up_32dp_2E2E2E_FILL0_wght400_GRAD0_opsz40.svg"
-          alt=""
-          aria-hidden="true"
-      /></span>
     </div>
     <!-- Page Wrapper Ends -->
     <div

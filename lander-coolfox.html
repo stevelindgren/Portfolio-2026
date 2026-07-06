@@ -41,23 +41,9 @@
               </a>
             </div>
             <div class="nav-desktop-links" aria-label="Primary">
-              <a href="#top" class="nav-home-link nav-primary-link">Home</a>
-              <a href="#about" class="nav-primary-link">About</a>
-              <div class="nav-desktop-item nav-desktop-item-work">
-                <a
-                  href="#work"
-                  class="nav-primary-link nav-work-trigger"
-                  aria-haspopup="true"
-                  >Case Studies</a
-                >
-                <div class="nav-desktop-submenu" aria-label="Case Studies menu">
-                  <a href="#work" class="nav-work-sublink">Section 01</a>
-                  <a href="#work" class="nav-work-sublink">Section 02</a>
-                  <a href="#work" class="nav-work-sublink">Section 03</a>
-                  <a href="#work" class="nav-work-sublink">Section 04</a>
-                </div>
-              </div>
-              <a href="#contact" class="nav-primary-link">Contact</a>
+              <a href="index.html#top" class="nav-home-link nav-primary-link">Home</a>
+              <a href="index.html#about" class="nav-primary-link">About</a>
+              <a href="index.html#work" class="nav-primary-link active">Case Studies</a>
             </div>
             <nav id="menu-center">
               <div class="menu-button menu-open">
@@ -66,32 +52,10 @@
               </div>
               <ul class="flexnav standard" data-breakpoint="1024">
                 <li>
-                  <a href="#top" class="nav-home-link nav-primary-link">Home</a>
+                  <a href="index.html#top" class="nav-home-link nav-primary-link">Home</a>
                 </li>
-                <li><a href="#about" class="nav-primary-link">About</a></li>
-                <li class="nav-has-submenu">
-                  <div class="nav-mobile-parent">
-                    <a href="#work" class="nav-primary-link">Case Studies</a>
-                    <button
-                      type="button"
-                      class="nav-submenu-toggle"
-                      aria-expanded="false"
-                      aria-label="Toggle Case Studies submenu"
-                    >
-                      <span aria-hidden="true"></span>
-                    </button>
-                  </div>
-                  <ul
-                    class="nav-mobile-submenu"
-                    aria-label="Case Studies submenu"
-                  >
-                    <li><a href="#work">Section 01</a></li>
-                    <li><a href="#work">Section 02</a></li>
-                    <li><a href="#work">Section 03</a></li>
-                    <li><a href="#work">Section 04</a></li>
-                  </ul>
-                </li>
-                <li><a href="#contact" class="nav-primary-link">Contact</a></li>
+                <li><a href="index.html#about" class="nav-primary-link">About</a></li>
+                <li><a href="index.html#work" class="nav-primary-link active">Case Studies</a></li>
                 <li class="nav-email-cta">
                   <a href="mailto:steven.lindgren@gmail.com">
                     <i class="fa-regular fa-envelope" aria-hidden="true"></i>
@@ -127,8 +91,7 @@
               <a href="#comparison">Comparison</a>
               <a href="#mobile">Mobile Walkthrough</a>
               <a href="#results">Results</a>
-              <a href="#learned">Learnings</a>
-              <a href="#similar-projects">Other Projects</a>
+              <a href="#learned">Conclusion</a>
             </nav>
           </aside>
 
@@ -273,7 +236,7 @@
               </p>
               <div class="case-columns case-columns-spaced">
                 <article>
-                  <h4>Stakeholder Interview</h4>
+                  <h5>Stakeholder Interview</h5>
                   <ul>
                     <li>Discussed business goals and customer needs</li>
                     <li>
@@ -283,7 +246,7 @@
                   </ul>
                 </article>
                 <article>
-                  <h4>UX Audit</h4>
+                  <h5>UX Audit</h5>
                   <ul>
                     <li>Evaluated navigation and content hierarchy</li>
                     <li>Reviewed desktop and mobile experiences</li>
@@ -291,7 +254,7 @@
                   </ul>
                 </article>
                 <article>
-                  <h4>Content Review</h4>
+                  <h5>Content Review</h5>
                   <ul>
                     <li>Assessed existing pages and supporting content</li>
                     <li>
@@ -301,7 +264,7 @@
                   </ul>
                 </article>
                 <article>
-                  <h4>Competitive Review</h4>
+                  <h5>Competitive Review</h5>
                   <ul>
                     <li>Reviewed competitor websites</li>
                     <li>
@@ -575,8 +538,14 @@
                       <i class="fa-solid fa-bullhorn"></i>
                     </span>
                     <div class="case-design-decision-copy">
-                      <h5>Hero Strategy</h5>
-                      <p>Replaced the rotating carousel with a focused value proposition and clear calls to action.</p>
+                      <h5>Hero Content &amp; Engagement</h5>
+                      <p>
+                        The hero was redesigned to create a clearer entry point
+                        into the experience. A focused value proposition,
+                        stronger hierarchy, and dedicated calls to action
+                        helped visitors quickly understand the company's
+                        offerings and next steps.
+                      </p>
                     </div>
                   </article>
                   <article class="case-design-decision-card">
@@ -584,17 +553,27 @@
                       <i class="fa-solid fa-layer-group"></i>
                     </span>
                     <div class="case-design-decision-copy">
-                      <h5>Content Hierarchy</h5>
-                      <p>Introduced clearer section pacing and scannable content structure to improve comprehension.</p>
+                      <h5>Desktop Navigation</h5>
+                      <p>
+                        Navigation was reorganized with clearer content
+                        groupings, hover states, and visual cues to make deeper
+                        content easier to discover while keeping contact
+                        actions accessible throughout the experience.
+                      </p>
                     </div>
                   </article>
                   <article class="case-design-decision-card">
                     <span class="case-design-decision-icon" aria-hidden="true">
-                      <i class="fa-solid fa-compass"></i>
+                      <i class="fa-solid fa-mobile-screen-button"></i>
                     </span>
                     <div class="case-design-decision-copy">
-                      <h5>Navigation System</h5>
-                      <p>Reorganized navigation around clearer content groupings and improved mobile usability.</p>
+                      <h5>Mobile Navigation</h5>
+                      <p>
+                        The mobile navigation was rebuilt with cleaner
+                        hierarchy, improved spacing, and expandable drill-down
+                        menus, allowing users to move between categories,
+                        rentals, specs, and services more efficiently.
+                      </p>
                     </div>
                   </article>
                   <article class="case-design-decision-card">
@@ -602,8 +581,67 @@
                       <i class="fa-solid fa-circle-info"></i>
                     </span>
                     <div class="case-design-decision-copy">
-                      <h5>Educational Content</h5>
-                      <p>Added services, FAQs, build process details, and industry-specific pathways.</p>
+                      <h5>Communicating Key Differentiators</h5>
+                      <p>
+                        Key differentiators such as build quality, insulation,
+                        lead times, and local support were surfaced more
+                        prominently to help visitors quickly understand the
+                        company's value proposition.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-compass"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Build Process Visualization</h5>
+                      <p>
+                        The custom build process was simplified into four clear
+                        stages, helping visitors understand project
+                        expectations and how vehicles move from consultation
+                        through delivery.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-compass"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Industry Specific Experiences</h5>
+                      <p>
+                        Industry-specific pathways were introduced to connect
+                        visitors with the vehicle solutions most relevant to
+                        their operational needs and use cases.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-circle-info"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>FAQ &amp; Customer Resources</h5>
+                      <p>
+                        A dedicated FAQ section was added to answer common
+                        questions earlier in the journey, reducing uncertainty
+                        and helping visitors find information faster.
+                      </p>
+                    </div>
+                  </article>
+                  <article class="case-design-decision-card">
+                    <span class="case-design-decision-icon" aria-hidden="true">
+                      <i class="fa-solid fa-layer-group"></i>
+                    </span>
+                    <div class="case-design-decision-copy">
+                      <h5>Services &amp; Support</h5>
+                      <p>
+                        Dedicated service pages were created to highlight
+                        repairs, maintenance programs, diagnostics, and ongoing
+                        support offerings, making these services easier to
+                        discover.
+                      </p>
                     </div>
                   </article>
                   <article class="case-design-decision-card">
@@ -612,7 +650,12 @@
                     </span>
                     <div class="case-design-decision-copy">
                       <h5>Trust &amp; Credibility</h5>
-                      <p>Integrated testimonials, proof points, and supporting content throughout the experience.</p>
+                      <p>
+                        Testimonials, certifications, and industry affiliations
+                        were integrated throughout the experience to reinforce
+                        credibility and build confidence in the company's
+                        expertise.
+                      </p>
                     </div>
                   </article>
                   <article class="case-design-decision-card">
@@ -620,26 +663,13 @@
                       <i class="fa-solid fa-phone-volume"></i>
                     </span>
                     <div class="case-design-decision-copy">
-                      <h5>Contact Pathways</h5>
-                      <p>Replaced the traditional form with direct communication options aligned with customer behavior.</p>
-                    </div>
-                  </article>
-                  <article class="case-design-decision-card">
-                    <span class="case-design-decision-icon" aria-hidden="true">
-                      <i class="fa-solid fa-code"></i>
-                    </span>
-                    <div class="case-design-decision-copy">
-                      <h5>Technical Foundation</h5>
-                      <p>Rebuilt the site with improved responsiveness, maintainability, and performance.</p>
-                    </div>
-                  </article>
-                  <article class="case-design-decision-card">
-                    <span class="case-design-decision-icon" aria-hidden="true">
-                      <i class="fa-solid fa-magnifying-glass-chart"></i>
-                    </span>
-                    <div class="case-design-decision-copy">
-                      <h5>SEO Structure</h5>
-                      <p>Improved metadata, internal linking, content organization, and site structure to support search visibility.</p>
+                      <h5>Contact Experience</h5>
+                      <p>
+                        The contact experience was redesigned around the
+                        communication methods customers already preferred,
+                        making it easier to connect with the business and
+                        access location information.
+                      </p>
                     </div>
                   </article>
                 </div>
@@ -648,7 +678,6 @@
               <div
                 class="cs-tabs"
                 data-callout-target="#solution-card"
-                data-callout-box="#solution-callout-text"
               >
                 <button
                   class="is-active"
@@ -681,7 +710,7 @@
                   data-mobile-hotspot-left="50%"
                   data-mobile-hotspot-top="50%"
                   data-image-src="images/portfolio/landers/coolfox/solution/coolfox-solution-newsite-desktopnav.jpg"
-                  data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/new/fortiva-mobile-new-cta.png"
+                  data-mobile-image-src="images/portfolio/landers/coolfox/solution/coolfox-solution-newsite-desktopnav.jpg"
                   data-image-alt="Redesigned Cool Fox desktop and mobile navigation"
                   data-mobile-image-alt="Redesigned Cool Fox desktop and mobile navigation"
                 >
@@ -698,8 +727,8 @@
                   data-mobile-image-scroll="0"
                   data-mobile-hotspot-left="50%"
                   data-mobile-hotspot-top="50%"
-                  data-image-src="images/portfolio/landers/coolfox/solution/coolfox-solution-newsite-mobilenav.jpg"
-                  data-mobile-image-src="images/portfolio/landers/fortiva/new/mobile crops/new/fortiva-mobile-new-cta.png"
+                  data-image-src="images/portfolio/landers/coolfox/solution/coolfox-solution-newsite-mobilenav.jpg?v=2"
+                  data-mobile-image-src="images/portfolio/landers/coolfox/solution/coolfox-solution-newsite-mobilenav.jpg?v=2"
                   data-image-alt="Redesigned Cool Fox desktop and mobile navigation"
                   data-mobile-image-alt="Redesigned Cool Fox desktop and mobile navigation"
                 >
@@ -856,23 +885,6 @@
                 >
                   Contact Experience
                 </button>
-              </div>
-
-              <div class="case-layout-callout-wrap case-solution-callout-wrap">
-                <div
-                  class="cs-callout case-layout-callout case-solution-callout"
-                >
-                  <span class="case-layout-callout-label" aria-hidden="true"
-                    >Finding</span
-                  >
-                  <span
-                    id="solution-callout-text"
-                    class="case-layout-callout-text"
-                    data-callout-text
-                    >The new headline gets to the point faster and gives users a
-                    clearer reason to keep reading.</span
-                  >
-                </div>
               </div>
 
               <div id="solution-card" class="cs-image-card case-after-card">
@@ -1100,19 +1112,32 @@
               <h2 id="similar-projects-title">Other Projects</h2>
               <div class="case-similar-projects-grid">
                 <article class="case-similar-project">
-                  <div class="case-similar-project-preview">
-                    Project Preview 1
-                  </div>
+                  <a class="case-similar-project-link" href="lander-dell.html">
+                    <div class="case-similar-project-preview">
+                      <video autoplay loop muted playsinline preload="metadata" data-lazy-video="true" data-autoplay-when-visible="true" poster="images/portfolio/landers/dell/dell-display-desktop.jpg" aria-label="Dell Rewards landing page preview video">
+                        <source data-src="images/portfolio/landers/dell/new/dell-index-display.mp4" type="video/mp4" />
+                      </video>
+                      <div class="case-similar-project-overlay">
+                        <span class="overlay-button" aria-hidden="true">View Case Study</span>
+                      </div>
+                    </div>
+                    <h3>Dell Technologies</h3>
+                    <p>Rewards Landing Page</p>
+                  </a>
                 </article>
                 <article class="case-similar-project">
-                  <div class="case-similar-project-preview">
-                    Project Preview 2
-                  </div>
-                </article>
-                <article class="case-similar-project">
-                  <div class="case-similar-project-preview">
-                    Project Preview 3
-                  </div>
+                  <a class="case-similar-project-link" href="lander-fortiva.html">
+                    <div class="case-similar-project-preview">
+                      <video autoplay loop muted playsinline preload="metadata" data-lazy-video="true" data-autoplay-when-visible="true" poster="images/portfolio/landers/fortiva/new/fortiva-video-poster.png" aria-label="Fortiva Mastercard landing page preview video">
+                        <source data-src="images/portfolio/landers/fortiva/new/fortiva-index-display.mp4" type="video/mp4" />
+                      </video>
+                      <div class="case-similar-project-overlay">
+                        <span class="overlay-button" aria-hidden="true">View Case Study</span>
+                      </div>
+                    </div>
+                    <h3>Fortiva Mastercard</h3>
+                    <p>Landing Page Design</p>
+                  </a>
                 </article>
               </div>
             </section>
@@ -1120,6 +1145,24 @@
         </div>
       </div>
     </div>
+
+    <!-- Footer -->
+    <div class="container">
+      <footer id="footer">
+        <div class="row">
+          <div class="col-xs-12 col-md-6 copyrights">
+            <p>&COPY; 2026 StevenLindgren.com</p>
+          </div>
+          <div class="col-xs-12 col-md-6 footer-socials">
+            <a href="https://www.linkedin.com/in/steven-lindgren-9a62487/"
+              >Linkedin</a
+            >
+            <a href="https://500px.com/p/stevel77?view=photos">500px</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Footer Ends -->
 
     <script src="js/plugins.js"></script>
     <script src="js/main.js?v=2026-05-14-1"></script>
@@ -1201,7 +1244,9 @@
             video.loop = true;
             video.autoplay = true;
             video.playsInline = true;
-            video.preload = "auto";
+            video.preload = "metadata";
+            video.dataset.lazyVideo = "true";
+            video.dataset.autoplayWhenVisible = "true";
             video.setAttribute("muted", "");
             video.setAttribute("loop", "");
             video.setAttribute("autoplay", "");
@@ -1216,7 +1261,11 @@
             media = video;
           }
 
-          if (src && media.getAttribute("src") !== src) {
+          // TODO: Add dedicated poster images for the CoolFox solution walkthrough MP4s.
+          if (window.portfolioVideoManager) {
+            window.portfolioVideoManager.resetDeferredSource(media, src);
+            window.portfolioVideoManager.registerVideo(media);
+          } else if (src && media.getAttribute("src") !== src) {
             media.src = src;
             media.load();
           }
@@ -1243,9 +1292,15 @@
             alt || "Case study walkthrough video",
           );
 
-          const playPromise = media.play();
-          if (playPromise && typeof playPromise.catch === "function") {
-            playPromise.catch(() => {});
+          if (window.portfolioVideoManager) {
+            if (window.portfolioVideoManager.isNearViewport(windowFrame)) {
+              window.portfolioVideoManager.playVideo(media);
+            }
+          } else {
+            const playPromise = media.play();
+            if (playPromise && typeof playPromise.catch === "function") {
+              playPromise.catch(() => {});
+            }
           }
 
           return media;
@@ -1255,7 +1310,11 @@
           const image = document.createElement("img");
 
           if (media instanceof HTMLVideoElement) {
-            media.pause();
+            if (window.portfolioVideoManager) {
+              window.portfolioVideoManager.pauseVideo(media);
+            } else {
+              media.pause();
+            }
           }
 
           if (media) {
@@ -1467,6 +1526,36 @@
         applyImageScroll(card);
       }
 
+      function scrollCaseStudyTargetIntoView(target) {
+        if (!target) {
+          return;
+        }
+
+        const header = document.getElementById("header");
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const top =
+          target.getBoundingClientRect().top + window.scrollY - headerHeight - 24;
+
+        window.requestAnimationFrame(() => {
+          window.scrollTo({
+            top: Math.max(0, top),
+            behavior: "smooth",
+          });
+        });
+      }
+
+      function getInteractiveScrollTarget(group) {
+        if (!group) {
+          return null;
+        }
+
+        if (group.dataset.calloutTarget) {
+          return document.querySelector(group.dataset.calloutTarget);
+        }
+
+        return null;
+      }
+
       function wireButtonGroup(groupSelector) {
         const groups = document.querySelectorAll(groupSelector);
         if (!groups.length) {
@@ -1486,6 +1575,7 @@
               applyTabCardState(button, group);
               applyComparisonState(button, group);
               updateToggleIndicator(group, button);
+              scrollCaseStudyTargetIntoView(getInteractiveScrollTarget(group));
             });
 
             button.addEventListener("keydown", (event) => {
