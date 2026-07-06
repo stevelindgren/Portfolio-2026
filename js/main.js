@@ -416,7 +416,7 @@ function initHeroVideoModal() {
         return;
     }
 
-    const video = modal.querySelector('.hero-video-modal-player');
+    const media = modal.querySelector('.hero-video-modal-player');
     const closeButton = modal.querySelector('.hero-video-modal-close');
     const closeTargets = Array.from(modal.querySelectorAll('[data-hero-video-close]'));
     let closeTimer;
@@ -436,8 +436,8 @@ function initHeroVideoModal() {
             closeButton.focus();
         }
 
-        if (video) {
-            const playPromise = video.play();
+        if (media && media.tagName === 'VIDEO') {
+            const playPromise = media.play();
             if (playPromise) {
                 playPromise.catch(() => {});
             }
@@ -448,8 +448,8 @@ function initHeroVideoModal() {
         modal.classList.remove('is-open');
         document.body.classList.remove('hero-video-modal-open');
 
-        if (video) {
-            video.pause();
+        if (media && media.tagName === 'VIDEO') {
+            media.pause();
         }
 
         closeTimer = window.setTimeout(() => {

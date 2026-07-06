@@ -222,7 +222,7 @@
                         <button
                           class="hero-case-video-trigger"
                           type="button"
-                          aria-label="Play introduction video"
+                          aria-label="Open introduction portrait"
                           aria-haspopup="dialog"
                           aria-controls="hero-intro-video-modal"
                         >
@@ -603,24 +603,22 @@
     >
       <div class="hero-video-modal-backdrop" data-hero-video-close></div>
       <div class="hero-video-modal-dialog">
-        <h2 class="sr-only" id="hero-intro-video-title">Introduction video</h2>
+        <h2 class="sr-only" id="hero-intro-video-title">
+          Introduction portrait
+        </h2>
         <button
           class="hero-video-modal-close"
           type="button"
-          aria-label="Close introduction video"
+          aria-label="Close introduction portrait"
           data-hero-video-close
         >
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
-        <video
+        <img
           class="hero-video-modal-player"
-          controls
-          playsinline
-          preload="metadata"
-          poster="images/main/me.JPG"
-        >
-          <source src="images/main/me.mp4" type="video/mp4" />
-        </video>
+          src="images/main/me.JPG"
+          alt="Portrait of Steven Lindgren"
+        />
       </div>
     </div>
     <!-- Scripts -->
