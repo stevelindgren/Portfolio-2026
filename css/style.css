@@ -2603,7 +2603,7 @@ button.mfp-close:focus {
     background: var(--site-accent);
     color: #fff;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.04em;
     text-transform: none;
     transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
@@ -4932,7 +4932,7 @@ body.case-study-new .case-similar-project-overlay .overlay-button {
     -webkit-text-fill-color: var(--site-accent-ink);
     font-family: inherit;
     font-size: 16px !important;
-    font-weight: 600 !important;
+    font-weight: 500 !important;
     line-height: 1;
     letter-spacing: 0.04em !important;
     text-transform: none;
@@ -5860,7 +5860,7 @@ body.case-study-new #content-wrapper .case-comparison-cta {
     color: var(--site-accent-ink);
     font-size: 14px;
     line-height: 20px;
-    font-weight: 600 !important;
+    font-weight: 500 !important;
     letter-spacing: .03em;
     text-decoration: none;
     white-space: nowrap;
@@ -6011,7 +6011,7 @@ body.case-study-new #content-wrapper .case-comparison-cta:active {
     color: rgba(255, 255, 255, .86);
     display: flex;
     align-items: center;
-    min-height: 40px;
+    min-height: 32px;
     padding: 0;
     cursor: pointer;
     font-size: 16px;
