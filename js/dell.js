@@ -262,18 +262,19 @@
   });
 
   CaseStudy.initMobileShowcaseAutoScroll({
-    interactionCooldownMs: 4200,
+    interactionCooldownMs: 5200,
+    referenceScrollDistances: [1361, 2254, 3027],
     downPath: [
-      { ratio: 0.2, duration: 640, pause: 150 },
-      { ratio: 0.42, duration: 720, pause: 190 },
-      { ratio: 0.66, duration: 810, pause: 240 },
-      { ratio: 0.86, duration: 860, pause: 280 },
-      { ratio: 1, duration: 920, pause: 620 },
+      { ratio: 0.2, duration: 940, pause: 240 },
+      { ratio: 0.42, duration: 1060, pause: 280 },
+      { ratio: 0.66, duration: 1200, pause: 340 },
+      { ratio: 0.86, duration: 1280, pause: 380 },
+      { ratio: 1, duration: 1380, pause: 920 },
     ],
     upPath: [
-      { ratio: 0.74, duration: 720, pause: 200 },
-      { ratio: 0.44, duration: 700, pause: 180 },
-      { ratio: 0, duration: 780, pause: 360 },
+      { ratio: 0.74, duration: 1080, pause: 300 },
+      { ratio: 0.44, duration: 1040, pause: 260 },
+      { ratio: 0, duration: 1160, pause: 540 },
     ],
   });
 })();

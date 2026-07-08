@@ -434,6 +434,7 @@
 
   CaseStudy.initMobileShowcaseAutoScroll({
     interactionCooldownMs: 5200,
+    referenceScrollDistances: [1361, 2254, 3027],
     downPath: [
       { ratio: 0.2, duration: 940, pause: 240 },
       { ratio: 0.42, duration: 1060, pause: 280 },

@@ -3365,7 +3365,7 @@ body.hero-video-modal-open {
 .overlay-button,
 a.button,
 button:not(.mobile-menu-toggle):not(.mfp-close) {
-    border-radius: 8px !important;
+    border-radius: 999px !important;
 }
 
 .hero-mobile-cta-group {
@@ -4298,7 +4298,7 @@ body.case-study-new .case-study-content h6 {
 
 body.case-study-new .case-study-content p {
     font-family: var(--case-font-family);
-    font-weight: 200;
+    font-weight: 300;
 }
 
 body.case-study-new .case-study-content p + p {
@@ -4498,10 +4498,10 @@ body.case-study-new .case-metric:last-child {
 }
 
 body.case-study-new .case-metric-copy span {
-    color: #c4ccd7;
-    font-size: 18px;
+    color: rgba(255, 255, 255, .78);
+    font-size: 16px;
     line-height: 24px;
-    font-weight: 500;
+    font-weight: 300;
     white-space: normal;
 }
 
@@ -4682,7 +4682,7 @@ body.case-study-new .case-meta-panel p {
     color: rgba(255, 255, 255, .78);
     font-size: var(--case-p-size);
     line-height: var(--case-p-line);
-    font-weight: 400;
+    font-weight: 300;
 }
 
 body.case-study-new .case-meta-panel ul {
@@ -4800,24 +4800,24 @@ body.case-study-new .case-detail-intro {
     color: rgba(255, 255, 255, .78);
     font-size: var(--case-p-size);
     line-height: var(--case-p-line);
-    font-weight: 200;
+    font-weight: 300;
 }
 
 body.case-study-new .case-detail-intro {
     color: rgba(255, 255, 255, .78);
-    font-weight: 200;
+    font-weight: 300;
 }
 
 body.case-study-new .case-detail-panel p {
     color: rgba(255, 255, 255, .78);
     font-size: var(--case-p-size);
     line-height: var(--case-p-line);
-    font-weight: 200;
+    font-weight: 300;
 }
 
 body.case-study-new .case-detail-panel p.case-detail-intro {
     color: rgba(255, 255, 255, .78);
-    font-weight: 200;
+    font-weight: 300;
 }
 
 body.case-study-new .case-detail-panel {
@@ -5428,7 +5428,7 @@ body.case-study-new #content-wrapper #problem .case-problem-callout .case-layout
     -ms-overflow-style: none;
     --cs-tab-padding: 8px 14px;
     --cs-tab-font-size: 16px;
-    --cs-tab-font-weight: 500;
+    --cs-tab-font-weight: 400;
     --cs-tab-line-height: var(--case-h6-line);
 }
 
@@ -5437,7 +5437,7 @@ body.case-study-new #content-wrapper #problem .case-problem-callout .case-layout
 }
 
 .cs-tabs button {
-    border: 1px solid #1e2630;
+    border: 1px solid #6A6A6A;
     background: #10151b;
     color: rgba(255, 255, 255, .68);
     opacity: 1;
@@ -5445,10 +5445,10 @@ body.case-study-new #content-wrapper #problem .case-problem-callout .case-layout
     font-family: var(--case-font-family);
     font-size: var(--cs-tab-font-size);
     line-height: var(--cs-tab-line-height);
-    font-weight: 500 !important;
+    font-weight: 400 !important;
     text-align: center;
     cursor: pointer;
-    border-radius: 8px !important;
+    border-radius: 999px !important;
     flex: 0 0 auto;
     transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .08s ease;
 }
@@ -5457,13 +5457,13 @@ body.case-study-new #content-wrapper .cs-tabs button.is-active,
 body.case-study-new #content-wrapper .cs-tabs button.is-active:hover {
     color: var(--site-accent-ink);
     -webkit-text-fill-color: var(--site-accent-ink);
-    font-weight: 500 !important;
+    font-weight: 400 !important;
 }
 
 .cs-tabs button.is-active {
     background: var(--site-accent);
     color: var(--site-accent-ink);
-    font-weight: 500;
+    font-weight: 400;
     border-color: var(--site-accent);
     box-shadow: 0 0 4px rgba(0, 0, 0, .75);
 }
@@ -5471,7 +5471,7 @@ body.case-study-new #content-wrapper .cs-tabs button.is-active:hover {
 .cs-tabs button:not(.is-active):hover {
     background: #141c27;
     color: rgba(255, 255, 255, .84);
-    border-color: #2c3948;
+    border-color: #6A6A6A;
 }
 
 .cs-tabs button:focus-visible {
@@ -5776,7 +5776,7 @@ body.case-study-fortiva #solution .case-design-decision-copy h5 {
 body.case-study-coolfox #solution .case-design-decision-copy p,
 body.case-study-fortiva #solution .case-design-decision-copy p {
     color: rgba(255, 255, 255, .78);
-    font-weight: 400;
+    font-weight: 300;
 }
 
 body.case-study-coolfox #solution .cs-tabs[data-callout-target] {
@@ -5902,7 +5902,7 @@ body.case-study-new #content-wrapper .case-comparison-cta:active {
     align-items: center;
     gap: 0;
     padding: 6px;
-    border: 1px solid #1e2630;
+    border: 1px solid #6A6A6A;
     border-radius: 16px;
     background: #10151b;
     overflow: visible;
@@ -6016,7 +6016,7 @@ body.case-study-new #content-wrapper .case-comparison-cta:active {
     cursor: pointer;
     font-size: 16px;
     line-height: 24px;
-    font-weight: 500;
+    font-weight: 300;
     border-radius: 0;
     transition: color .22s ease;
     position: relative;
@@ -6040,7 +6040,7 @@ body.case-study-new #content-wrapper .case-comparison-cta:active {
 }
 
 body.case-study-new #content-wrapper .cs-toggle button {
-    font-weight: 500;
+    font-weight: 300;
 }
 
 .cs-toggle button.is-active {
@@ -6053,13 +6053,13 @@ body.case-study-new #content-wrapper .cs-toggle button {
 
 body.case-study-new #content-wrapper .cs-toggle button.is-active:hover {
     color: var(--site-accent-ink);
-    font-weight: 500;
+    font-weight: 300;
 }
 
 body.case-study-new #content-wrapper .cs-toggle-switch button.is-active,
 body.case-study-new #content-wrapper .cs-toggle-switch button.is-active:hover {
     color: var(--site-accent);
-    font-weight: 500;
+    font-weight: 300;
 }
 
 .cs-toggle button:not(.is-active):hover {

@@ -320,6 +320,7 @@
           { ratio: 0.44, duration: 700, pause: 180 },
           { ratio: 0, duration: 780, pause: 360 },
         ],
+        referenceScrollDistances: null,
       },
       options || {},
     );
@@ -431,17 +432,32 @@
       });
     }
 
-    async function runSwipeSequence(screen, token) {
+    function getScreenDurationScale(screenIndex, maxScroll) {
+      const referenceDistances = settings.referenceScrollDistances;
+      if (!Array.isArray(referenceDistances)) {
+        return 1;
+      }
+
+      const referenceDistance = Number(referenceDistances[screenIndex]);
+      if (!Number.isFinite(referenceDistance) || referenceDistance <= 0) {
+        return 1;
+      }
+
+      return Math.max(maxScroll / referenceDistance, 1);
+    }
+
+    async function runSwipeSequence(screen, token, screenIndex) {
       const maxScroll = Math.max(0, screen.scrollHeight - screen.clientHeight);
       if (maxScroll <= 6) {
         return true;
       }
+      const durationScale = getScreenDurationScale(screenIndex, maxScroll);
 
       for (const step of settings.downPath) {
         const ok = await animateScrollTo(
           screen,
           maxScroll * step.ratio,
-          step.duration,
+          step.duration * durationScale,
           token,
         );
         if (!ok) {
@@ -456,7 +472,7 @@
         const ok = await animateScrollTo(
           screen,
           maxScroll * step.ratio,
-          step.duration,
+          step.duration * durationScale,
           token,
         );
         if (!ok) {
@@ -496,12 +512,12 @@
           return;
         }
 
-        for (const screen of phoneScreens) {
+        for (const [screenIndex, screen] of phoneScreens.entries()) {
           if (token !== runToken || !isSectionVisible) {
             return;
           }
 
-          const ok = await runSwipeSequence(screen, token);
+          const ok = await runSwipeSequence(screen, token, screenIndex);
           if (!ok) {
             break;
           }
