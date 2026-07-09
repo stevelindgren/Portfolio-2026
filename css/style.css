@@ -745,6 +745,7 @@ button.mfp-close:focus {
     -ms-transition: none;
     transition: none;
     -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
     overflow: hidden;
     max-height: 0
 }
@@ -4003,7 +4004,6 @@ body.home-page .hero-wrapper .page-title-main h3,
 body.home-page .hero-headline-accent {
     color: var(--home-primary);
     -webkit-text-fill-color: var(--home-primary);
-    text-fill-color: var(--home-primary);
 }
 
 body.home-page #menu-center .flexnav.standard > li:not(.nav-email-cta):not(.nav-linkedin-cta) > a::after,
