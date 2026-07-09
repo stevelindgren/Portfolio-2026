@@ -9,6 +9,8 @@
   CaseStudy.initSidebarNavigation();
 
   const desktopCalloutMediaQuery = window.matchMedia("(min-width: 981px)");
+  const preloadedTabVideos = new Map();
+  let tabVideoPreloadPool = null;
 
   function isVideoSource(src) {
     return /\.(mp4|webm|ogg)(?:[?#]|$)/i.test(src || "");
@@ -16,6 +18,67 @@
 
   function getCardMedia(windowFrame) {
     return windowFrame ? windowFrame.querySelector("img, video") : null;
+  }
+
+  function getTabVideoPreloadPool() {
+    if (tabVideoPreloadPool) {
+      return tabVideoPreloadPool;
+    }
+
+    const pool = document.createElement("div");
+    pool.hidden = true;
+    pool.setAttribute("aria-hidden", "true");
+    document.body.appendChild(pool);
+    tabVideoPreloadPool = pool;
+    return pool;
+  }
+
+  function stashPreloadedVideo(video) {
+    if (!(video instanceof HTMLVideoElement)) {
+      return;
+    }
+
+    video.pause();
+    const pool = getTabVideoPreloadPool();
+    if (video.parentNode !== pool) {
+      pool.appendChild(video);
+    }
+  }
+
+  function primeTabVideoSource(src) {
+    if (!isVideoSource(src)) {
+      return null;
+    }
+
+    let video = preloadedTabVideos.get(src);
+    if (video) {
+      return video;
+    }
+
+    video = document.createElement("video");
+    video.muted = true;
+    video.defaultMuted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = "auto";
+    video.setAttribute("muted", "");
+    video.setAttribute("loop", "");
+    video.setAttribute("playsinline", "");
+    video.src = src;
+    getTabVideoPreloadPool().appendChild(video);
+    video.load();
+    preloadedTabVideos.set(src, video);
+    return video;
+  }
+
+  function getButtonMediaSrc(button) {
+    if (!button) {
+      return "";
+    }
+
+    return !desktopCalloutMediaQuery.matches && button.dataset.mobileImageSrc
+      ? button.dataset.mobileImageSrc
+      : button.dataset.imageSrc || "";
   }
 
   function syncCardMedia(card, src, alt) {
@@ -28,36 +91,31 @@
     let media = getCardMedia(windowFrame);
 
     if (shouldRenderVideo) {
-      if (!(media instanceof HTMLVideoElement)) {
-        const video = document.createElement("video");
-        video.muted = true;
-        video.loop = true;
-        video.autoplay = true;
-        video.playsInline = true;
-        video.preload = "metadata";
-        video.dataset.lazyVideo = "true";
-        video.dataset.autoplayWhenVisible = "true";
-        video.setAttribute("muted", "");
-        video.setAttribute("loop", "");
-        video.setAttribute("autoplay", "");
-        video.setAttribute("playsinline", "");
+      const video = primeTabVideoSource(src);
+      if (!video) {
+        return null;
+      }
 
+      video.autoplay = true;
+      video.preload = "auto";
+      video.setAttribute("autoplay", "");
+
+      const previousVideo =
+        media instanceof HTMLVideoElement && media !== video ? media : null;
+
+      if (media !== video) {
         if (media) {
           media.replaceWith(video);
         } else {
           windowFrame.appendChild(video);
         }
-
-        media = video;
       }
 
-      if (window.portfolioVideoManager) {
-        window.portfolioVideoManager.resetDeferredSource(media, src);
-        window.portfolioVideoManager.registerVideo(media);
-      } else if (src && media.getAttribute("src") !== src) {
-        media.src = src;
-        media.load();
+      if (previousVideo) {
+        stashPreloadedVideo(previousVideo);
       }
+
+      media = video;
 
       const syncVideoAspectRatio = () => {
         if (media.videoWidth > 0 && media.videoHeight > 0) {
@@ -94,19 +152,16 @@
 
     if (!(media instanceof HTMLImageElement)) {
       const image = document.createElement("img");
-
-      if (media instanceof HTMLVideoElement) {
-        if (window.portfolioVideoManager) {
-          window.portfolioVideoManager.pauseVideo(media);
-        } else {
-          media.pause();
-        }
-      }
+      const previousVideo = media instanceof HTMLVideoElement ? media : null;
 
       if (media) {
         media.replaceWith(image);
       } else {
         windowFrame.appendChild(image);
+      }
+
+      if (previousVideo) {
+        stashPreloadedVideo(previousVideo);
       }
 
       media = image;
@@ -121,6 +176,62 @@
     }
 
     return media;
+  }
+
+  function initTabVideoPrefetch() {
+    const solutionTabs = document.querySelector(
+      '.cs-tabs[data-callout-target="#solution-card"]',
+    );
+    if (!solutionTabs) {
+      return;
+    }
+
+    const buttons = Array.from(solutionTabs.querySelectorAll("button"));
+    const videoButtons = buttons.filter((button) =>
+      isVideoSource(button.dataset.imageSrc || button.dataset.mobileImageSrc),
+    );
+
+    if (!videoButtons.length) {
+      return;
+    }
+
+    const primeButtonVideo = (button) => {
+      primeTabVideoSource(getButtonMediaSrc(button));
+    };
+
+    videoButtons.forEach((button) => {
+      button.addEventListener("pointerenter", () => primeButtonVideo(button), {
+        passive: true,
+      });
+      button.addEventListener("focus", () => primeButtonVideo(button));
+      button.addEventListener("touchstart", () => primeButtonVideo(button), {
+        passive: true,
+      });
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      primeButtonVideo(videoButtons[0]);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          primeButtonVideo(videoButtons[0]);
+          observer.disconnect();
+        });
+      },
+      {
+        rootMargin: "240px 0px",
+        threshold: 0.1,
+      },
+    );
+
+    observer.observe(solutionTabs);
   }
 
   function applyImageScroll(card) {
@@ -431,6 +542,7 @@
     syncResponsiveInteractiveState,
   );
   window.addEventListener("resize", refreshActiveCardImageScroll);
+  initTabVideoPrefetch();
 
   CaseStudy.initMobileShowcaseAutoScroll({
     interactionCooldownMs: 5200,

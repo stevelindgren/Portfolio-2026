@@ -2716,6 +2716,10 @@ button.mfp-close:focus {
     color: #103a36;
 }
 
+.hero-interest-mobile-copy {
+    display: none;
+}
+
 .hero-interest-preview {
     width: 280px;
     padding: 8px;
@@ -3372,14 +3376,15 @@ button:not(.mobile-menu-toggle):not(.mfp-close) {
     display: none;
 }
 
-.hero-mobile-cta {
+.hero-mobile-cta,
+button.hero-mobile-cta:not(.mobile-menu-toggle):not(.mfp-close) {
     align-items: center;
     justify-content: center;
     width: 100%;
     min-height: 54px;
     padding: 14px 22px;
     border: 1px solid transparent;
-    border-radius: 10px;
+    border-radius: 10px !important;
     font-size: 16px;
     font-weight: 600;
     line-height: 1.2;
@@ -3639,6 +3644,14 @@ button:not(.mobile-menu-toggle):not(.mfp-close) {
     .hero-wrapper .page-title-main h3 {
         font-size: clamp(38px, 6.2vw, 46px) !important;
         line-height: 1.08 !important;
+    }
+
+    .hero-interest-desktop-copy {
+        display: none;
+    }
+
+    .hero-interest-mobile-copy {
+        display: inline;
     }
 
     .hero-interest-chip {

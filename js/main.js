@@ -734,6 +734,7 @@ const portfolioVideoManager = (() => {
     const managedVideos = new WeakSet();
     const lazyLoadRootMargin = '300px 0px';
     const autoplayVisibilityThreshold = 0.35;
+    const mobilePosterOnlyMediaQuery = window.matchMedia('(max-width: 768px)');
 
     function isNearViewport(element) {
         if (!element) {
@@ -750,8 +751,40 @@ const portfolioVideoManager = (() => {
         return Array.from(video.querySelectorAll('source[data-src]'));
     }
 
+    function isMobilePosterOnlyVideo(video) {
+        return Boolean(
+            video &&
+            video.dataset.mobilePosterOnly === 'true' &&
+            mobilePosterOnlyMediaQuery.matches
+        );
+    }
+
+    function suspendVideoToPoster(video) {
+        if (!video) {
+            return;
+        }
+
+        pauseVideo(video);
+        video.dataset.lazyHydrated = 'false';
+
+        if (video.hasAttribute('src')) {
+            video.removeAttribute('src');
+        }
+
+        video.querySelectorAll('source').forEach((source) => {
+            source.removeAttribute('src');
+        });
+
+        video.load();
+    }
+
     function hydrateVideo(video) {
         if (!video || video.dataset.lazyHydrated === 'true') {
+            return;
+        }
+
+        if (isMobilePosterOnlyVideo(video)) {
+            suspendVideoToPoster(video);
             return;
         }
 
@@ -783,6 +816,11 @@ const portfolioVideoManager = (() => {
 
     function playVideo(video) {
         if (!video) {
+            return;
+        }
+
+        if (isMobilePosterOnlyVideo(video)) {
+            suspendVideoToPoster(video);
             return;
         }
 
@@ -873,6 +911,11 @@ const portfolioVideoManager = (() => {
             return;
         }
 
+        if (isMobilePosterOnlyVideo(video)) {
+            suspendVideoToPoster(video);
+            return;
+        }
+
         managedVideos.add(video);
 
         if (video.dataset.lazyVideo === 'true') {
@@ -905,6 +948,17 @@ const portfolioVideoManager = (() => {
             .forEach(registerVideo);
     }
 
+    function syncMobilePosterOnlyVideos(root = document) {
+        root.querySelectorAll('video[data-mobile-poster-only="true"]').forEach((video) => {
+            if (isMobilePosterOnlyVideo(video)) {
+                suspendVideoToPoster(video);
+                return;
+            }
+
+            registerVideo(video);
+        });
+    }
+
     return {
         init,
         isNearViewport,
@@ -912,6 +966,7 @@ const portfolioVideoManager = (() => {
         playVideo,
         registerVideo,
         resetDeferredSource,
+        syncMobilePosterOnlyVideos,
     };
 })();
 
@@ -919,6 +974,18 @@ window.portfolioVideoManager = portfolioVideoManager;
 
 document.addEventListener("DOMContentLoaded", function() {
     portfolioVideoManager.init();
+    portfolioVideoManager.syncMobilePosterOnlyVideos();
+
+    const mobilePosterOnlyMediaQuery = window.matchMedia('(max-width: 768px)');
+    const syncMobilePosterOnlyVideos = () => {
+        portfolioVideoManager.syncMobilePosterOnlyVideos();
+    };
+
+    if (typeof mobilePosterOnlyMediaQuery.addEventListener === 'function') {
+        mobilePosterOnlyMediaQuery.addEventListener('change', syncMobilePosterOnlyVideos);
+    } else if (typeof mobilePosterOnlyMediaQuery.addListener === 'function') {
+        mobilePosterOnlyMediaQuery.addListener(syncMobilePosterOnlyVideos);
+    }
 
     const isHomePage = document.body.classList.contains('home-page');
 
